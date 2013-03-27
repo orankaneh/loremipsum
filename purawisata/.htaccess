@@ -1,0 +1,22 @@
+<Files .htaccess>
+	
+order allow,deny
+	
+deny from all
+	
+</Files>
+	
+Options +FollowSymlinks
+RewriteEngine On
+
+
+#RewriteRule ^(.*)\.php$ 404.php [L]
+#RewriteRule ^(.*)\.html$ $1.php [L,QSA]
+#RewriteRule form/(.*)\.html$ detailpage.php?form=$1 [L,QSA]
+#RewriteRule form/(.*)\.html$ detailpage.php?form=$1 [L,QSA]
+RewriteRule form/contact-us.html$ contact-us.php [L,QSA]
+RewriteRule form/location.html$ location.php [L,QSA]
+RewriteRule location.html$ location.php [L,QSA]
+RewriteRule news/(.*)/(.*)/read/(.*).html$ detailpage.php?id=$2&judul=$4&bahasa=$1 [L,QSA]
+
+ErrorDocument 404 http://localhost/purawisata/404.php

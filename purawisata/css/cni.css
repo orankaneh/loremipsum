@@ -1,0 +1,949 @@
+/*###########################################
+/* Created by adhyoon */
+
+@font-face {
+font-family: swiss;
+src: url(../fonts/swiss721bt-romancondensed.ttf);
+font-weight:bold;
+}
+@font-face {
+font-family: swissbold;
+src: url(../fonts/Swiss721BoldCondensedBt.ttf);
+font-weight:bold;
+}
+@font-face {
+font-family: dosis;
+src: url(../fonts/Dosis-Book.ttf);
+font-weight:bold;
+}
+.spasi{
+margin-top: 10px !important;
+}
+.pointer{
+cursor:pointer;
+}
+.triangle{
+width: 0px;
+height: 0px;
+border-style: solid;
+border-width: 10px 7px 0 7px;
+border-color: #f7f7f7 transparent transparent transparent;
+margin: -35px auto;
+}
+.hanoman{
+   margin: 0 auto;
+   text-align: center;
+   background: url(../images/frameslideutuh.png) no-repeat;
+   background-size: 100%;
+   width: 100%;
+   height: 100%;
+   z-index: 500px;
+   overflow:hidden;
+   position:absolute;
+   top: 0;
+}
+.flag{
+margin: 75px 65%;
+width: 100px;
+}
+.flag img{
+padding:5px;
+}
+.slidercontainer{
+position:relative;
+height: 500px;
+overflow:hidden;
+}
+.flexslider{
+width: 80%;
+}
+.beritainindex{
+   width:1000px;
+   float:left;
+}
+
+.beritakiri{
+   width: 550px; 
+   border-top: 1px solid #ba985d;
+   border-bottom: 1px solid #ba985d;
+   height:350px;
+}
+.detailberita, .detailberita2 {
+min-height: 180px;
+}
+.detailberita .beritakiri{
+width: 550px; 
+   border-top: 1px solid #ba985d;
+   border-bottom: 0px solid #ba985d;
+min-height: 180px;
+height: 100%;
+}
+.detailberita .beritakiri p{
+height: 100%;
+}
+.detailberita2 .beritakananlho{
+position:absolute;
+top: 400px;
+}
+.newnews{
+width: 260px;
+height: 320px;
+overflow: hidden;
+text-align:justify;
+float:left;
+padding:6px;
+}
+.newnews h1{
+margin-top: -5px;
+color: #ba985d;
+font-size: 20px;
+}
+.newnews h1 a{
+margin-top: -5px !important;
+color: #ba985d !important;
+font-size: 20px !important;
+font-family: swiss;
+}
+.newnews a{
+color: #ba985d !important;
+font-family: swiss;
+}
+.newnews h1 a:hover{
+margin-top: -5px;
+color: #ba985d;
+font-size: 20px;
+}
+.newnews img{
+width: 90%;
+border: 9px solid #ffffff;
+margin-left: -3px;
+}
+
+.othernews{
+width:250px;
+float:left;
+margin: -5px 120px;
+overflow:hidden;
+text-align:justify;
+font-size: 12px;
+line-height:normal;
+}
+
+.othernews h1{
+color: #ba985d;
+font-size: 20px;
+}
+.othernews img{
+position:absolute;
+margin: 15px -120px;
+border: 9px solid #ffffff;
+background:#FFFFFF;
+height: 75px;
+
+}
+
+.buttonselengkapothernews{
+	background: #ba985d;
+	color: #ffffff;
+	margin : 30px auto;
+	width: 130px;
+	padding: 5px;
+	border-right: 2px solid #5e451b;
+	border-bottom: 2px solid #5e451b;
+	text-align:center;
+	float:left;
+}
+.isikiri{
+    font-family: swiss;
+	font-size:16px;
+	margin-left: 20px;
+	margin-top: -23px;
+	background: #4e3623;
+	width: 150px;
+	text-align:center;
+	border-top: 1px solid #ba985d;
+	border-left: 1px solid #ba985d;
+	border-right: 1px solid #ba985d;
+    -webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+    color: #ba985d;
+}
+
+.beritakananlho{
+   margin-left: 600px; 
+   width: 360px; 
+   border-top: 1px solid #ba985d;
+   border-bottom: 1px solid #ba985d;
+   height:350px;
+   margin-top: -350px;
+}
+
+.isikananlho{
+     font-family: swiss;
+	font-size:16px;
+   margin-left: 20px;
+   margin-top: -23px;
+   background: #4e3623;
+   width: 150px;
+   text-align:center;
+   border-top: 1px solid #ba985d;
+   border-left: 1px solid #ba985d;
+   border-right: 1px solid #ba985d;
+   -webkit-border-top-left-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+   color: #ba985d;
+}
+	
+.agendalho{
+   width: 360px; 
+   border-top: 1px solid #ba985d;
+   height:450px;
+   margin-top: 100px;
+   color: #ba985d;
+}	
+.agendalho ul{
+width: 93%;
+margin-top: 30px;
+}
+.agendalho li{
+color: #ba985d;
+margin: 15px -15px;
+}
+.agendalho hr{
+ color: #ba985d;
+ border : 0;
+ height : 1px;
+ background : url(../images/hr.png) repeat-x;
+ width: 365px;
+ margin-left: -15px;
+}
+
+.buttonselengkapagenda{
+	background: #ba985d;
+	color: #ffffff;
+	margin : 20px -15px;
+	width: 130px;
+	padding: 5px;
+	border-right: 2px solid #5e451b;
+	border-bottom: 2px solid #5e451b;
+	text-align:center;
+	float:left;
+}
+
+	
+.sociallho{
+   margin-left: 400px; 
+   width: 560px; 
+   border-top: 1px solid #ba985d;
+   height:450px;
+   margin-top: -450px;
+}
+	  
+.headagenda, .headsocial{
+   margin-left: 20px;
+   margin-top: -23px;
+   background: #4e3623;
+   width: 150px;
+   text-align:center;
+   border-top: 1px solid #ba985d;
+   border-left: 1px solid #ba985d;
+   border-right: 1px solid #ba985d;
+   -webkit-border-top-left-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+     font-family: swiss;
+	font-size:16px;
+   color: #ba985d;
+}
+	  
+.twitter{
+    width:270px;
+	margin-top: 30px;
+}
+.twittertext{
+    width:270px;
+	 color: #ba985d;
+	 font-size:16px;
+	 margin-left: 30px;
+}
+
+.twitter img{
+    color: #ba985d;
+    margin-top: 25px;
+}
+
+.twitter hr{
+ color: #ba985d;
+ border : 0;
+ height : 1px;
+ background : url(../images/hr.png) repeat-x;
+ width: 100%;
+ margin-top:-1px;
+}
+.logotw{
+background:url(../images/purawisata_depan_b_rev_24.jpg);
+width: 27px;
+height: 19px;
+position:absolute;
+}
+
+.twtr-ft, .twtr-hd{
+    display: none !important;
+}
+.facebook{
+    width:270px;
+    margin-left: 290px;
+    margin-top: -402px;
+}
+.logofb{
+background:url(../images/purawisata_depan_b_rev_27.jpg) no-repeat;
+width: 27px;
+height: 19px;
+position:absolute;
+}
+.facebook hr{
+ color: #ba985d;
+ border : 0;
+ height : 1px;
+ background : url(../images/hr.png) repeat-x;
+ width: 100%;
+ margin-top:1px;
+}
+.storyContent{
+    background: #333333 !important;
+}
+	  
+.bedawarna{
+   width: 100%;
+   float:left;
+   background: #715f50;
+   height: 327px;
+   margin-top: -1px;
+   margin: 0 auto;
+}	 
+.bedawarnadetail{
+   width: 100%;
+   float:left;
+   background: #715f50;
+   margin-top: -1px;
+   margin: 0 auto;
+   text-align:left;
+}	
+
+
+.bedawarnadetail .sociallho{
+   margin-left: 400px; 
+   width: 560px; 
+   border-top: 1px solid #d8cf9c;
+   height:450px;
+   margin-top: -450px;
+}
+
+.bedawarnadetail  .agendalho{
+   width: 340px; 
+   border-top: 1px solid #d8cf9c;
+   height:450px;
+   margin-top: 20px;
+   color: #ba985d;
+}
+
+.bedawarnadetail  .agendalho li{
+color: #d8cf9c;
+margin: 15px 0;
+}
+.bedawarnadetail  .agendalho hr{
+ color: #d8cf9c;
+ border : 0;
+ height : 1px;
+ background : url(../images/hr2.png) repeat-x;
+ width: 340px;
+ margin-left: 0;
+}
+.bedawarnadetail .twtr-tweet-text p{
+text-align:justify !important;
+font-size:10px;
+}
+.twtr-bd{
+height: 370px;
+}
+.bedawarnadetail  #twtr-widget-1 .twtr-new-results, #twtr-widget-1 .twtr-results-inner, #twtr-widget-1 .twtr-timeline{
+   background: #715f50  !important;
+}
+
+.bedawarnadetail .headagenda, .bedawarnadetail .headsocial{
+   margin-left: 20px;
+   margin-top: -23px;
+   background: #715f50;
+   color: #d8cf9c;
+   width: 150px;
+   text-align:center;
+   border-top: 1px solid #d8cf9c;
+   border-left: 1px solid #d8cf9c;
+   border-right: 1px solid #d8cf9c;
+   -webkit-border-top-left-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+     font-family: swiss;
+	font-size:16px;
+   
+}
+.bedawarnadetail .twitter hr, .bedawarnadetail .facebook hr{
+ color: #ba985d;
+ border : 0;
+ height : 1px;
+ background : url(../images/hr2.png) repeat-x;
+ width: 100%;
+ margin-top:-1px;
+}
+
+.bedawarnadetail .twittertext{
+    width:270px;
+	 color: #d8cf9c;
+	 font-size:16px;
+	 margin-left: 30px;
+}
+.bedawarnadetail .logotw{
+background:url(../images/purawisata_depan_b_rev_242.jpg);
+width: 27px;
+height: 19px;
+position:absolute;
+}
+
+.bedawarnadetail .logofb{
+background:url(../images/purawisata_depan_b_rev_272.jpg);
+width: 27px;
+height: 19px;
+position:absolute;
+}
+.bedawarna2{
+   width: 100%;
+   float:left;
+   background: #251406;
+   height: 30px;
+}	 
+
+.copyright{
+   text-align:center;
+   color: #d8cf9c;
+   margin-top: 3px;
+}
+.copyright a{
+color: #FFFFFF;
+}
+.videolho{
+   width: 300px; 
+   border-top: 1px solid #d8cf9c;
+   height:230px;
+   position:absolute;
+}
+
+.videolho iframe{
+   margin-top: 10px;
+} 
+
+.headvideo{
+   margin-left: 20px;
+   margin-top: -23px;
+   background: #715f50;
+   width: 150px;
+   text-align:center;
+   border-top: 1px solid #d8cf9c;
+   border-left: 1px solid #d8cf9c;
+   border-right: 1px solid #d8cf9c;
+   -webkit-border-top-left-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+     font-family: swiss;
+	font-size:16px;
+   color: #d8cf9c;
+}
+
+.headfoto{
+   margin-left: 20px;
+   margin-top: -23px;
+   background: #715f50;
+   width: 150px;
+   text-align:center;
+   border-top: 1px solid #d8cf9c;
+   border-left: 1px solid #d8cf9c;
+   border-right: 1px solid #d8cf9c;
+   -webkit-border-top-left-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+     font-family: swiss;
+	font-size:16px;
+   color: #d8cf9c;
+}	  	  
+.fotolho{
+	margin: 0 350px;
+	width: 300px; 
+	border-top: 1px solid #d8cf9c;
+	height:150px;
+	position:relative;
+}
+.gallerylho{
+	margin: 0;
+	width: 95%; 
+	border-top: 1px solid #d8cf9c;
+	height:100%;
+	position:relative;
+	
+}	 
+.kategoryfoto{
+width: 210px;
+float:left;
+height:100%;
+padding: 0;
+margin:0;
+list-style-type: none !important;
+}
+
+.namakategory{
+float:left;
+width: 350px;
+padding: 5px;
+margin-top: 7px;
+color: #ba985d;
+}
+.aktiv{
+background:url(../images/listyle_03.jpg) no-repeat;
+}
+.ataskn{
+margin-left: 15px;
+font-size: 18px;
+font-weight:bold;
+font-family: dosis;
+margin-top: -5px;
+}
+.bawahkn{
+margin-left: 15px;
+font-size: 12px;
+margin-top: -5px;
+color: #a4a4a4;
+}
+
+.isigallery{
+width: 730px;
+float:left;
+height:100%;
+padding: 0;
+margin:0;
+}
+.isigallery img{
+	border: 4px solid #ffffff;
+	width: 120px;
+	height: 90px;
+	float:left;
+}
+.headgallery{
+ margin-left: 20px;
+   margin-top: -23px;
+   background: #4E3623;
+   width: 150px;
+   text-align:center;
+   border-top: 1px solid #d8cf9c;
+   border-left: 1px solid #d8cf9c;
+   border-right: 1px solid #d8cf9c;
+   -webkit-border-top-left-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+     font-family: swiss;
+	font-size:16px;
+   color: #d8cf9c;
+}
+.detailfoto{
+height: 150px;
+} 
+.detailfoto .buttonselengkapfoto{
+margin: 0;
+} 
+
+.headfotolho{
+ margin-left: 20px;
+   margin-top: -23px;
+   background: #4E3623;
+   width: 150px;
+   text-align:center;
+   border-top: 1px solid #d8cf9c;
+   border-left: 1px solid #d8cf9c;
+   border-right: 1px solid #d8cf9c;
+   -webkit-border-top-left-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+     font-family: swiss;
+	font-size:16px;
+   color: #d8cf9c;
+}
+
+.detailfoto .fotolho{
+	margin: 0;
+	width: 540px; 
+	border-top: 1px solid #d8cf9c;
+	height:150px;
+	position:relative;
+}
+
+.detailfoto .galleryinfooter img{
+	border: 3px solid #ffffff;
+	width: 111px;
+	height: 90px;
+}
+.isibeda{
+	width: 1000px;
+	margin: 40px auto;	  
+}
+
+.bannerdepan{
+	margin: -175px 700px;
+	width: 300px; 
+	height:150px;
+	position:relative;
+	text-align:left;
+}
+.bannerdetaildepan{
+	margin: 0 590px;
+	width: 300px; 
+	text-align:left;
+	top: 500px;
+}
+.bannerdetailconten{
+	margin: 0 590px;
+	width: 300px; 
+	height:150px;
+	position:absolute;
+	text-align:left;
+	top: 30px;
+}
+.bannerdepan img{
+	width: 270px; 
+}
+.indexberita{
+height: 100%;
+min-height: 700px;
+}
+.galleryinfooter{
+	margin-top: 10px;
+}
+
+.galleryinfooter img{
+	border: 5px solid #ffffff;
+	height: 97px;
+	width: 130px;
+	padding: 0;
+}
+
+.buttonselengkapv{
+	background: #ba985d;
+	color: #ffffff;
+	margin : 6px auto;
+	width: 130px;
+	padding: 5px;
+	border-right: 2px solid #5e451b;
+	border-bottom: 2px solid #5e451b;
+}
+.buttonselengkapfoto{
+	background: #ba985d;
+	color: #ffffff;
+	margin : 6px auto;
+	width: 130px;
+	padding: 5px;
+	border-right: 2px solid #5e451b;
+	border-bottom: 2px solid #5e451b;
+}
+
+.hotline{
+	width: 300px;
+	height:150px;
+	padding: 5px;
+	font-size: 26px;
+}
+.detailfoot .hotline{
+	width: 400px;
+	height:150px;
+	padding: 5px;
+	font-size: 26px;
+	margin-left: -50px;
+}
+.hotlinenumber{
+	margin-top: 325px;
+	color: #4e3623;
+		background:url(../images/telepon_13.jpg) top no-repeat;
+}
+.detailfoot .hotlinenumber{
+	margin-top: 530px;
+	color: #4e3623;
+	background:url(../images/telepon_13.jpg) top no-repeat;
+}
+.hotlinenumber h4{
+	font-family: swissbold;
+	font-size: 30px;
+	color: #d90100;
+}
+.hotlinenumber h6{
+	margin-top: 5px;
+}
+.costumerservice{
+	width: 350px;
+	padding: 5px;
+	font-size: 26px;
+	margin: 100px auto;
+	height: 100%;
+	border-right: 1px solid #716e62;
+}
+
+.detailfoot .costumerservice{
+	width: 350px;
+	padding: 5px;
+	font-size: 26px;
+	margin: 330px auto;
+	height: 100%;
+	border-right: 1px solid #716e62;
+}
+
+.isifooterlho{
+width: 100%;
+height:496px;
+}
+.detailfoot .isifooterlho{
+width: 100%;
+height:700px;
+}
+.isics{
+height: 150px;
+color: #4e3623;
+font-family: swis;
+font-size: 18px;
+font-weight:500;
+margin-top: 70px;
+}
+
+.isics2{
+height: 150px;
+color: #4e3623;
+font-family: swis;
+font-size: 18px;
+font-weight:500;
+margin-top: 45px;
+}
+
+.yahoomassanger{
+margin-top: 20px;
+padding: 5px;
+}
+.metodepembayaran{
+margin-top: 30px;
+}
+.metodepembayaran img{
+margin-top: 12px;
+}
+
+.purawisatacontak{
+width: 300px;
+height:500px;
+margin: -550px 700px;
+font-size: 12px;
+text-align:left;
+color: #5b452f;
+}
+
+.detailfoot .purawisatacontak{
+width: 300px;
+height:500px;
+margin: -1010px 700px;
+font-size: 12px;
+text-align:left;
+color: #5b452f;
+}
+
+.footercontak{
+float:left;
+width: 100%;
+}
+.hubungikami{
+float:left;
+width: 90px;
+margin: 10px 30px;
+
+}
+.hubungikami img{
+position:absolute;
+margin-left: -30px;
+}
+
+.lokasikami{
+float:left;
+width: 75px;
+margin: 10px -10px;
+}
+.lokasikami img{
+position:absolute;
+margin-left: -15px;
+}
+.bannerattasp{
+margin-left: 10px !important;
+}
+.banneratas{
+margin: 0 !important;
+}
+#element_to_pop_up {
+    background-color:#ffffff;
+    color:#FFF;
+    padding:10px;
+    height: 500px;
+	top : 0;
+	overflow-x: hidden;
+	-moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    -khtml-border-radius:5px;
+    border-radius: 5px;
+    position:absolute;
+	display:none;
+	z-index: 26000;
+}
+
+.button.b-close, .button.bClose {
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: none;
+    font: bold 131% sans-serif;
+    padding: 0 2px 2px;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+}
+.button {
+    background-color: #4e3623;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    z-index: 200;
+}
+.contactusform{
+	 width: 550px;
+	 height: 810px;
+}
+.contactusform fieldset{
+	border: 1px solid #ba985d;
+}
+.contactusform legend{
+    color: #ba985d;
+    font-family: swiss;
+	font-size:16px;
+}
+.field-group{
+    display: inline-block;
+    padding: 12px 10px;
+	width: 450px;
+	margin-left: 20px;
+}
+
+.field-group label{
+	font-family: swiss;
+	font-size:14px;
+	clear:both;
+	width: 80px !important;
+	display: inline-block;
+}
+.field-group input {
+	font-family: swiss;
+	font-size:14px;
+	clear:both;
+	width: 300px;
+	margin: 0 auto;
+}
+.field-group textarea {
+	font-family: swiss;
+	font-size:14px;
+	clear:both;
+	width: 350px;
+	margin: 0 auto;
+}
+.contactusform .capcaycontact{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+#capcay{
+margin: -35px 75px;
+}
+.contactusform .pesanerror{
+	width: 490px;
+	background: #715f50;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin-left: 20px;
+}
+.contactusform li{
+	list-style:none !important;
+	color:#ffffff;
+	font-family: swiss;
+	font-size:14px;
+	margin-left: 10px;
+	padding: 3px;
+}
+
+.refreshcapcay{
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin-left: -5px !important;
+	cursor:pointer;
+}
+
+
+input[class="secure"]{
+clear:both; 
+width: 150px !important;
+font-family: swiss;
+}
+
+
+input[class="tombol"]{
+width: 130px !important;
+font-family: swiss;
+float:left;
+text-align:center;
+background: #715F50;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+color: #FFFFFF;
+padding: 3px;
+}
+
+input[class="tombol"]:hover{
+background: #FFFFFF;
+color: #715F50;
+cursor:pointer;
+}

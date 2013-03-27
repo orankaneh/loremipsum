@@ -1,0 +1,97 @@
+/* drop down menu horizontal - start */
+.menu-hori, .menu-hori ul {
+	padding: 0;
+	margin: 0;	
+	list-style: none;}
+.menu-hori a {
+	font-weight:bold;
+	color:#6F6F6F;
+	padding:5px 2px 5px 10px;
+	border: none;
+	border-top: 1px solid #FFF;
+	border-right: 1px solid #fff;
+	border-left: 1px solid #fff;
+	display: block;
+	width: 180px;
+	white-space: wrap;}
+.menu-hori li {
+	float: left;
+	width: 10em;}
+.menu-hori li a.haschild {
+	background:#eee url(../images/arrows_6.gif) no-repeat center right;}
+.menu-hori li a.nochild {
+	background:#eee;}
+.menu-hori li ul {
+	margin: -2.1em 0 0 16em;
+	position: absolute;
+	width: 10em;
+	left: -999em;
+	z-index: 50;}
+.menu-hori li ul ul {
+	margin: -1.7em 0 0 10em;}
+*:lang(en) .menu-hori li:hover ul ul, .menu-hori li:hover ul ul ul, .menu-hori li:hover ul ul ul ul, .menu-hori li.sfhover ul ul, .menu-hori li.sfhover ul ul ul, .menu-hori li.sfhover ul ul ul ul {
+	left: -999em;
+	z-index:50;}
+*:lang(en) .menu-hori li:hover ul, .menu-hori li li:hover ul, .menu-hori li li li:hover ul, .menu-hori li li li li:hover ul, .menu-hori li.sfhover ul, .menu-hori li li.sfhover ul, .menu-hori li li li.sfhover ul, .menu-hori li li li li.sfhover ul {
+	left: auto;
+	z-index:50;}
+.menu-hori li a:hover {
+	color:#FFF;
+	z-index:50;}
+.menu-hori li a.haschild:hover {
+	background:#7F7F7F url(../images/panah_ddm.gif) no-repeat center right;}
+.menu-hori li a.nochild:hover {
+	background:#7F7F7F;}
+/* drop down menu horizontal - end */
+
+/* drop down menu vertical */
+.ddm, .ddm ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;}
+.ddm a {
+	font-weight:bold;
+	padding:6px 10px 0 10px;
+	text-align:center;
+	color:#FFFFFF;
+	display: block;
+	min-height:21px;
+	text-decoration: none;}
+.ddm a:hover, .ddm a.current {
+	background:#00246F; }
+.ddm li li a {
+	padding: 3px;
+	width: 10em;
+	min-height:12px;
+	color:#007236;
+	background:#B1E720;
+	border: none;
+	border-bottom: 1px solid #FFFFFF; }
+.ddm li {
+	float: left;}
+.ddm li li a.haschild {
+	background:#B1E720 url(../images/panah_ddm.gif) no-repeat center right;}
+.ddm li li a.nochild {
+	background:#B1E720;}
+.ddm li ul {
+	position: absolute;
+	width: 10em;
+	left: -999em;
+	z-index: 50;}
+.ddm li ul ul {
+	margin: -1.95em 0 0 10.50em;}
+*:lang(en) .ddm li:hover ul ul, .ddm li:hover ul ul ul, .ddm li:hover ul ul ul ul, .ddm li.sfhover ul ul, .ddm li.sfhover ul ul ul, .ddm li.sfhover ul ul ul ul {
+	left: -999em;
+	z-index:50;}
+*:lang(en) .ddm li:hover ul, .ddm li li:hover ul, .ddm li li li:hover ul, .ddm li li li li:hover ul, .ddm li.sfhover ul, .ddm li li.sfhover ul, .ddm li li li.sfhover ul, .ddm li li li li.sfhover ul {
+	left: auto;
+	z-index:50;}
+.ddm li li a:hover {
+	color:#FFFFFF;
+	background:#018E30;
+	z-index:50;}
+.ddm li li a.haschild:hover {
+	background:#018E30 url(../images/panah_ddm.gif) no-repeat center right;}
+.ddm li li a.nochild:hover {
+	background:#018E30;}
+/* drop down menu vertical */
