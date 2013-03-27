@@ -118,12 +118,24 @@ $gallery=galleryfotomuatdata('4');
                      <div id="description" style="display: none;">
 					 <div>
                      <div class="inner">
+					 <div class="fotointro">
 					 <?=$colection['isi']?>
-                     <div class="commentbox">
-                     <li>adhy:Isi Komen 1</li>
-                     <li>admin:Isi Komen 2</li>
                      </div>
-                     <div><textarea></textarea></div>
+                     <div class="commentbox">
+                     <li><b>adhy:</b>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
+                     <li>admin:There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
+                     <li><b>adhy:</b>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
+                     <li>admin:Mantab gan</li>
+                     <li><b>adhy:</b>IThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
+                     <li>admin:Mantab gan</li></li>
+                     </div>
+                     <div class="textareacom">
+                     <label>Name:</label>
+                     <input type="text">
+                     <label>Comment:</label>
+                     <textarea rows="5"></textarea>
+                     <input type="button" value="submit">
+                     </div>
                      </div></div>
 					</div>
                     <? }?>

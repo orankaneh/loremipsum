@@ -1,6 +1,6 @@
 /*! fancyBox v2.0.4 fancyapps.com | fancyapps.com/fancybox/#license */
 .fancybox-tmp iframe, .fancybox-tmp object {
-	vertical-align: top;
+	vertical-align: middle;
 	padding: 0;
 	margin: 0;
 }
@@ -57,7 +57,7 @@
 	border: 0;
 	padding: 0;
 	margin: 0;
-	vertical-align: top;
+	vertical-align: middle;
 }
 
 .fancybox-image {

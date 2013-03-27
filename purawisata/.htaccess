@@ -17,6 +17,6 @@ RewriteEngine On
 RewriteRule form/contact-us.html$ contact-us.php [L,QSA]
 RewriteRule form/location.html$ location.php [L,QSA]
 RewriteRule location.html$ location.php [L,QSA]
-RewriteRule news/(.*)/(.*)/read/(.*).html$ detailpage.php?id=$2&judul=$4&bahasa=$1 [L,QSA]
+RewriteRule (.*)/(.*)/(.*)/read/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]
 
 ErrorDocument 404 http://localhost/purawisata/404.php

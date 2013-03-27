@@ -3,9 +3,6 @@
 <div id="cni-main">
 <? include "header.php"; 
 //show_array($_SERVER);
-$id = isset($_GET['id']) ? $_GET['id'] : NULL;
-$judul = isset($_GET['judul']) ? $_GET['judul'] : NULL;
-$bahasa = isset($_GET['bahasa']) ? $_GET['bahasa'] : NULL;
 $_SESSION['bahasa']=$bahasa;
 $detailberita=detail_berita_muat_data(bukaid($id));
 ?>

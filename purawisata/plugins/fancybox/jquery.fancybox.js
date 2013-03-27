@@ -26,7 +26,7 @@
 			padding: 15,
 			margin: 20,
 
-			width: 800,
+			width: 1024,
 			height: 600,
 			minWidth: 200,
 			minHeight: 200,
@@ -44,7 +44,7 @@
 
 			arrows: true,
 			closeBtn: true,
-			closeClick: false,
+			closeClick: true,
 			nextClick : false,
 			mouseWheel: true,
 			autoPlay: false,

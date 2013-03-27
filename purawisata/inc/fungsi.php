@@ -1935,6 +1935,13 @@ function decodeHTML($html) {
 function decodeHTML2($html) {
 	return html_entity_decode($html);
 }
+function clearhtml($html){
+$isi=html_entity_decode($html);
+$letters = array('<p>','</p>');
+$fruit   = array('','');
+$output  = str_replace($letters, $fruit, $isi);
+return $output;
+}
 function getSocialMediaUI() {
 	return '<div>
 			<!-- AddThis Button BEGIN -->
@@ -2326,7 +2333,13 @@ function readmore($text,$char,$url) {
 	else return $text;
 
 }
+function deskripsi($text,$char) {
+	if (strlen($text) > $char) {
+		return substr($text, 0, $char).'. ';
+	}
+	else return $text;
 
+}
 function cleanurllho($judul){
 $letters = array(' ?', ' ');
 $fruit   = array('', '-');
@@ -2335,8 +2348,8 @@ return $output;
 }
 
 function replacesamadengan($judul){
-$letters = array('=');
-$fruit   = array('x0x');
+$letters = array('=','-','');
+$fruit   = array('x0x',' ');
 $output  = str_replace($letters, $fruit, $judul);
 return $output;
 }
@@ -2347,7 +2360,12 @@ $fruit   = array('=');
 $output  = str_replace($letters, $fruit, $judul);
 return $output;
 }
-
+function  keyword($key){
+$letters = array(' ','-');
+$fruit   = array(', ',', ');
+$output  = str_replace($letters, $fruit, $key);
+return $output;
+}
 function saveid($id){
 $crypt = new MD5Crypt;
 $sessioncrypt=$crypt->Encrypt($id,rahasialho);	

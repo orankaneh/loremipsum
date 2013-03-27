@@ -967,19 +967,43 @@ position: fixed;
 z-index: 99999;
 top: 0;
 right: 0;
-background: #f2f2f2;
+background: #715f50;
 width: 290px;
 height: 100%;
 display: block;
 }
 .links .inner {
 padding: 50px 10px 10px 15px;
-font-size: 12px;
+font-family: dosis;
+font-size:14px;
 color: #161616;
 }
+
 #fancybox-buttons ul {
 margin: 0 110px 0 auto !important;
 }
+.commentbox{
+height: 300px;
+overflow-y:scroll;
+overflow-x: hidden;
+}
+.textareacom label{
+color:#FFFFFF;
+}
+.textareacom{
+margin-top: 10px !important;
+}
+.fotointro{
+color: #d8cf9c;
+height: 60px;
+overflow:hidden;
+}
 .commentbox li{
 list-style: none;
+font-family: dosis;
+font-size:14px;
+padding:3px;
+border-bottom: 1px solid #d8cf9c;
+color: #ffffff;
+text-align:justify;
 }
