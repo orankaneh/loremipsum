@@ -95,7 +95,7 @@ if($_POST) {
 			if(is_uploaded_file($_FILES['fileori']['tmp_name'])){
 				if (file_exists("../images/foto/thumb/" . $id_s . ".jpg")) unlink("../images/foto/thumb/" . $id_s . ".jpg");
 				$image->load("../images/foto/" . $id_s . ".jpg");
-				$image->resize(thumb_size,thumb_size);
+				$image->resize(gallery_w_thumb_size,gallery_h_thumb_size);
 				$image->save('../images/foto/thumb/'. $id_s .'.jpg');
 			}
 		}else{
@@ -149,7 +149,7 @@ function toggleThumbnail(){
 	<label class="tbless" for="nama">&nbsp;</label>
 	<input type="checkbox" name="isResize" value="1" <?if($isResize == '1') echo "checked";?> class="inputpesan tbless" onclick="javascript:toggleThumbnail();" > Resize Otomatis<br class="clear" />
 	<div id="setThumbnail"><label class="tbless" for="nama">Thumbnail</label>
-	<input type="file" name="thumbnail" size="40" value="<?=$thumbnail?>" class="inputpesan tbless"> File Format JPG dengan ukuran <?=thumb_size?>x<?=thumb_size?> pixel<br class="clear" /></div>
+	<input type="file" name="thumbnail" size="40" value="<?=$thumbnail?>" class="inputpesan tbless"> File Format JPG dengan ukuran <?=gallery_w_thumb_size?>x<?=gallery_h_thumb_size?> pixel<br class="clear" /></div>
 	<label class="tbless" for="">&nbsp;</label>
 	<input type="submit" value="Simpan" class="tombol" /><br class="clear" />
 	

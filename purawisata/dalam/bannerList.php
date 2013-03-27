@@ -68,9 +68,15 @@ while($row=mysql_fetch_object($res)) {
 	$file = "../images/banner/".$row->id.".".$row->ekstensi;
 	$arrSize = @getimagesize($file);
 	$txt_file = ($row->ekstensi =="swf") ? '<embed name="flashfile" src="'.$file.'" menu="false" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="'.$arrSize[0].'" height="'.$arrSize[1].'"></embed>' : '<img border="0" style="border:1px solid #000;" src="'.$file.'" title="'.$row->nama.'" alt="'.$row->nama.'"/>';
-	
+	if($i%2)
+	{
+	$class="odd";
+	}
+	else{
+	$class="";
+	}
 	$ui .=
-		'<tr>
+		'<tr class="'.$class.'">
 			<td align="center" valign="top">'.($arrH['idx']+$i).'.</td>
 			<td align="center" valign="top">'.$kategori.'</td>
 			<td align="left" valign="top"><a href="bannerUpdate.php?id='.$row->id.'">'.$row->nama.'</a></td>

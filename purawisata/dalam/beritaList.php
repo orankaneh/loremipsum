@@ -35,6 +35,14 @@ if($_GET) {
 		header("location:".$link);
 		exit;
 	}
+		if($_GET["m"]=="hapusdata" && $id > 0){
+		$sqlU="delete from ".tabel_berita." where id='".$id."'";
+		//echo $sqlU;
+		mysql_query($sqlU,$tulis);
+		
+		if(file_exists('../images/foto/'.$id.'.jpg'))  unlink('../images/foto/'.$id.'.jpg');
+		if(file_exists('../images/foto/thumb/'.$id.'.jpg'))  unlink('../images/foto/thumb/'.$id.'.jpg');
+	}
 }
 
 $link = $_SERVER['PHP_SELF']."?z";
@@ -56,7 +64,7 @@ if($i%2)
 	}
 	$status = ($row->status=="1") ? "publish" : "unpublish";
 	$status = '<a href="'.$link.'&id='.$row->id.'&m=ubahstatus"><img src="../images/status_'.$row->status.'.gif"/><br/>'.$status.'</a>';
-	
+	$hapus = '<a href="'.$link.'&id='.$row->id.'&m=hapusdata" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini ?\')"><img src="../images/delete.png"/></a>';
 	$sqlK = "select nama from ".tabel_berita." where kategori='1' and id='".$row->parent_id."' ";
 	$resK = mysql_query($sqlK, $baca);
 	$rowK = mysql_fetch_object($resK);
@@ -67,6 +75,7 @@ if($i%2)
 			<td align="center" valign="top">'.$rowK->nama.'</td>
 			<td align="left" valign="top"><a href="beritaUpdate.php?id='.$row->id.'">'.$row->nama.'</a></td>
 			<td align="center" valign="top">'.$status.'</td>
+			<td align="center" valign="top">'.$hapus.'</td>
 		 </tr>';
 	
 	$i++;
@@ -83,6 +92,7 @@ if($num<1) {
 				<td align="center" valign="top" width="1%">Kategori</td>
 				<td align="center" valign="top">Nama</td>
 				<td align="center" valign="top" width="1%">Status</td>
+				<td align="center" valign="top" width="1%">Hapus</td>
 			</tr>
 			'.$ui.'
 		 </table><br/>'.$arrH['bar'];

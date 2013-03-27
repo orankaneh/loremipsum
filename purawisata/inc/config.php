@@ -16,7 +16,7 @@ if($accNya == "lokal") {
 	$baca=mysql_connect($host,$user,$passwordMySql);
 	$connectdb1=mysql_select_db($db,$tulis);
 	$connectdb2=mysql_select_db($db,$baca);
-	$urlNya = "http://".$_SERVER['HTTP_HOST']."/purawisata/";
+	$urlNya = "http://".$_SERVER['HTTP_HOST']."/loremipsum/purawisata/";
 	$addLink = $urlNya;
 } elseif($accNya == "remote") {
 	$host="localhost";
@@ -41,9 +41,9 @@ if ($connectdb1==false || $connectdb2==false) {
 // - config - database & aplikasi -----------------------------------------------------------
 define("password_min_kar",5);
 define("banner_w1",150);
-define("banner_h1",150);
+define("banner_h1",70);
 define("banner_w2",300);
-define("banner_h2",400);
+define("banner_h2",140);
 define("banner_size",512000);
 define("file_download_size",512000);
 define("tabel_halaman", "cni_halaman");
@@ -87,14 +87,16 @@ define("galeri_h_min", 500);
 define("galeri_h_max", 500);
 define("galeri_fsize", 512000);
 define("thumb_size", 100);
+define("gallery_w_thumb_size", 134);
+define("gallery_h_thumb_size", 80);
 define("beritaw_size", 134);
 define("beritah_size", 84);
 define("beritathw_size", 87);
 define("beritathh_size", 70);
 // - config - banner foto -----------------------------------------------------------
 // - config - Fasillitas foto -----------------------------------------------------------
-define("widhtnya_fasilitas", 155);
-define("widhtnya_fasilitas2", 154);
+define("widhtnya_fasilitas", 150);
+define("widhtnya_fasilitas2", 150);
 define("height_fasilitas", 70);
 // - config - klien -----------------------------------------------------------
 define("client",$client);

@@ -33,12 +33,18 @@ $detailberita=detail_berita_muat_data(bukaid($id));
                  <h1><?=$data['nama']?></h1>
                 Ditulis Oleh : <?=client?> |  <?=datetimeid($data['tgl_buat']);?>
                 <?=getSocialMediaUI()?>
-                <?=decodeHTML($data['isi'])?>
+                <div class="imagenews">
+               <img align="left" src="<?=$addLink?>images/berita/<?=$data['id']?>.jpg" title="" alt="">
+               </div>
+               <?=decodeHTML2($data['isi'])?>
              <? } else{ ?>
                 <h1><?=$data['nama_e']?></h1>
              Writen by : <?=client?> | <?=datetime($data['tgl_buat']);?>
               <?=getSocialMediaUI()?>
-             <?=decodeHTML($data['isi_e'])?>
+               <div class="imagenews">
+               <img align="left" height="100" src="<?=$addLink?>images/berita/<?=$data['id']?>.jpg" title="" alt="">
+               </div>
+             <?=decodeHTML2($data['isi_e'])?>
              <? }?>
            <? } ?>
 		</div>
@@ -54,11 +60,7 @@ $detailberita=detail_berita_muat_data(bukaid($id));
       <img src="<?=$addLink?>images/img_13.jpg">
         <img src="<?=$addLink?>images/img_13.jpg">
         </div>
-        </div><!--End index berita-->
-        
-      
-	</div>
-    <div class="detailfoto">
+         <div class="detailfoto">
      <div class="fotolho">
        				<div class="headfotolho">
       					FOTO
@@ -74,6 +76,11 @@ $detailberita=detail_berita_muat_data(bukaid($id));
                     </div>
         </div>
         </div><!--End div detail foto-->
+        </div><!--End index berita-->
+        
+      
+	</div>
+   
 </div>
 </article></div>
                     </div>

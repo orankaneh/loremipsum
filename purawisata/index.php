@@ -1,11 +1,14 @@
 <? include "head.php"; 
 $video=video_muat_data(NULL,NULL,'1');
 ?>
-<body>
+<body id="page">
 <div id="cni-main">
 <? include "header.php";
 $slidegambar=slideshow_muat_data();
 $newnews=newnews_muat_data();
+$banneratas=banneratasmuatdata();
+$bannerkanan=bannerkananmuatdata('1');
+$gallery=galleryfotomuatdata('4');
 //show_array($newnews);
 
  ?>
@@ -31,12 +34,10 @@ $newnews=newnews_muat_data();
     <div class="cni-content-layout-row">
     <div class="cni-layout-cell layout-item-0" style="width: 100%" >
         <p class="bannerattasp">
-        <img class="banneratas" width="<?=widhtnya_fasilitas?>" height="<?=height_fasilitas?>" src="images/banner/imagelink-waterboom.jpg">
-        <img class="banneratas" width="<?=widhtnya_fasilitas2?>" height="<?=height_fasilitas?>" src="images/gazebo.jpg">
-        <img class="banneratas" width="<?=widhtnya_fasilitas2?>" height="<?=height_fasilitas?>" src="images/outbound.jpg">
-        <img class="banneratas" width="<?=widhtnya_fasilitas2?>" height="<?=height_fasilitas?>" src="images/meeting.jpg">
-        <img class="banneratas" width="<?=widhtnya_fasilitas?>"  height="<?=height_fasilitas?>" src="images/weeding.jpg">
-        <img class="banneratas" width="<?=widhtnya_fasilitas?>"  height="<?=height_fasilitas?>" src="images/ramayana.jpg"></p>
+          <? foreach ($banneratas as $iklana){ ?>
+        <img class="banneratas" width="<?=widhtnya_fasilitas?>" height="<?=height_fasilitas?>" src="images/banner/<?=$iklana['id']?>.jpg">
+        <? }?>
+        </p>
         <p><br/></p>
     </div>
     </div>
@@ -87,24 +88,53 @@ $newnews=newnews_muat_data();
    		<div class="videolho">
        				<div class="headvideo">
       					VIDEO     				</div>
+                        <script>
+						$(document).ready(function() {
+    $("iframe").each(function(){
+        var ifr_source = $(this).attr('src');
+        var wmode = "wmode=transparent";
+        if(ifr_source.indexOf('?') != -1) {
+            var getQString = ifr_source.split('?');
+            var oldString = getQString[1];
+            var newString = getQString[0];
+            $(this).attr('src',newString+'?'+wmode+'&'+oldString);
+        }
+        else $(this).attr('src',ifr_source+'?'+wmode);
+    });
+});
+						</script>
                     <iframe width="300" height="220" src="http://www.youtube.com/embed/<?=$video[0]['id_youtube']?>" frameborder="0" allowfullscreen></iframe>
                      <div class="buttonselengkapv">
                     SELENGKAPNYA                    </div>
         </div>
 <div class="fotolho">
        				<div class="headfoto">
-      					FOTO     				</div>
+      					FOTO     				
+                    </div>
                     <div class="galleryinfooter">
-                    <img src="images/dummy/dummy2.jpg"> 
-                    <img src="images/dummy/dummy3.jpg">
-                    <img src="images/dummy/dummy.jpg">
-                    <img src="images/dummy/dummy_10.jpg">                    </div>
+                    <? foreach ($gallery as $colection) {?>
+                  <a href="images/foto/<?=$colection['id']?>.jpg" class="fancybox-buttons" rel="gallery">  <img src="images/foto/thumb/<?=$colection['id']?>.jpg"> </a>
+                    
+                     <div id="description" style="display: none;">
+					 <div>
+                     <div class="inner">
+					 <?=$colection['isi']?>
+                     <div class="commentbox">
+                     <li>adhy:Isi Komen 1</li>
+                     <li>admin:Isi Komen 2</li>
+                     </div>
+                     <div><textarea></textarea></div>
+                     </div></div>
+					</div>
+                    <? }?>
+                    </div>
+                    
                     <div class="buttonselengkapfoto">
                     SELENGKAPNYA                    </div>
         </div>
       <div class="bannerdepan">
   <img src="images/img_03.jpg">
-  <img src="images/img_13.jpg">        </div>
+  <img src="images/banner/<?=$bannerkanan['0']['id']?>.jpg">        </div>
      </div> 
    </div>   
 <!--Foto dan video content berakhir di sini-->   

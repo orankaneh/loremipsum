@@ -15,7 +15,7 @@
             <img src="<?=$addLink?>images/icon/indo.jpg" />
             <img src="<?=$addLink?>images/icon/en.jpg" />
             </div>
-<div class="cni-textblock cni-object227400126" data-left="97.5%">
+<div class="cni-object227400126">
     <form class="cni-search" name="Search" action="javascript:void(0)">
     <input type="text" value="">
     <input type="submit" value="Search" name="search" class="cni-search-button">

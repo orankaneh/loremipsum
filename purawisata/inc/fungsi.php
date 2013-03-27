@@ -1932,6 +1932,9 @@ function decodeHTML($html) {
 	return html_entity_decode($html, ENT_QUOTES);
 }
 
+function decodeHTML2($html) {
+	return html_entity_decode($html);
+}
 function getSocialMediaUI() {
 	return '<div>
 			<!-- AddThis Button BEGIN -->
@@ -2298,7 +2301,7 @@ function slideshow_muat_data(){
 }
 function newnews_muat_data(){
 
-    $sql = "select * from ".tabel_berita." where kategori ='0' order by id DESC limit 2";
+    $sql = "select * from ".tabel_berita." where kategori ='0' and  status='1' order by id DESC limit 2";
     $exe = mysql_query($sql);
     $result = array();
     while ($row = mysql_fetch_array($exe)) {
@@ -2404,5 +2407,49 @@ function datetimeid($dt) {
      $jam = explode(":", $var[1]);
 	 $jam2="$jam[0]:$jam[1]";
     return hari($hari).",".$var2 . " " . $jam2;
+}
+
+function banneratasmuatdata(){
+$today=date("Y-m-d");
+  $sql = "select * from ".tabel_banner." where id_kategori = '1' 
+  AND tanggal_mulai <= '$today'  AND tanggal_selesai >= '$today'
+  limit 6";
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
+}
+function bannerkananmuatdata($limit){
+$today=date("Y-m-d");
+  $sql = "select * from ".tabel_banner." where id_kategori = '2' 
+  AND tanggal_mulai <= '$today'  AND tanggal_selesai >= '$today'
+  limit $limit";
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
+}
+function galleryfotomuatdata($limit){
+$today=date("Y-m-d");
+  $sql = "select * from ".tabel_foto." where kategori = '0' 
+  limit $limit";
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
+}
+function date2mysql($tgl) {
+    $new = null;
+    $tgl = explode("-", $tgl);
+    if (empty($tgl[2]))
+        return "";
+    $new = "$tgl[2]-$tgl[1]-$tgl[0]";
+    return $new;
 }
 ?>

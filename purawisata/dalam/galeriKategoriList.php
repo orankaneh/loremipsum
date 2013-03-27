@@ -30,6 +30,14 @@ if($_GET) {
 		header("location:".$link);
 		exit;
 	}
+	if($_GET["m"]=="hapusdata" && $id > 0){
+		$sqlU="delete from ".tabel_foto." where id='".$id."'";
+		//echo $sqlU;
+		mysql_query($sqlU,$tulis);
+		
+		if(file_exists('../images/foto/'.$id.'.jpg'))  unlink('../images/foto/'.$id.'.jpg');
+		if(file_exists('../images/foto/thumb/'.$id.'.jpg'))  unlink('../images/foto/thumb/'.$id.'.jpg');
+	}
 }
 
 $link = $_SERVER['PHP_SELF']."?z";
@@ -43,7 +51,7 @@ $num = mysql_num_rows($res);
 while($row=mysql_fetch_object($res)) {
 	$status = ($row->status=="1") ? "publish" : "unpublish";
 	$status = '<a href="'.$link.'&id='.$row->id.'&m=ubahstatus"><img src="../images/status_'.$row->status.'.gif"/><br/>'.$status.'</a>';
-	
+		$hapus = '<a href="'.$link.'&id='.$row->id.'&m=hapusdata" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini ?\')"><img src="../images/delete.png"/></a>';
 	$induk = "";
 	if($row->parent_id>0) {
 		$sqlK = "select nama from ".tabel_foto." where kategori='1' and id='".$row->parent_id."' ";
@@ -58,6 +66,7 @@ while($row=mysql_fetch_object($res)) {
 			<td align="center" valign="top">'.$induk.'</td>
 			<td align="left" valign="top"><a href="galeriKategoriUpdate.php?id='.$row->id.'">'.$row->nama.'</a></td>
 			<td align="center" valign="top">'.$status.'</td>
+			<td align="center" valign="top">'.$hapus.'</td>
 		 </tr>';
 	
 	$i++;
@@ -74,6 +83,7 @@ if($num<1) {
 				<td align="center" valign="top">Induk</td>
 				<td align="center" valign="top">Nama</td>
 				<td align="center" valign="top" width="1%">Status</td>
+				<td align="center" valign="top" width="1%">Hapus</td>
 			</tr>
 			'.$ui.'
 		 </table>';

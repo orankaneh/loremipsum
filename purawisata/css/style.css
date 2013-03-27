@@ -393,23 +393,16 @@ li p, .cni-postcontent li p, .cni-blockcontent li p
 }
 
 .cni-object227400126
-{  
-  position: absolute;
-  top: 75px;
-  left: 97.5%;
-  margin-left: -195px !important;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  -ms-transform: rotate(0deg);
-  transform: rotate(0deg);
-  overflow: hidden;
+{ 
+
     background-image: url('../images/object227400126.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
     z-index: 101;
-  width: 200px;
-  height: 34px;
+margin: -105px auto;
+width: 100px;
+position:relative;
+left: 200px;
 }
 
 
@@ -1126,7 +1119,7 @@ form.cni-search input[type="text"]
    border-radius:4px;
    border:1px solid #CCD6E0;
    margin:0 auto;
-   width: 100%;
+   width: 200px;
    padding: 3px 0;
    -webkit-box-sizing: border-box;
    -moz-box-sizing: border-box;
@@ -1169,7 +1162,7 @@ form.cni-search input[type="submit"]
    color: #FFFFFF !important;
    position:absolute;
    display:block;
-   left: auto;
+   left: 170px;
    border:none;
    background:url('../images/searchicon.png') center center no-repeat;
    width:24px;
@@ -1292,9 +1285,10 @@ a img
    border: 0;
 }
 
-.cni-article img, img.cni-article, .cni-block img, .cni-footer img
+.imagenews img
 {
-   margin: 7px 7px 7px 7px;
+   margin-top: 20px;
+   border: 3px solid #ffffff;
 }
 
 .cni-metadata-icons img

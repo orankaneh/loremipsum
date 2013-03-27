@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 ob_start();
 session_start();
 $checkApp = false;
@@ -18,7 +19,7 @@ if($id>0) {
 $judulnya = $judulMenu;
 
 include_once("header.php");
-
+include_once("../inc/fungsi.php");
 $strError = "";
 $fileUI = "";
 $tanggal_mulai = date("d-m-Y");
@@ -51,22 +52,10 @@ if($_POST) {
 	$url = encodeHTML($_POST["url"]);
 	$tanggal_mulai = encodeHTML($_POST["tanggal_mulai"]);
 	$tanggal_selesai = encodeHTML($_POST["tanggal_selesai"]);
-	
-	// cek tanggal
+
 	if(empty($tanggal_mulai)) $tanggal_mulai = date("d-m-Y");
 	if(empty($tanggal_selesai)) $tanggal_selesai = date("d-m-Y");
-	$tanggal_a = explode("-", $tanggal_mulai);
-	$time_a = mktime(0, 0, 0, $tanggal_a['1'], $tanggal_a['0'], $tanggal_a['2']);
-	$tanggal_b = explode("-", $tanggal_selesai);
-	$time_b = mktime(0, 0, 0, $tanggal_b['1'], $tanggal_b['0'], $tanggal_b['2']);
-	if($time_b<$time_a) {
-		$time_t = $time_a;
-		$time_a = $time_b;
-		$time_b = $time_t;
-		
-		$tanggal_mulai = date("d-m-Y",$time_a);
-		$tanggal_selesai = date("d-m-Y",$time_b);
-	}
+	
 	
 	// cek semua
 	$fileWajibAda = ($mode=="add")? true : false;
@@ -85,15 +74,17 @@ if($_POST) {
 	if(empty($nama)) $strError .= "<li>Nama masih kosong</li>";
 	if($id_kategori==0) $strError .= "<li>Kategori belum dipilih</li>";
 	if(empty($url)) $strError .= "<li>URL masih kosong</li>";
+	if($tanggal_mulai > $tanggal_selesai) $strError.= "<li>tanggal mulai tidak boleh lebih dari tanggal selesai</li>";
 	
-	if(strlen($strError)<1) {		
-		$tanggal_mulai_db = date("Y-m-d",$time_a);
-		$tanggal_selesai_db = date("Y-m-d",$time_b);
+	if(strlen($strError)<1) {	
+		
+		//$tanggal_mulai_db = date("Y-m-d",$time_a);
+		//$tanggal_selesai_db = date("Y-m-d",$time_b);
 		
 		if($mode=="add") {
 			$sql =
 				"insert into ".tabel_banner."(id_kategori,nama,ekstensi,url,tanggal_mulai,tanggal_selesai,status,tgl_update,ip_update) values
-				 ('".$id_kategori."','".$nama."','-','".$url."','".$tanggal_mulai_db."','".$tanggal_selesai_db."','1',now(),'".$_SERVER['REMOTE_ADDR']."') ";
+				 ('".$id_kategori."','".$nama."','-','".$url."','".date2mysql($tanggal_mulai)."','".date2mysql($tanggal_selesai)."','1',now(),'".$_SERVER['REMOTE_ADDR']."') ";
 			mysql_query($sql,$tulis);
 			$id = mysql_insert_id();
 		} else {
@@ -102,8 +93,8 @@ if($_POST) {
 				 id_kategori='".$id_kategori."',
 				 nama='".$nama."',
 				 url='".$url."',
-				 tanggal_mulai='".$tanggal_mulai_db."',
-				 tanggal_selesai='".$tanggal_selesai_db."',				 
+				 tanggal_mulai='".date2mysql($tanggal_mulai)."',
+				 tanggal_selesai='".date2mysql($tanggal_selesai)."',				 
 				 tgl_update=now(),
 				 ip_update='".$_SERVER['REMOTE_ADDR']."' where id='".$id."'";
 			mysql_query($sql,$tulis);
@@ -169,7 +160,7 @@ if($_POST) {
 	<label class="tbless" for="nama">File</label>
 	<input type="file" name="vFile" class="inputpesan tbless"/><br class="clear" />
 	<div class="pad_tbless">
-		Tipe file yang diterima adalah JPG, GIF atau SWF.<br/>
+		Tipe file yang diterima adalah JPG.<br/>
 		Ukuran maksimal file adalah <?=(banner_size/1024)?> KB.
 	</div>	
 	

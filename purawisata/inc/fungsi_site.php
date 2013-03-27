@@ -265,8 +265,8 @@ function getArrExtBanner() {
 function getArrKatBanner($pengantar=true) {
 	$arr = array();
 	if($pengantar==true) $arr[0] = " ";
-	$arr[1] = "Standar (".banner_w1."x".banner_h1.")";
-	$arr[2] = "Utama (".banner_w2."x".banner_h2.")";
+	$arr[1] = "Atas (".banner_w1."x".banner_h1.")";
+	$arr[2] = "Kanan (".banner_w2."x".banner_h2.")";
 	return $arr;
 }
 
