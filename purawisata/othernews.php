@@ -31,12 +31,5 @@
                        <div class="buttonselengkapothernews">
                     SELENGKAPNYA
                     </div>
-                   <div class="bannerdetaildepan">
-       		<img src="<?=$addLink?>images/img_03.jpg">
-       		<img src="<?=$addLink?>images/img_13.jpg">
-    		<img src="<?=$addLink?>images/img_13.jpg">
-      		<img src="<?=$addLink?>images/img_13.jpg">
-       		<img src="<?=$addLink?>images/img_13.jpg">
-        </div> 
       		</div>
-            
+          

@@ -46,7 +46,7 @@
 </div>
  <div class="bedawarna2">
   <div class="copyright">
- Copyright &copy; 2013 Purawisata Jogja. All rights reserved. Developed by <a href="http://www.citra.web.id/">Citraweb Nusa Infomedia</a> </div>
+ Copyright &copy; 2013 <?=client?>. All rights reserved. Developed by <a href="http://www.citra.web.id/">Citraweb Nusa Infomedia</a> </div>
 </div>   
 
 </body></html>

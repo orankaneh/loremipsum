@@ -1,68 +1,17 @@
 <?php
-function newmenu(){
-$html=' <li><a href="#" ><b>Produk</b></a>
-					<ul>
-						<li><a href="produklist.php" ><b>Daftar Produk</b></a></li>
-						<li><a href="ProdukKategoriList.php" ><b>Daftar Kategori Produk</b></a></li>
-					</ul>
-				</li>
-				
-				<li><a href="#" ><b>Berita</b></a>
-					<ul>
-						<li><a href="beritaUpdate.php" ><b>Tambah Berita</b></a></li>
-						<li><a href="beritaList.php" ><b>Daftar Berita</b></a></li>
-						<li><a href="beritaKategoriUpdate.php" ><b>Tambah Kategori Berita</b></a></li>
-						<li><a href="beritaKategoriList.php" ><b>Daftar Kategori Berita</b></a></li>
-					</ul>
-				</li>
-				
-				<li><a href="#" ><b>Galeri Foto</b></a>
-					<ul>
-						<li><a href="galeriUpdate.php" ><b>Tambah Foto</b></a></li>
-						<li><a href="galeriList.php" ><b>Daftar Foto</b></a></li>
-						<li><a href="galeriKategoriUpdate.php" ><b>Tambah Kategori Foto</b></a></li>
-						<li><a href="galeriKategoriList.php" ><b>Daftar Kategori Foto</b></a></li>
-					</ul>
-				</li>
-				<li><a href="#" ><b>Galeri Video</b></a>
-					<ul>
-						<li><a href="videoUpdate.php" ><b>Tambah Video</b></a></li>
-						<li><a href="videoList.php" ><b>Daftar Video</b></a></li>
-   			            <li><a href="videoKategoriUpdate.php" ><b>Tambah Kategori Video</b></a></li>
-						<li><a href="videoKategoriList.php" ><b>Daftar Kategori Video</b></a></li>
-					</ul>
-				</li>
-				<li><a href="#" ><b>Banner</b></a>
-					<ul>
-						<li><a href="bannerUpdate.php" ><b>Tambah Banner</b></a></li>
-						<li><a href="bannerList.php" ><b>Daftar Banner</b></a></li>
-					</ul>
-				</li>
-				<li><a href="paypalaccount.php" ><b>Paypal Account</b></a></li>
-				<li><a href="visitorcounter.php" ><b>Visitor Counter</b></a></li>
-                <li><a href="headerList.php" ><b>Header Slide Show</b></a></li>
-				<li><a href="guestList.php" ><b>Buku Tamu</b></a></li>
-				<li><a href="halamanList.php" ><b>Halaman</b></a></li>
-				<li><a href="gantiPassword.php" ><b>Ganti Password</b></a></li>
-				';
-				
-				return $html;
-}
 function menuAdmin() {
 	if (!isset($_SESSION["admSession"])) return "&nbsp;";
 	$hasil =
 		'<td align="left" valign="top" width="196px">
 		 <ul class="menu-hori">
-		         <li><a href="#" class="haschild"><b>Produk</b></a>
+				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/abacus.png" class="iconadmin">Fasilitas</b></a>
 					<ul>
-						<li><a href="produkupdate.php" class="nochild"><b>Tambah Produk</b></a></li>
-						<li><a href="produklist.php" class="nochild"><b>Daftar Produk</b></a></li>
-						<li><a href="ProdukKategoriList.php" class="nochild"><b>Tambah Kategori Produk</b></a></li>
-						<li><a href="ProdukKategoriList.php" class="nochild"><b>Daftar Kategori Produk</b></a></li>
+						<li><a href="fasilitasUpdate.php" class="nochild"><b>Tambah Fasilitas</b></a></li>
+						<li><a href="fasilitasList.php" class="nochild"><b>Daftar Fasilitas</b></a></li>
 					</ul>
 				</li>
 				
-				<li><a href="#" class="haschild"><b>Berita</b></a>
+				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/diary.png" class="iconadmin">Berita</b></a>
 					<ul>
 						<li><a href="beritaUpdate.php" class="nochild"><b>Tambah Berita</b></a></li>
 						<li><a href="beritaList.php" class="nochild"><b>Daftar Berita</b></a></li>
@@ -71,7 +20,7 @@ function menuAdmin() {
 					</ul>
 				</li>
 				
-				<li><a href="#" class="haschild"><b>Galeri Foto</b></a>
+				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/camera.png" class="iconadmin">Galeri Foto</b></a>
 					<ul>
 						<li><a href="galeriUpdate.php" class="nochild"><b>Tambah Foto</b></a></li>
 						<li><a href="galeriList.php" class="nochild"><b>Daftar Foto</b></a></li>
@@ -79,7 +28,7 @@ function menuAdmin() {
 						<li><a href="galeriKategoriList.php" class="nochild"><b>Daftar Kategori Foto</b></a></li>
 					</ul>
 				</li>
-				<li><a href="#" class="haschild"><b>Galeri Video</b></a>
+				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/burn_blu-ray.png" class="iconadmin">Galeri Video</b></a>
 					<ul>
 						<li><a href="videoUpdate.php" class="nochild"><b>Tambah Video</b></a></li>
 						<li><a href="videoList.php" class="nochild"><b>Daftar Video</b></a></li>
@@ -87,19 +36,19 @@ function menuAdmin() {
 						<li><a href="videoKategoriList.php" class="nochild"><b>Daftar Kategori Video</b></a></li>
 					</ul>
 				</li>
-				<li><a href="#" class="haschild"><b>Banner</b></a>
+				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/pictures_folder.png" class="iconadmin">Banner</b></a>
 					<ul>
 						<li><a href="bannerUpdate.php" class="nochild"><b>Tambah Banner</b></a></li>
 						<li><a href="bannerList.php" class="nochild"><b>Daftar Banner</b></a></li>
 					</ul>
 				</li>
-				<li><a href="paypalaccount.php" class="nochild"><b>Paypal Account</b></a></li>
-				<li><a href="visitorcounter.php" class="nochild"><b>Visitor Counter</b></a></li>
-                <li><a href="headerList.php" class="nochild"><b>Header Slide Show</b></a></li>
-				<li><a href="guestList.php" class="nochild"><b>Buku Tamu</b></a></li>
-				<li><a href="halamanList.php" class="nochild"><b>Halaman</b></a></li>
-				<li><a href="gantiPassword.php" class="nochild"><b>Ganti Password</b></a></li>
-				<li><a href="logout.php" class="nochild"><b>Logout</b></a></li>
+				<li><a href="paypalaccount.php" class="nochild"><b><img src="../images/icon/gray_18/user_woman.png" class="iconadmin">Paypal Account</b></a></li>
+				<li><a href="visitorcounter.php" class="nochild"><b><img src="../images/icon/gray_18/group.png" class="iconadmin">Visitor Counter</b></a></li>
+                <li><a href="headerList.php" class="nochild"><b><img src="../images/icon/gray_18/photo_album.png" class="iconadmin">Header Slide Show</b></a></li>
+				<li><a href="guestList.php" class="nochild"><b><img src="../images/icon/gray_18/book.png" class="iconadmin">Buku Tamu</b></a></li>
+				<li><a href="halamanList.php" class="nochild"><b><img src="../images/icon/gray_18/list.png" class="iconadmin">Halaman</b></a></li>
+				<li><a href="gantiPassword.php" class="nochild"><b><img src="../images/icon/gray_18/password.png" class="iconadmin">Ganti Password</b></a></li>
+				<li><a href="logout.php" class="nochild"><b><img src="../images/icon/gray_18/disconnect.png" class="iconadmin">Logout</b></a></li>
 			</ul>
 			<br class="clear"/>
 			<div style="margin:12px 0;">&nbsp;</div>

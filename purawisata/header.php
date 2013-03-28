@@ -24,17 +24,46 @@
                         
                     
 </header>
+<?
+$fasilitas=menu_fasilitas_muat_data();
+?>
 <nav class="cni-nav clearfix">
     <div class="cni-nav-inner">
     <ul class="cni-hmenu">
-    <li><a href="<?=$addLink?>" class="home active">Home</a></li>
-    <li><a href="fasilitas.html">Fasilitas</a>
+    <li><a href="<?=$addLink?>" class="home active"><?=$arrTeks['home']?></a></li>    
+    <li><a href="#" class="fasilitas"><?=$arrTeks['facilities']?></a>
     	<ul>
-        	<li><a href="fasilitas/loremimsum.html">loremimsum</a></li>
-            <li><a href="fasilitas/aaaa.html">aaaa</a></li>
+        <? foreach($fasilitas as $itemfasilitas){
+			$fasilitascrypt=saveid($itemfasilitas['id']);	
+		?>
+        	<li><a href="<?=app_base_url?>facilities/<?=$_SESSION['bahasa']?>/<?=$fasilitascrypt?>/detail/<?=cleanurllho($itemfasilitas[nama.$temp])?>.html"><?=$itemfasilitas[nama.$temp]?></a></li>
+         <? } ?>   
+        </ul>
+    </li>
+      <li><a href="<?=$addLink?>" class="berita">NEWS AND EVENTS</a>
+          <ul>
+        	<li><a href="fasilitas/loremimsum.html">NEWS</a></li>
+            <li><a href="fasilitas/aaaa.html">EVENTS</a></li>
+            <li><a href="fasilitas/loremimsum.html">PROMOS</a></li>
+            <li><a href="fasilitas/aaaa.html">TICKET</a></li>
+        </ul>
+        </li>
+      <li><a href="<?=$addLink?>">ARTICLE</a>
+    <ul>
+        	<li><a href="fasilitas/loremimsum.html">NEWS</a></li>
+            <li><a href="fasilitas/aaaa.html">EVENTS</a></li>
+            <li><a href="fasilitas/loremimsum.html">PROMOS</a></li>
+            <li><a href="fasilitas/aaaa.html">TICKET</a></li>
+        </ul>
+    </li>
+     <li><a href="#">GALLERY</a>
+    	<ul>
+        	<li><a href="fasilitas/loremimsum.html">PHOTO</a></li>
+            <li><a href="fasilitas/aaaa.html">VIDEO</a></li>
         </ul>
     </li>
      <li><a href="<?=$addLink?>form/contact-us.html" class="contact">Contact Us</a></li>
+     <li><a href="<?=$addLink?>form/contact-us.html">Reservation</a></li>
     </ul> 
      </div>
 </nav>

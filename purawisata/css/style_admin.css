@@ -147,3 +147,12 @@ cursor:pointer;
 float:left;
 }
 
+.iconadmin{
+
+position:absolute;
+margin-left: -23px;
+}
+.menu-hori b{
+margin-left: 15px;
+}
+

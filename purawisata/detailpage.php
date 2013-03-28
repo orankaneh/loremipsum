@@ -1,10 +1,31 @@
-<? include "head.php";?>
+<? include "head.php";
+if($access=='news'){
+$class='berita';
+}
+else if($access=='facilities'){
+$class='fasiliatas';
+}
+else{
+$class=$access;
+}
+?>
 <body>
+<script>
+$(document).ready(function(){
+$(".<?=$class?>").addClass("active");
+$(".home").removeClass("active");
+$(".desktop-nav").removeClass("cni-nav");
+$(".desktop-nav").addClass("cni-navwhite");
+$(".cni-hmenu").addClass("spasi");
+$(".triangle").removeClass("triangle");
+$(".<?=$class?>").append("<div class='triangle'></div>");
+  });
+</script>
 <div id="cni-main">
 <? include "header.php"; 
 //show_array($_SERVER);
 $_SESSION['bahasa']=$bahasa;
-$detailberita=detail_berita_muat_data(bukaid($id));
+
 ?>
 <div class="cni-sheet clearfix">
             <div class="cni-layout-wrapper clearfix">
@@ -23,10 +44,12 @@ $detailberita=detail_berita_muat_data(bukaid($id));
 	<div class="detailberita">	
          <div class="beritakiri">
        		<div class="isikiri">
-      			BERITA
+      			<?=$arrTeks[$access]?>
       		 </div>
-             <? foreach ($detailberita as $data){?>
-             <? if($_SESSION['bahasa'] == 'id'){ ?>
+             <? if($access=="news"){
+			 	$detailberita=detail_berita_muat_data(bukaid($id));
+			 	foreach ($detailberita as $data){
+			 	if($_SESSION['bahasa'] == 'id'){ ?>
                  <h1><?=$data['nama']?></h1>
                 Ditulis Oleh : <?=client?> |  <?=datetimeid($data['tgl_buat']);?>
                 <?=getSocialMediaUI()?>
@@ -43,22 +66,30 @@ $detailberita=detail_berita_muat_data(bukaid($id));
                </div>
              <?=decodeHTML2($data['isi_e'])?>
              <? }?>
-           <? } ?>
+           <? } 
+		   }
+		  else if($access=="facilities"){
+		  $detailfasilitas=detail_fasilitas_muat_data(bukaid($id));
+		  $varnya=$arrTeks['isi'];
+		  $namanya=$arrTeks['nama'];
+			 	foreach ($detailfasilitas as $data){
+				?>
+                 <h1><?=$data[$namanya]?></h1>
+                <?
+                echo getSocialMediaUI();
+				echo decodeHTML2($data[$varnya]);
+     		 } 
+		   }
+		   ?>
 		</div>
     	  </div><!-- End Berita Kiri-->
            
          	<div class="detailberita2">	 
          <? include "beritalainya.php";?>   
             </div>
-            <div class="bannerdetaildepan">
-  <img src="<?=$addLink?>images/img_03.jpg">
-  <img src="<?=$addLink?>images/img_13.jpg">
-    <img src="<?=$addLink?>images/img_13.jpg">
-      <img src="<?=$addLink?>images/img_13.jpg">
-        <img src="<?=$addLink?>images/img_13.jpg">
-        </div>
-         <div class="detailfoto">
-     <div class="fotolho">
+            <div class="clearfix"></div>
+        	 <div class="detailfoto <?=$access?>">
+     		<div class="fotolho">
        				<div class="headfotolho">
       					FOTO
      				</div>

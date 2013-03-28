@@ -30,7 +30,14 @@ $arrEn = array(
                 "tgl2" => "Check-out" ,
                 "room" => "Type Room" ,
                 "rooms" => "Room(s)",
-				"inpo" => "For online reservation please use the box below, for more information you can contact<br/> our customer service"           
+				"inpo" => "For online reservation please use the box below, for more information you can contact<br/> our customer service" , 
+				"news" => "NEWS",
+				"home" => "HOME",
+				"facilities" => "FACILITIES",
+				"berita_terbaru" => "LATEST NEWS",
+				"isi" => "isi_e",
+				"nama" => "nama_e",
+				"berita_lainya" => "OTHER NEWS"
 			);			
 
 $arrIndo = array(
@@ -64,6 +71,13 @@ $arrIndo = array(
                 "tgl2" => "Sampai"   ,
                 "room" => "Kamar",
                 "rooms" =>"Jumlah" ,
-				"inpo" => "Untuk reservasi online silahkan isi kotak di atas, untuk informasi lebih lanjut Anda<br/> dapat menghubungi customer service kami"               
-              );
+				"inpo" => "Untuk reservasi online silahkan isi kotak di atas, untuk informasi lebih lanjut Anda<br/> dapat menghubungi customer service kami",
+				"news" => "BERITA" ,
+				"home" => "BERANDA",
+				"facilities" => "FASILITAS",
+				"berita_terbaru" => "BERITA TERBARU", 
+				"isi" => "isi",
+				"nama" => "nama",
+				"berita_lainya" => "BERITA LAINYA"      
+              );			  
 ?>

@@ -395,14 +395,14 @@ li p, .cni-postcontent li p, .cni-blockcontent li p
 .cni-object227400126
 { 
 
-    background-image: url('../images/object227400126.png');
+  background-image: url('../images/object227400126.png');
   background-position: 0px 0px;
   background-repeat: no-repeat;
-    z-index: 101;
-margin: -105px auto;
-width: 100px;
-position:relative;
-left: 200px;
+  z-index: 101;
+  margin: -83px auto;
+  width: 100px;
+  position:relative;
+  left: 200px;	
 }
 
 
@@ -482,6 +482,7 @@ ul.cni-hmenu li
    margin: 0;
    padding: 0;
    border: 0;
+    font-size:8px;
 }
 
 ul.cni-hmenu li:hover
@@ -498,6 +499,7 @@ ul.cni-hmenu:after, ul.cni-hmenu ul:after
    visibility: hidden;
    overflow: hidden;
    clear: both;
+   width: 150px;
 }
 
 ul.cni-hmenu, ul.cni-hmenu ul 

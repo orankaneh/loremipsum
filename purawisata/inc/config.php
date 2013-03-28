@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-if($_SERVER['SERVER_NAME']=="192.168.1.4" || $_SERVER['SERVER_NAME']=="localhost" || $_SERVER['SERVER_NAME']=="web2.web") {
+if($_SERVER['SERVER_NAME']=="192.168.120.13" || $_SERVER['SERVER_NAME']=="localhost" || $_SERVER['SERVER_NAME']=="web2.web") {
 	$accNya = "lokal";
 } else {
 	$accNya = "remote";
@@ -50,6 +50,7 @@ define("tabel_halaman", "cni_halaman");
 define("tabel_user", "cni_user");
 define("tabel_user_detail", "cni_user_detail");
 define("tabel_berita", "cni_berita");
+define("tabel_fasilitas", "cni_fasilitas");
 define("tabel_banner", "cni_banner");
 define("tabel_foto", "cni_foto");
 define("tabel_header_slideshow", "cni_header_slideshow");
@@ -104,6 +105,8 @@ define("client_email","info@example.com");
 define("editor_url", $urlNya.'editor/');
 define("site_img_dir", $urlNya.'editor/images/gambar/');
 define("site_doc_dir", $urlNya.'editor/images/dokumen/');
+define("app_plugin_url", $addLink.'plugins/');
+define("app_base_url", $addLink);
 // - config - klien -----------------------------------------------------------
 
 define("key_generator","CniP4Ssw0rd");

@@ -2326,6 +2326,25 @@ $id=anti_injection($id);
     }
     return $result;
 }
+function detail_fasilitas_muat_data($id){
+$id=anti_injection($id);
+    $sql = "select * from ".tabel_fasilitas." where id='$id'";
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
+}
+function menu_fasilitas_muat_data(){
+    $sql = "select * from ".tabel_fasilitas;
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
+}
 function readmore($text,$char,$url) {
 	if (strlen($text) > $char) {
 		return substr($text, 0, $char).'<br/><a href="'.$url.'">Read More</a>';

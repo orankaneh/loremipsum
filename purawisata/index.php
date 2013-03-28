@@ -43,9 +43,10 @@ $gallery=galleryfotomuatdata('4');
     </div>
       <div class="beritainindex">
 		
+         <div class="detailberita">
          <div class="beritakiri">
        		<div class="isikiri">
-      			BERITA TERBARU
+      			<?=$arrTeks['berita_terbaru']?>
       		 </div>
                 <? foreach ($newnews as $news){ 
 				$sessioncrypt=saveid($news['id']);	
@@ -63,11 +64,13 @@ $gallery=galleryfotomuatdata('4');
 			 ?>
              </div>
              <? }?>
+             </div>
     	  </div><!-- End Berita Kiri-->
            
-          
-         <? include "beritalainya.php";?>   
-         <? include "agendasocial.php";?>
+          <div class="detailberita2">	 
+         <? include "othernews.php";?>   
+         </div>
+     
             
             
         </div><!--End index berita-->
@@ -75,6 +78,7 @@ $gallery=galleryfotomuatdata('4');
       
 	</div>
 </div>
+ <? include "agendasocial.php";?>
 </article></div>
                     </div>
                 </div>

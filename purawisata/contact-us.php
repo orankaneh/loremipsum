@@ -115,7 +115,7 @@ if (isset($_POST['submit'])) {
 $(document).ready(function(){
     $(function() {
    setTimeout(function() {
-    window.location = "<?=$addLink?>";
+    window.location = "<?=app_base_url?>";
     }, 1500);
     })
   });
@@ -155,8 +155,8 @@ $(document).ready(function(){
     <div class="field-group">
     <label>&nbsp;</label>
        <div id="capcay">
-       <img id="image" src="<?=$addLink?>plugins/captcha/capcay.php?sid=<?=md5(uniqid(time()))?>" class="capcaycontact">
-       <a href="#" onClick="refreshcapcay()"><img src="<?=$addLink?>plugins/captcha/refresh.png" border="0" alt="refresh image" title="refresh image" class="refreshcapcay"/></a>  
+       <img id="image" src="<?=app_base_url?>plugins/captcha/capcay.php?sid=<?=md5(uniqid(time()))?>" class="capcaycontact">
+       <a href="#" onClick="refreshcapcay()"><img src="<?=app_base_url?>plugins/captcha/refresh.png" border="0" alt="refresh image" title="refresh image" class="refreshcapcay"/></a>  
         </div>     
     </div>
     
@@ -181,11 +181,11 @@ $(document).ready(function(){
          <? include "beritalainya.php";?>   
             </div>
             <div class="bannerdetaildepan">
-  <img src="<?=$addLink?>images/img_03.jpg">
-  <img src="<?=$addLink?>images/img_13.jpg">
-    <img src="<?=$addLink?>images/img_13.jpg">
-      <img src="<?=$addLink?>images/img_13.jpg">
-        <img src="<?=$addLink?>images/img_13.jpg">
+  			<img src="<?=app_base_url?>images/img_03.jpg">
+ 			<img src="<?=app_base_url?>images/img_13.jpg">
+    		<img src="<?=app_base_url?>images/img_13.jpg">
+      		<img src="<?=app_base_url?>images/img_13.jpg">
+        	<img src="<?=app_base_url?>images/img_13.jpg">
         </div>
         </div><!--End index berita-->
         
@@ -197,10 +197,10 @@ $(document).ready(function(){
       					FOTO
      				</div>
                     <div class="galleryinfooter">
-                    <img src="<?=$addLink?>images/dummy/dummy2.jpg"> 
-                    <img src="<?=$addLink?>images/dummy/dummy3.jpg">
-                    <img src="<?=$addLink?>images/dummy/dummy.jpg">
-                    <img src="<?=$addLink?>images/dummy/dummy_10.jpg">
+                    <img src="<?=app_base_url?>images/dummy/dummy2.jpg"> 
+                    <img src="<?=app_base_url?>images/dummy/dummy3.jpg">
+                    <img src="<?=app_base_url?>images/dummy/dummy.jpg">
+                    <img src="<?=app_base_url?>images/dummy/dummy_10.jpg">
                     </div>
                     <div class="buttonselengkapfoto">
                     SELENGKAPNYA
