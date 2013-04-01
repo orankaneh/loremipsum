@@ -72,8 +72,6 @@ width: 80%;
 .beritakiri{
    width: 550px; 
    border-top: 1px solid #ba985d;
-   border-bottom: 1px solid #ba985d;
-   height:350px;
 }
 .detailberita {
 min-height: 180px;
@@ -82,22 +80,21 @@ width:550px;
 }
 .detailberita .beritakiri{
 width: 550px; 
-   border-top: 1px solid #ba985d;
-   border-bottom: 0px solid #ba985d;
+border-top: 1px solid #ba985d;
 min-height: 180px;
 height: 100%;
 }
 .detailberita .beritakiri p{
-height: 100%;
 text-align:justify;
 }
 .newnews{
 width: 260px;
-height: 320px;
+height: 374px;
 overflow: hidden;
 text-align:justify;
 float:left;
 padding:6px;
+border-bottom: 1px solid #ba985d;
 }
 .newnews h1{
 margin-top: -5px;
@@ -142,9 +139,9 @@ font-size: 20px;
 .othernews img{
 position:absolute;
 margin: 15px -120px;
-border: 9px solid #ffffff;
+border: 5px solid #ffffff;
 background:#FFFFFF;
-height: 75px;
+height: 85px;
 
 }
 
@@ -183,9 +180,15 @@ height: 75px;
    margin-left: 20px; 
    width: 360px; 
    border-top: 1px solid #ba985d;
-    border-bottom: 1px solid #ba985d;
 }
-
+.garisbawahpow{
+ border-bottom: 1px solid #ba985d;
+ width: 360px; 
+}
+.garisbawahguede{
+ border-bottom: 1px solid #ba985d;
+ width: 550px; 
+}
 .isikananlho{
      font-family: swiss;
 	font-size:16px;
@@ -609,6 +612,27 @@ margin: 0;
 	font-size:16px;
    color: #d8cf9c;
 }
+.headfotolhodetail{
+ margin-left: 20px;
+   margin-top: -23px;
+   background: #4E3623;
+   width: 150px;
+   text-align:center;
+   border-top: 1px solid #d8cf9c;
+   border-left: 1px solid #d8cf9c;
+   border-right: 1px solid #d8cf9c;
+   -webkit-border-top-left-radius: 4px;
+   -webkit-border-top-right-radius: 4px;
+   -moz-border-radius-topleft: 4px;
+   -moz-border-radius-topright: 4px;
+   border-top-left-radius: 4px;
+   border-top-right-radius: 4px;
+     font-family: swiss;
+	font-size:16px;
+   color: #d8cf9c;
+   z-index:100;
+   position:absolute;
+}
 
 .detailfoto .fotolho{
 	margin: 0;
@@ -883,6 +907,14 @@ margin: 0 !important;
 	clear:both;
 	width: 300px;
 	margin: 0 auto;
+	background:none repeat scroll 0 0 transparent;
+	border-bottom: 1px dashed #ffffff;
+	border-top:none;
+	border-left: none;
+	border-right: none;
+	color: #FFFFFF !important;
+	display:inline-block;
+	border-radius: 0 !important;
 }
 .field-group textarea {
 	font-family: swiss;
@@ -943,11 +975,12 @@ background: #715F50;
 border-radius: 3px;
 color: #FFFFFF;
 padding: 3px;
+border: none !important;
 }
 
 input[class="tombol"]:hover{
 background: #FFFFFF;
-color: #715F50;
+color: #715F50 !important;
 cursor:pointer;
 }
 

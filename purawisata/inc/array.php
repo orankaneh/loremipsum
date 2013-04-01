@@ -37,6 +37,9 @@ $arrEn = array(
 				"berita_terbaru" => "LATEST NEWS",
 				"isi" => "isi_e",
 				"nama" => "nama_e",
+				"fotoe" => "Photo",
+				"selengkap" => "Read More",
+				"kontaklho" => "Contact Us",
 				"berita_lainya" => "OTHER NEWS"
 			);			
 
@@ -78,6 +81,9 @@ $arrIndo = array(
 				"berita_terbaru" => "BERITA TERBARU", 
 				"isi" => "isi",
 				"nama" => "nama",
+				"fotoe" => "Foto",
+				"selengkap" => "Selengkapnya",
+				"kontaklho" => "Hubungi Kami",
 				"berita_lainya" => "BERITA LAINYA"      
               );			  
 ?>

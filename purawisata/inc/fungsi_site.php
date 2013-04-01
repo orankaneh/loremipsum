@@ -115,6 +115,9 @@ function katUI($kat,$tagName,$id,$className) {
 		$uiKategori .= getKatFoto(0,$id,0);
 	}elseif($kat=="agenda"){
 		$uiKategori .= getKatAgenda(0,$id,0);	
+	}
+	elseif($kat=="fasilitas"){
+		$uiKategori .= getKatFasilitas(0,$id,0);	
 	}	
 	
 	$uiKategori =
@@ -149,6 +152,25 @@ function getKatBerita($parent_id=0,$seldId=0,$depth=0) {
 	
 	$uiKategori = '';
 	$sqlK = "select id, nama, parent_id from ".tabel_berita." where status='1' and parent_id='".$parent_id."' and kategori='1' order by nama asc";
+	$resK = mysql_query($sqlK, $baca);
+	while($rowK=mysql_fetch_object($resK)) {
+		$seld = ($seldId==$rowK->id)? 'selected="selected"' : '';
+		$uiKategori .= '<option '.$seld.' value="'.$rowK->id.'">'.$spacer.$rowK->nama.'</option>';
+		$uiKategori .= getKatBerita($rowK->id,$seldId,$depth);
+	}
+	return $uiKategori;
+}
+
+function getKatFasilitas($parent_id=0,$seldId=0,$depth=0) {
+	global $baca;
+	$spacer = "";
+	for($i=0;$i<$depth;$i++) {
+		$spacer .= "&nbsp;&nbsp;&nbsp;&nbsp;";
+	}
+	$depth++;
+	
+	$uiKategori = '';
+	$sqlK = "select id, nama, parent_id from ".tabel_foto." where status='1' and parent_id='".$parent_id."' and kategori='1' order by nama asc";
 	$resK = mysql_query($sqlK, $baca);
 	while($rowK=mysql_fetch_object($resK)) {
 		$seld = ($seldId==$rowK->id)? 'selected="selected"' : '';

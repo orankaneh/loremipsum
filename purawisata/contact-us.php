@@ -94,7 +94,7 @@ $isPesanOk = false;
 <form method="post" id="form1">
 <div class="contactusform">
 <fieldset>
-<legend> Contact Us</legend>
+<legend>&nbsp;Contact Us &nbsp;</legend>
 <script>
 $(document).ready(function(){
     $(function() {
@@ -180,33 +180,11 @@ $(document).ready(function(){
          	<div class="detailberita2">	 
          <? include "beritalainya.php";?>   
             </div>
-            <div class="bannerdetaildepan">
-  			<img src="<?=app_base_url?>images/img_03.jpg">
- 			<img src="<?=app_base_url?>images/img_13.jpg">
-    		<img src="<?=app_base_url?>images/img_13.jpg">
-      		<img src="<?=app_base_url?>images/img_13.jpg">
-        	<img src="<?=app_base_url?>images/img_13.jpg">
-        </div>
         </div><!--End index berita-->
         
       
 	</div>
-    <div class="detailfoto">
-     <div class="fotolho">
-       				<div class="headfotolho">
-      					FOTO
-     				</div>
-                    <div class="galleryinfooter">
-                    <img src="<?=app_base_url?>images/dummy/dummy2.jpg"> 
-                    <img src="<?=app_base_url?>images/dummy/dummy3.jpg">
-                    <img src="<?=app_base_url?>images/dummy/dummy.jpg">
-                    <img src="<?=app_base_url?>images/dummy/dummy_10.jpg">
-                    </div>
-                    <div class="buttonselengkapfoto">
-                    SELENGKAPNYA
-                    </div>
-        </div>
-        </div><!--End div detail foto-->
+   
 </div>
 </article></div>
                     </div>

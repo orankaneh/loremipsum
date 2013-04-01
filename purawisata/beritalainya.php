@@ -1,42 +1,57 @@
+<?
+//$othernews=othernews_muat_data();
+$max=maxidnews_muat_data();
+$maxid=$max[0][0];
+$idtampil=$maxid-1;
+$othernews=othernews_muat_data(bukaid($id));
+$bannerkananlainay=bannerkananmuatdata('4');
+?>
+
  <div class="beritakananlho">
        				<div class="isikananlho">
       					<?=$arrTeks['berita_lainya']?>
      				</div>
-                    <div class="othernews">
-                    <img src="<?=$addLink?>images/dummy/dummy_08.jpg">
-                    <div>
-                     <h1>Lorem Ipsum</h1>
-                     20/03/2013
-                   <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                    </div>
-                    </div><!--en other news-->
-                    
+                       <? foreach($othernews as $limitdikit){
+					$sessioncryptx2=saveid($limitdikit['id']);	
+					?>     
                      <div class="othernews">
-                    <img src="<?=$addLink?>images/dummy/dummy_08.jpg">
+                    <?	if (file_exists("images/berita/thumb/" . $limitdikit['id'] . ".jpg")){?>
+                       <img src="<?=app_base_url?>images/berita/thumb/<?=$limitdikit['id']?>.jpg">
+                     <? }
+					 else{
+					 ?>  
+                       <img src="<?=app_base_url?>images/berita/thumb/default.jpg">
+                       <?
+					   }
+					   ?>
                     <div>
-                     <h1>Lorem Ipsum</h1>
-                     20/03/2013
-                   <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
-                    </div>
-                    </div><!--en other news-->
-                    
-                     <div class="othernews">
-                    <img src="<?=$addLink?>images/dummy/dummy_08.jpg">
-                    <div>
-                     <h1>Lorem Ipsum</h1>
-                     20/03/2013
-                   <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard</p>
+                     <h1><a href="<?=app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html'?>"><?=$limitdikit[$judulnews]?></a></h1>
+                      <?				  
+					    if($_SESSION['bahasa'] == 'id'){
+						echo datetimeid($limitdikit['tgl_buat']);
+						echo readmore(html_entity_decode($limitdikit['isi']),'100' ,app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);
+				  }
+					else{
+						echo datetime($limitdikit['tgl_buat']);
+						echo readmore(html_entity_decode($limitdikit['isi_e']),'100',app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);	  
+				  }
+					  ?>
                     </div>
                     </div><!--en isi kanan-->
+                    <? }?>
+                    <div class="garisbawahpow">
+&nbsp;
+</div> 
                        <div class="buttonselengkapothernews">
                     SELENGKAPNYA
                     </div>
                    <div class="bannerdetaildepan">
-       		<img src="<?=$addLink?>images/img_03.jpg">
-       		<img src="<?=$addLink?>images/img_13.jpg">
-    		<img src="<?=$addLink?>images/img_13.jpg">
-      		<img src="<?=$addLink?>images/img_13.jpg">
-       		<img src="<?=$addLink?>images/img_13.jpg">
+                   <img src="<?=app_base_url?>images/downloadbutton.png" />
+                   <? foreach($bannerkananlainay as $iklanx){
+				   //show_array($iklanx);
+				   ?>
+       		<a href="<?=$iklanx['url']?>"><img src="<?=app_base_url?>images/banner/<?=$iklanx[0]?>.jpg"></a>
+            <? }?>
         </div> 
       		</div>
             

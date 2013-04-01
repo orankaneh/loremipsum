@@ -35,7 +35,7 @@ $gallery=galleryfotomuatdata('4');
     <div class="cni-layout-cell layout-item-0" style="width: 100%" >
         <p class="bannerattasp">
           <? foreach ($banneratas as $iklana){ ?>
-        <img class="banneratas" width="<?=widhtnya_fasilitas?>" height="<?=height_fasilitas?>" src="images/banner/<?=$iklana['id']?>.jpg">
+        <a href="<?=$iklana['url']?>"><img class="banneratas" width="<?=widhtnya_fasilitas?>" height="<?=height_fasilitas?>" src="images/banner/<?=$iklana['id']?>.jpg"></a>
         <? }?>
         </p>
         <p><br/></p>
@@ -56,15 +56,15 @@ $gallery=galleryfotomuatdata('4');
              <h1><a href="news/<?=$_SESSION['bahasa']?>/<?=$sessioncrypt?>/read/<?=cleanurllho($news[$judulnews])?>.html"><?=$news[$judulnews]?></a></h1>
         	<?
          		  if($_SESSION['bahasa'] == 'id'){
-						echo readmore(html_entity_decode($news['isi']),'170' ,'news/'.$_SESSION['bahasa'].'/'.$sessioncrypt.'/read/'.cleanurllho($news[$judulnews]).'.html');
+						echo readmore(html_entity_decode($news['isi']),'255' ,'news/'.$_SESSION['bahasa'].'/'.$sessioncrypt.'/read/'.cleanurllho($news[$judulnews]).'.html',$arrTeks['selengkap']);
 				  }
 					else{
-						echo readmore(html_entity_decode($news['isi_e']),'170','news/'.$_SESSION['bahasa'].'/'.$sessioncrypt.'/read/'.cleanurllho($news[$judulnews]).'.html');	  
+						echo readmore(html_entity_decode($news['isi_e']),'260','news/'.$_SESSION['bahasa'].'/'.$sessioncrypt.'/read/'.cleanurllho($news[$judulnews]).'.html',$arrTeks['selengkap']);	  
 				  }
 			 ?>
              </div>
              <? }?>
-             </div>
+             </div>   
     	  </div><!-- End Berita Kiri-->
            
           <div class="detailberita2">	 
@@ -113,7 +113,7 @@ $gallery=galleryfotomuatdata('4');
         </div>
 <div class="fotolho">
        				<div class="headfoto">
-      					FOTO     				
+      					<?=$arrTeks['fotoe']?>    				
                     </div>
                     <div class="galleryinfooter">
                     <? foreach ($gallery as $colection) {?>
@@ -149,8 +149,11 @@ $gallery=galleryfotomuatdata('4');
                     SELENGKAPNYA                    </div>
         </div>
       <div class="bannerdepan">
-  <img src="images/img_03.jpg">
-  <img src="images/banner/<?=$bannerkanan['0']['id']?>.jpg">        </div>
+  <img src="images/downloadbutton.png">
+  <a href="<?=$bannerkanan['0']['url']?>">
+  <img src="images/banner/<?=$bannerkanan['0']['id']?>.jpg">
+   </a>
+   </div>
      </div> 
    </div>   
 <!--Foto dan video content berakhir di sini-->   

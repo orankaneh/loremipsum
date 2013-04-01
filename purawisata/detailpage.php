@@ -3,7 +3,7 @@ if($access=='news'){
 $class='berita';
 }
 else if($access=='facilities'){
-$class='fasiliatas';
+$class='fasilitas';
 }
 else{
 $class=$access;
@@ -25,7 +25,6 @@ $(".<?=$class?>").append("<div class='triangle'></div>");
 <? include "header.php"; 
 //show_array($_SERVER);
 $_SESSION['bahasa']=$bahasa;
-
 ?>
 <div class="cni-sheet clearfix">
             <div class="cni-layout-wrapper clearfix">
@@ -72,7 +71,11 @@ $_SESSION['bahasa']=$bahasa;
 		  $detailfasilitas=detail_fasilitas_muat_data(bukaid($id));
 		  $varnya=$arrTeks['isi'];
 		  $namanya=$arrTeks['nama'];
-			 	foreach ($detailfasilitas as $data){
+	
+		  foreach ($detailfasilitas as $data){
+		  $idfoto=$data['id_foto'];
+		 // show_array($detailfasilitas);
+				
 				?>
                  <h1><?=$data[$namanya]?></h1>
                 <?
@@ -85,25 +88,32 @@ $_SESSION['bahasa']=$bahasa;
     	  </div><!-- End Berita Kiri-->
            
          	<div class="detailberita2">	 
-         <? include "beritalainya.php";?>   
+         <? 
+		  $gallerikategori=gallery_per_kategori($idfoto,'4');
+		  $jmlh=count($gallerikategori);
+		  include "beritalainya.php";?>   
             </div>
             <div class="clearfix"></div>
-        	 <div class="detailfoto <?=$access?>">
-     		<div class="fotolho">
-       				<div class="headfotolho">
-      					FOTO
+             <? if($jmlh!='0'){?>
+        	 <div class="detailfoto <?=$access?>" style="position:relative;">
+                    				<div class="headfotolhodetail">
+      					<?=$arrTeks['fotoe']?>
      				</div>
+     		<div class="fotolho">
+
                     <div class="galleryinfooter">
-                    <img src="<?=$addLink?>images/dummy/dummy2.jpg"> 
-                    <img src="<?=$addLink?>images/dummy/dummy3.jpg">
-                    <img src="<?=$addLink?>images/dummy/dummy.jpg">
-                    <img src="<?=$addLink?>images/dummy/dummy_10.jpg">
+                    <? foreach($gallerikategori as $fotolist){?>
+                      <a href="<?=app_base_url?>images/foto/<?=$fotolist['id']?>.jpg" class="fancybox-buttons" rel="gallery">  <img src="<?=app_base_url?>images/foto/thumb/<?=$fotolist['id']?>.jpg"> </a>
+                    <? }?>
                     </div>
+            
                     <div class="buttonselengkapfoto">
                     SELENGKAPNYA
                     </div>
+                  
         </div>
         </div><!--End div detail foto-->
+        <? }?>
         </div><!--End index berita-->
         
       

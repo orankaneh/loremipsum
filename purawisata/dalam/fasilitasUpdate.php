@@ -36,6 +36,7 @@ if($mode=="edit") {
 	$nama = $rowC->nama;
 	$namae = $rowC->nama_e;
 	$parent_id = $rowC->parent_id;
+	$id_gallery = $rowC->id_foto;
 	$isi = decodeHTML($rowC->isi);
 	$isie = decodeHTML($rowC->isi_e);
 }
@@ -45,6 +46,7 @@ if($_POST) {
 	$namae = encodeHTML($_POST["namae"]);
 	$isi =encodeHTML($_POST['isi']);
 	$isie = encodeHTML($_POST['isi_e']);
+	$id_gallery = $_POST['id_gallery'];
 	if(empty($nama)) $strError .= "<li>Judul masih kosong</li>";
 	if(empty($namae)) $strError .= "<li>Judul bahas inggris masih kosong</li>";
 	if(empty($isi)) $strError .= "<li>Konten kosong</li>";
@@ -54,8 +56,8 @@ if($_POST) {
 		if($mode=="add") {
 		
 			$sql =
-				"insert into ".tabel_fasilitas." (parent_id,kategori,nama,nama_e,isi,isi_e,status,tgl_buat,tgl_update,ip_update) values
-				 ('1','0','".$nama."','".$namae."','".$isi."','".$isie."','1',now(),now(),'".$_SERVER['REMOTE_ADDR']."') ";
+				"insert into ".tabel_fasilitas." (parent_id,kategori,id_foto,nama,nama_e,isi,isi_e,status,tgl_buat,tgl_update,ip_update) values
+				 ('1','0','$id_gallery','".$nama."','".$namae."','".$isi."','".$isie."','1',now(),now(),'".$_SERVER['REMOTE_ADDR']."') ";
 			mysql_query($sql,$tulis) or die(mysql_error() . "<hr>" . $sql);
 			$id_s = mysql_insert_id();	
 		} 
@@ -64,6 +66,7 @@ if($_POST) {
 				"update ".tabel_fasilitas." set
 				 parent_id='1',
 				 kategori='0',
+				 id_foto='$id_gallery',
 				 nama='".$nama."',
 				 nama_e='".$namae."',
 				 isi='".$isi."',
@@ -95,7 +98,8 @@ if($_POST) {
 	<input type="text" name="nama" size="60" value="<?=$nama?>" class="inputpesan tbless"><br class="clear" />
 	<label class="tbless" for="nama">Judul bahasa Inggris</label>
 	<input type="text" name="namae" size="60" value="<?=$namae?>" class="inputpesan tbless"><br class="clear" />
-
+	<label class="tbless" for="nama">Gallery Foto</label>
+	<?=katUI("galeri","id_gallery",$id_gallery,"inputpesan tbless")?><br class="clear" />
 	
 	<label class="tbless2" for="nama">
 		Konten Bahasa Indonesia
