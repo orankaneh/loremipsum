@@ -1,6 +1,6 @@
 <?php
 error_reporting(0);
-if($_SERVER['SERVER_NAME']=="192.168.120.13" || $_SERVER['SERVER_NAME']=="localhost" || $_SERVER['SERVER_NAME']=="web2.web") {
+if($_SERVER['SERVER_NAME']=="192.168.1.4" || $_SERVER['SERVER_NAME']=="localhost" || $_SERVER['SERVER_NAME']=="web2.web") {
 	$accNya = "lokal";
 } else {
 	$accNya = "remote";
