@@ -1936,9 +1936,9 @@ function decodeHTML2($html) {
 	return html_entity_decode($html);
 }
 function clearhtml($html){
-$isi=html_entity_decode($html);
-$letters = array('<p>','</p>');
-$fruit   = array('','');
+$isi=decodeHTML($html);
+$letters = array('<p>','</p>',"'");
+$fruit   = array('','','');
 $output  = str_replace($letters, $fruit, $isi);
 return $output;
 }
@@ -2316,6 +2316,37 @@ function newnews_muat_data(){
     }
     return $result;
 }
+
+function othernews_muat_data($idsatu,$idua){
+$where='';
+$or='';
+if($idsatu!=''){
+$where="  and id != '$idsatu' ";
+}
+if($idua!=''){
+$or=" or kategori ='0' and  status='1' and id != '$idua' ";
+}
+
+    $sql = "select * from ".tabel_berita." where kategori ='0' and  status='1' $where $or order by id DESC limit 3";
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
+}
+
+function maxidnews_muat_data(){
+
+    $sql = "select MAX(id) from ".tabel_berita." where kategori ='0' and  status='1'";
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
+}
+
 function detail_berita_muat_data($id){
 $id=anti_injection($id);
     $sql = "select * from ".tabel_berita." where kategori ='0' and id='$id'";
@@ -2345,7 +2376,7 @@ function menu_fasilitas_muat_data(){
     }
     return $result;
 }
-function readmore($text,$char,$url) {
+function readmore($text,$char,$url,$selengkap) {
 	if (strlen($text) > $char) {
 		return substr($text, 0, $char).'<br/><a href="'.$url.'">Read More</a>';
 	}
@@ -2354,7 +2385,7 @@ function readmore($text,$char,$url) {
 }
 function deskripsi($text,$char) {
 	if (strlen($text) > $char) {
-		return substr($text, 0, $char).'. ';
+		return substr($text, 0, $char).$selengkap;
 	}
 	else return $text;
 
@@ -2424,7 +2455,6 @@ function hari($hari)
                break;
 }
 }
-
 function datetime($dt) {
     $var = explode(" ", $dt);
     $var1 = explode("-", $var[0]);
@@ -2445,7 +2475,12 @@ function datetimeid($dt) {
 	 $jam2="$jam[0]:$jam[1]";
     return hari($hari).",".$var2 . " " . $jam2;
 }
-
+function dateaja($dt) {
+    $var = explode(" ", $dt);
+    $var1 = explode("-", $var[0]);
+	$var3 = "$var1[2]-$var1[1]-$var1[0]";
+    return $var3;
+}
 function banneratasmuatdata(){
 $today=date("Y-m-d");
   $sql = "select * from ".tabel_banner." where id_kategori = '1' 
@@ -2488,5 +2523,16 @@ function date2mysql($tgl) {
         return "";
     $new = "$tgl[2]-$tgl[1]-$tgl[0]";
     return $new;
+}
+function gallery_per_kategori($id,$limit){
+$today=date("Y-m-d");
+  $sql = "select * from ".tabel_foto." where parent_id = '$id' 
+  limit $limit";
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
 }
 ?>

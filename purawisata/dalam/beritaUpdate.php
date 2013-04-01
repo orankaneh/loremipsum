@@ -43,8 +43,8 @@ if($_POST) {
 	$nama = encodeHTML($_POST["nama"]);
 	$namae = encodeHTML($_POST["namae"]);
 	$parent_id = (int) $_POST['parent_id'];
-	$isi =$_POST['isi'];
-	$isie = $_POST['isi_e'];
+	$isi =encodeHTML($_POST['isi']);
+	$isie = encodeHTML($_POST['isi_e']);
 	if(empty($nama)) $strError .= "<li>Judul masih kosong</li>";
 	if(empty($namae)) $strError .= "<li>Judul bahas inggris masih kosong</li>";
 	if(empty($isi)) $strError .= "<li>Konten kosong</li>";
@@ -81,8 +81,8 @@ if($_POST) {
 				 kategori='0',
 				 nama='".$nama."',
 				 nama_e='".$namae."',
-				 isi='".cleanEditor("../",$isi)."',
-				 isi_e='".cleanEditor("../",$isie)."',
+				 isi='".$isi."',
+				 isi_e='".$isie."',
 				 tgl_update=now(),
 				 ip_update='".$_SERVER['REMOTE_ADDR']."' where id='".$id."'";
 			mysql_query($sql,$tulis);

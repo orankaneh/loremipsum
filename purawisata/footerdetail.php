@@ -34,7 +34,7 @@
 		Faximile: +62-274-417620<br/>
 		Email   : info@purawisatajogja.com<br/>
         <div class="footercontak">
-       <div class="hubungikami"><img src="<?=$addLink?>images/purawisata_depan_b_rev_03.jpg"/>Hubungi Kami &nbsp|</div> 
+       <div class="hubungikami"><img src="<?=$addLink?>images/purawisata_depan_b_rev_03.jpg"/><?=$arrTeks['kontaklho']?> &nbsp|</div> 
         <div class="lokasikami" onclick="loadmap()"><img src="<?=$addLink?>images/purawisata_depan_b_rev_05.jpg"/> Lokasi Kami</div>
        </div>
         </div>

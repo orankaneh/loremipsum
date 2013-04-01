@@ -2,6 +2,7 @@
 error_reporting(0);
 ob_start();
 session_start();
+
 $checkApp = false;
 $minLevel = 800;
 $hakAksesAplikasi = 0;
@@ -38,8 +39,8 @@ if($mode=="edit") {
 	$id_kategori = $rowC->id_kategori;
 	$id_kategori_lama = $id_kategori;
 	$url = $rowC->url;
-	$tanggal_mulai = $rowC->tanggal_mulai;
-	$tanggal_selesai = $rowC->tanggal_selesai;
+	$tanggal_mulai = dateaja($rowC->tanggal_mulai);
+	$tanggal_selesai = dateaja($rowC->tanggal_selesai);
 	
 	$file = "../images/banner/".$rowC->id.".".$rowC->ekstensi;
 	$arrSize = @getimagesize($file);
@@ -50,8 +51,8 @@ if($_POST) {
 	$nama = encodeHTML($_POST["nama"]);
 	$id_kategori = (int) $_POST['id_kategori'];
 	$url = encodeHTML($_POST["url"]);
-	$tanggal_mulai = encodeHTML($_POST["tanggal_mulai"]);
-	$tanggal_selesai = encodeHTML($_POST["tanggal_selesai"]);
+	$tanggal_mulai = $_POST["tanggal_mulai"];
+	$tanggal_selesai = $_POST["tanggal_selesai"];
 
 	if(empty($tanggal_mulai)) $tanggal_mulai = date("d-m-Y");
 	if(empty($tanggal_selesai)) $tanggal_selesai = date("d-m-Y");

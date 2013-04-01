@@ -99,7 +99,7 @@ ul.cni-vmenu a
 {
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
-   color: #FB722D;
+   color: #BA985D;
 }
 
 .cni-postcontent a:visited, .cni-postcontent a.visited
@@ -120,26 +120,27 @@ ul.cni-vmenu a
 {
    color: #ba985d;
    margin: 10px 0 0;
-   font-size: 26px;
+   font-size: 20px;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .cni-blockcontent h1
 {
    margin: 10px 0 0;
-   font-size: 26px;
+   font-size: 20px;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
 .cni-postcontent h1 a, .cni-postcontent h1 a:link, .cni-postcontent h1 a:hover, .cni-postcontent h1 a:visited, .cni-blockcontent h1 a, .cni-blockcontent h1 a:link, .cni-blockcontent h1 a:hover, .cni-blockcontent h1 a:visited 
 {
-   font-size: 26px;
+   font-size: 20px;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
+    color: #ba985d;
 }
 
 .cni-postcontent h2
 {
-   color: #9EABB7;
+   color: #ba985d;
    margin: 10px 0 0;
    font-size: 22px;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
@@ -500,6 +501,7 @@ ul.cni-hmenu:after, ul.cni-hmenu ul:after
    overflow: hidden;
    clear: both;
    width: 150px;
+     z-index: 10000;
 }
 
 ul.cni-hmenu, ul.cni-hmenu ul 
@@ -948,7 +950,7 @@ div.cni-block img
 
 .cni-blockcontent a:hover, .cni-blockcontent a.hover
 {
-   color: #FB722D;
+   color: #BA985D;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
 }
