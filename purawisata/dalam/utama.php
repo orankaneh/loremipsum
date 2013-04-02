@@ -18,8 +18,17 @@ $visitor=statistik_pengunjung();
 <td>: <?=$visitor['jmtd']?></td>
 </tr>
 <tr>
+<td>Jumlah IP Pengunjung Hari Ini</td>
+<td>: <?=$visitor['perip']?></td>
+</tr>
+<tr>
 <td>Total Pengunjung</td>
 <td>: <?=$visitor['jumlah']?></td>
+</tr>
+<tr>
+<td colspan="2">
+<a href="http://info.flagcounter.com/sXiU"><img src="http://s03.flagcounter.com/count/sXiU/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_3/labels_0/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a>
+</td>
 </tr>
 </table>
 <div style="float:right">

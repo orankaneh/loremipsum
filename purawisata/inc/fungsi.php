@@ -2112,7 +2112,11 @@ function tgl_indo($tgl){
 
 }
 function statistik_pengunjung(){
-	$info=_select_unique_result("select cv.*,count(cv.id) as jumlah,(select count(cv2.id) from cni_visitor cv2 where cv2.tanggal='".date("Y-m-d")."' ) as jmtd from cni_visitor cv");
+	$info=_select_unique_result("select cv.*,count(cv.id) as jumlah,(select count(cv2.id) from cni_visitor cv2 where cv2.tanggal='".date("Y-m-d")."' ) as jmtd,(select count(DISTINCT cv3.ip) from cni_visitor cv3 where cv3.tanggal='".date("Y-m-d")."' group by cv3.ip) as perip from cni_visitor cv");
+	return $info;	
+}
+function script_cni($id){
+	$info=_select_unique_result("select isi from cni_script where id='$id'");
 	return $info;	
 }
 

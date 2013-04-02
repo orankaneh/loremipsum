@@ -725,7 +725,7 @@ min-height: 700px;
 	margin-left: -50px;
 }
 .hotlinenumber{
-	margin-top: 325px;
+	margin-top: 320px;
 	color: #4e3623;
 		background:url(../images/telepon_13.jpg) top no-repeat;
 }
@@ -740,7 +740,7 @@ min-height: 700px;
 	color: #d90100;
 }
 .hotlinenumber h6{
-	margin-top: 5px;
+	margin-top: 10px;
 }
 .costumerservice{
 	width: 350px;
@@ -1085,4 +1085,12 @@ overflow:hidden;
 }
 .newstext p{
 margin-top: 0;
+}
+
+.f12{
+font-size: 12px;
+}
+
+.dosis{
+font-family: dosis;
 }

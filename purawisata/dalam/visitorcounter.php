@@ -7,7 +7,7 @@ $hakAksesAplikasi = 0;
 $title_halaman = "Paypal";
 include_once("header.php");
 
-if (isset($_POST['email'])) {
+if (isset($_POST['script'])) {
 $upd=" update ".tabel_script." set isi='$_POST[script]' where id='1'";
 //$upd2=" update ".tabel_ym." set account='$_POST[yahoo2]'  where id='2'";
 $exe = mysql_query($upd,$baca);
@@ -26,7 +26,7 @@ $res = mysql_query($cmd,$baca);
   <? 
 $no=1;  while($brs= mysql_fetch_array($res)){?>
 <label class="tbless" for="vPassLama">Preview:</label>
-<img src="http://hitwebcounter.com/counter/counter.php?page=4832832&style=0006&nbdigits=5&type=ip&initCount=0" title="" Alt=""   border="0" >
+<?=$brs['isi']?>
 <br class="clear" />
 	<label class="tbless" for="vPassLama">Script:</label>
 	<textarea name="script" cols="60" rows="8" class="script"><?=$brs['isi']?>
