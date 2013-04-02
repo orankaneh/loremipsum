@@ -19,7 +19,14 @@ function menuAdmin() {
 						<li><a href="beritaKategoriList.php" class="nochild"><b>Daftar Kategori Berita</b></a></li>
 					</ul>
 				</li>
-				
+				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/clipboard.png" class="iconadmin">Agenda</b></a>
+					<ul>
+						<li><a href="eventUpdate.php" class="nochild"><b>Tambah Agenda</b></a></li>
+						<li><a href="eventList.php" class="nochild"><b>Daftar Agenda</b></a></li>
+						<li><a href="eventKategoriUpdate.php" class="nochild"><b>Tambah Kategori Agenda</b></a></li>
+						<li><a href="eventKategoriList.php" class="nochild"><b>Daftar Kategori Agenda</b></a></li>
+					</ul>
+				</li>
 				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/camera.png" class="iconadmin">Galeri Foto</b></a>
 					<ul>
 						<li><a href="galeriUpdate.php" class="nochild"><b>Tambah Foto</b></a></li>
@@ -118,8 +125,10 @@ function katUI($kat,$tagName,$id,$className) {
 	}
 	elseif($kat=="fasilitas"){
 		$uiKategori .= getKatFasilitas(0,$id,0);	
-	}	
-	
+	}
+	elseif($kat=="event"){
+		$uiKategori .= getKatEvent(0,$id,0);	
+	}		
 	$uiKategori =
 		'<select class="'.$className.'" name="'.$tagName.'">'.
 			'<option value="0">&nbsp;</option>'.
@@ -152,6 +161,25 @@ function getKatBerita($parent_id=0,$seldId=0,$depth=0) {
 	
 	$uiKategori = '';
 	$sqlK = "select id, nama, parent_id from ".tabel_berita." where status='1' and parent_id='".$parent_id."' and kategori='1' order by nama asc";
+	$resK = mysql_query($sqlK, $baca);
+	while($rowK=mysql_fetch_object($resK)) {
+		$seld = ($seldId==$rowK->id)? 'selected="selected"' : '';
+		$uiKategori .= '<option '.$seld.' value="'.$rowK->id.'">'.$spacer.$rowK->nama.'</option>';
+		$uiKategori .= getKatBerita($rowK->id,$seldId,$depth);
+	}
+	return $uiKategori;
+}
+
+function getKatEvent($parent_id=0,$seldId=0,$depth=0) {
+	global $baca;
+	$spacer = "";
+	for($i=0;$i<$depth;$i++) {
+		$spacer .= "&nbsp;&nbsp;&nbsp;&nbsp;";
+	}
+	$depth++;
+	
+	$uiKategori = '';
+	$sqlK = "select id, nama, parent_id from ".tabel_event." where status='1' and parent_id='".$parent_id."' and kategori='1' order by nama asc";
 	$resK = mysql_query($sqlK, $baca);
 	while($rowK=mysql_fetch_object($resK)) {
 		$seld = ($seldId==$rowK->id)? 'selected="selected"' : '';

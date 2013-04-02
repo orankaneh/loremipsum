@@ -113,7 +113,7 @@ ul.cni-vmenu a
 {
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: underline;
-   color: #FC905A;
+   color: #ba985d;
 }
 
 .cni-postcontent h1
@@ -161,7 +161,7 @@ ul.cni-vmenu a
 
 .cni-postcontent h3
 {
-   color: #FC905A;
+   color: #ba985d;
    margin: 10px 0 0;
    font-size: 20px;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
@@ -702,7 +702,7 @@ ul.cni-hmenu li li ul>li:last-child
 
 ul.cni-hmenu ul li a:hover, .desktop ul.cni-hmenu ul li:hover>a
 {
-   background: #27180D;
+   background: #4e3623;
    margin:0 auto;
 }
 .cni-hmenu ul a:hover
@@ -937,7 +937,7 @@ div.cni-block img
 
 .cni-blockcontent a, .cni-blockcontent a:link
 {
-   color: #FC905A;
+   color: #ba985d;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
 }
 
@@ -1202,7 +1202,7 @@ label.cni-checkbox
 
 label.cni-checkbox.active:before
 {
-   background: #FC905A;
+   background: #ba985d;
    -webkit-border-radius:1px;
    -moz-border-radius:1px;
    border-radius:1px;
@@ -1416,7 +1416,7 @@ pre
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
    text-align: left;
-   color: #FC905A;
+   color: #ba985d;
 }
 
 .cni-postheadericons,

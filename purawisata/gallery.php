@@ -1,7 +1,41 @@
-<? include "head.php"; ?>
+<? include "head.php";
+$class=$access;
+?>
 <body>
 <div id="cni-main">
-<? include "header.php"; ?>
+
+<? include "header.php";
+
+$kategorie=bukaurl($kategoriurl);
+$idkategorie='';
+if($kategorie!='all'){
+$idkategorie=$kategorie;
+}
+
+if($jenisfile=='video'){
+$gallerya=galler_video_muat_data($idkategorie,$page);
+}
+else{
+$gallerya=galler_foto_muat_data($idkategorie,$page);
+$fotokat=katagori_foto_muat_data();
+}
+//show_array($gallerya);
+?>
+<script>
+$(document).ready(function(){
+$(".<?=$class?>").addClass("active");
+<? if($kategorie!='all'){?>
+$(".aktiv").removeClass("aktivasi");
+$(".<?=$idkategorie?>").addClass("aktivasi");
+<? }?>
+$(".home").removeClass("active");
+$(".desktop-nav").removeClass("cni-nav");
+$(".desktop-nav").addClass("cni-navwhite");
+$(".cni-hmenu").addClass("spasi");
+$(".triangle").removeClass("triangle");
+$(".<?=$class?>").append("<div class='triangle'></div>");
+  });
+</script>
 <div class="cni-sheet clearfix">
             <div class="cni-layout-wrapper clearfix">
                 <div class="cni-content-layout">
@@ -18,52 +52,41 @@
 
           <div class="gallerylho">
        				<div class="headgallery">
-      					Gallery
+      					GALLERY
      				</div>
+                  
                     <div class="kategoryfoto">
-                      <div class="namakategory aktiv">
-                      <div class="ataskn">Lorem ipsum</div>
-                      <div class="bawahkn">100foto</div>
-                      
+                      <?  foreach($fotokat as $datakategori){?>
+                      <div class="namakategory <?=$datakategori['id']?>">
+                      <div class="ataskn"><a href="<?=app_base_url.$_SESSION['bahasa']."/".saveurl($datakategori['id'])?>/gallery/foto.html"><?=$datakategori['nama']?></a></div>
+                      <div class="bawahkn">
+                      <?
+                      if($jenisfile=='video'){
+                      $hitung="0";
+					  }
+					  else{
+                      $hitung=jumlah_foto_muat_data($datakategori['id']);
+					  $tampil=$hitung[0]." ".$arrTeks['fotoe'];
+                      }
+					  
+					  echo $tampil;
+					  ?>
                       </div>
-                       <div class="namakategory">
-                      <div class="ataskn">Lorem ipsum</div>
-                      <div class="bawahkn">100foto</div>
-                      
                       </div>
-                        <div class="namakategory">
-                      <div class="ataskn">Lorem ipsum</div>
-                      <div class="bawahkn">100foto</div>
-                      
-                      </div>
+                       <? }?>  
                     </div>
                     <div class="isigallery">
-                    <img src="images/dummy/dummy2.jpg"> 
-                    <img src="images/dummy/dummy3.jpg">
-                    <img src="images/dummy/dummy.jpg">
-                    <img src="images/dummy/dummy_10.jpg">
-                    <img src="images/dummy/dummy2.jpg"> 
-                    <img src="images/dummy/dummy3.jpg">
-                    <img src="images/dummy/dummy.jpg">
-                    <img src="images/dummy/dummy_10.jpg">
-                     <img src="images/dummy/dummy2.jpg"> 
-                    <img src="images/dummy/dummy3.jpg">
-                    <img src="images/dummy/dummy.jpg">
-                    <img src="images/dummy/dummy_10.jpg">
-                     <img src="images/dummy/dummy2.jpg"> 
-                    <img src="images/dummy/dummy3.jpg">
-                    <img src="images/dummy/dummy.jpg">
-                    <img src="images/dummy/dummy_10.jpg">
-                     <img src="images/dummy/dummy2.jpg"> 
-                    <img src="images/dummy/dummy3.jpg">
-                    <img src="images/dummy/dummy.jpg">
-                    <img src="images/dummy/dummy_10.jpg">
+                    <? foreach ($gallerya['list'] as $koleksifoto){ ?>
+                      <img src="<?=app_base_url?>images/foto/<?=$koleksifoto['id']?>.jpg"> 
+                     <? } ?> 
+                      
                     </div>
+                    <?= $gallerya['paging']?>
         </div>
-        
-      
+   
 
-</article></div>
+</article>
+  </div>
                     </div>
                 </div>
             </div>

@@ -40,6 +40,11 @@ $arrEn = array(
 				"fotoe" => "PHOTO",
 				"selengkap" => "Read More",
 				"kontaklho" => "Contact Us",
+				"lakasilho" => "Our Location",
+				"agenda" => "EVENTS",
+				"kami" => "US",
+				"indexberita" => "NEWS INDEX",
+				"eventext" => "EVENTS",
 				"berita_lainya" => "OTHER NEWS"
 			);			
 
@@ -84,6 +89,11 @@ $arrIndo = array(
 				"fotoe" => "FOTO",
 				"selengkap" => "Selengkapnya",
 				"kontaklho" => "Hubungi Kami",
+				"lakasilho" => "Lokasi Kami",
+				"agenda" => "AGENDA",
+				"kami" => "KAMI",
+				"indexberita" => "INDEX BERITA",
+				"eventext" => "AGENDA",
 				"berita_lainya" => "BERITA LAINYA"      
               );			  
 ?>

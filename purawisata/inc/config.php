@@ -6,7 +6,7 @@ if($_SERVER['SERVER_NAME']=="192.168.1.4" || $_SERVER['SERVER_NAME']=="localhost
 	$accNya = "remote";
 }
 
-$client="Purawisata Jogja";
+$client="Purawisata Jogjakarta";
 if($accNya == "lokal") {
 	$host="localhost";
 	$user="root";
@@ -61,6 +61,7 @@ define("tabel_produk", "cni_produk");
 define("tabel_script", "cni_script");
 define("tabel_kategori", "cni_kategori");
 define("tabel_pesan", "cni_pesan");
+define("tabel_event", "cni_event");
 // - config - database & aplikasi -----------------------------------------------------------
 
 // - config - email -----------------------------------------------------------

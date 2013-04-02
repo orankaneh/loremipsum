@@ -1,5 +1,16 @@
 <? include "head.php"; ?>
 <body>
+<script>
+$(document).ready(function(){
+$(".berita").addClass("active");
+$(".home").removeClass("active");
+$(".desktop-nav").removeClass("cni-nav");
+$(".desktop-nav").addClass("cni-navwhite");
+$(".cni-hmenu").addClass("spasi");
+$(".triangle").removeClass("triangle");
+$(".berita").append("<div class='triangle'></div>");
+  });
+</script>
 <div id="cni-main">
 <? include "header.php";
 $max=maxidnews_muat_data();
@@ -26,7 +37,7 @@ $bannerkananlainay=bannerkananmuatdata('4');
 	<div class="detailberita">	
          <div class="beritakiri">
        		<div class="isikiri">
-      		<?=$arrTeks['indexberita']?>
+      		<?=$arrTeks['eventext']?>
       		 </div>
         <div class="indexberita">
                       <? foreach($indexnews['list'] as $limitdikit){
@@ -58,8 +69,9 @@ $bannerkananlainay=bannerkananmuatdata('4');
                     </div>
                     </div>
                     <? }?>
+                   
         </div><!--aaaa-->
-
+			 <?=$indexnews['paging']?>
 		</div>
     	  </div><!-- End Berita Kiri-->
            

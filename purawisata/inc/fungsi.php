@@ -2336,6 +2336,8 @@ $or=" or kategori ='0' and  status='1' and id != '$idua' ";
     return $result;
 }
 
+
+
 function maxidnews_muat_data(){
 
     $sql = "select MAX(id) from ".tabel_berita." where kategori ='0' and  status='1'";
@@ -2398,8 +2400,15 @@ return $output;
 }
 
 function replacesamadengan($judul){
-$letters = array('=','-','');
+$letters = array('=','-');
 $fruit   = array('x0x',' ');
+$output  = str_replace($letters, $fruit, $judul);
+return $output;
+}
+
+function replaceurl($judul){
+$letters = array('=','-');
+$fruit   = array('x3Dx',' ');
 $output  = str_replace($letters, $fruit, $judul);
 return $output;
 }
@@ -2410,6 +2419,14 @@ $fruit   = array('=');
 $output  = str_replace($letters, $fruit, $judul);
 return $output;
 }
+
+function  replacebalikurl($judul){
+$letters = array('x3Dx');
+$fruit   = array('=');
+$output  = str_replace($letters, $fruit, $judul);
+return $output;
+}
+
 function  keyword($key){
 $letters = array(' ','-');
 $fruit   = array(', ',', ');
@@ -2427,6 +2444,20 @@ $crypt = new MD5Crypt;
 $sessioncrypt=$crypt->DEcrypt(replaceopolagi($id),rahasialho);	
 return $sessioncrypt;
 }
+
+function saveurl($id){
+$crypt = new MD5Crypt;
+$sessioncrypt=$crypt->Encrypt($id,rahasialho);	
+return replaceurl($sessioncrypt);
+}
+
+function bukaurl($id){
+$crypt = new MD5Crypt;
+$sessioncrypt=$crypt->DEcrypt(replacebalikurl($id),rahasialho);	
+return $sessioncrypt;
+}
+
+
 
 function hari($hari)
 {
@@ -2534,5 +2565,236 @@ $today=date("Y-m-d");
         $result[] = $row;
     }
     return $result;
+}
+
+function generate_get_parameter($get,$addArr=array(),$removeArr=array()) {
+    if($addArr==null)
+        $addArr=array();
+    foreach($removeArr as $rm){
+        unset($get[$rm]);
+    }
+    $link = "";
+    $get=array_merge($get, $addArr);
+    foreach ($get as $key => $val) {
+        if ($link == null) {
+            $link.="$key=$val";
+        }else
+            $link.="&$key=$val";
+    }
+    return $link;
+}
+
+function paging($sql, $dataPerPage) {
+
+    $showPage = NULL;
+    ob_start();
+    echo "
+        <div class='body-page'>";
+    if (!empty($_GET['page'])) {
+        $noPage = $_GET['page'];
+    } else {
+        $noPage = 1;
+    }
+	$kategoriurl = isset($_GET['kategori']) ? $_GET['kategori'] : NULL;
+
+    $dataPerPage = $dataPerPage;
+    $offset = ($noPage - 1) * $dataPerPage;
+
+    $hasil = mysql_query($sql);
+
+    $data = mysql_num_rows($hasil);
+    $jumData = $data;
+    $jumPage = ceil($jumData / $dataPerPage);
+    $get=$_GET;
+    if ($jumData > $dataPerPage) {
+        if ($noPage > 1){            
+            $get['page']=($noPage - 1);
+			if ($ajax != NULL) "<span class='page-prev'></span>";
+            else echo "<span class='page-prev'></span>";
+        }
+        for ($page = 1; $page <= $jumPage; $page++) {
+            if ((($page >= $noPage - 9) && ($page <= $noPage + 9)) || ($page == 1) || ($page == $jumPage)) {
+                if (($showPage == 1) && ($page != 2))
+                    echo "...";
+                if (($showPage != ($jumPage - 1)) && ($page == $jumPage))
+                    echo "...";
+                if ($page == $noPage)
+                    echo " <span class='noblock'>" . $page . "</span> ";
+                else{
+                    $get['page']=$page;
+                    
+                    if($tab != NULL){
+                        $get['tab'] = $tab;
+                    }
+					if ($ajax != NULL) echo " <a class='block' onclick='contentloader(\"?" .  generate_get_parameter($get). "\",\"#content\")'>" . $page . "</a> ";
+                    else echo " <a class='block' href='" .app_base_url.$_SESSION['bahasa']."/".$kategoriurl."/gallery/".$page."/foto.html"."'>" . $page . "</a> ";
+                }
+                $showPage = $page;
+            }
+        }
+
+        if ($noPage < $jumPage){
+            $get['page']=($noPage + 1);
+			if ($ajax != NULL) echo "<span class='page-next' onclick='contentloader(\"?" .  generate_get_parameter($get). "\",\"#content\")'></span>";
+            else echo "<span class='page-next' onClick=location.href='?" .  generate_get_parameter($get). "'></span>";
+        }
+    }
+    echo "</div>";
+
+    $buffer = ob_get_contents();
+    ob_end_clean();
+    return $buffer;
+}
+
+function pagination($sql, $dataPerPage) {
+
+    $showPage = NULL;
+    ob_start();
+    echo "
+        <div class='body-page2'>";
+    if (!empty($_GET['page'])) {
+        $noPage = $_GET['page'];
+    } else {
+        $noPage = 1;
+    }
+	$kategoriurl = isset($_GET['kategori']) ? $_GET['kategori'] : NULL;
+
+    $dataPerPage = $dataPerPage;
+    $offset = ($noPage - 1) * $dataPerPage;
+
+    $hasil = mysql_query($sql);
+
+    $data = mysql_num_rows($hasil);
+    $jumData = $data;
+    $jumPage = ceil($jumData / $dataPerPage);
+    $get=$_GET;
+    if ($jumData > $dataPerPage) {
+        if ($noPage > 1){            
+            $get['page']=($noPage - 1);
+			if ($ajax != NULL) "<a href='" .app_base_url."news/".$_SESSION['bahasa']."/".$get['page']."/list.html"."'><span class='page-prev'></span></a>";
+            else echo "<a href='" .app_base_url."news/".$_SESSION['bahasa']."/".$get['page']."/list.html"."'><span class='page-prev'></span></a>";
+        }
+        for ($page = 1; $page <= $jumPage; $page++) {
+            if ((($page >= $noPage - 9) && ($page <= $noPage + 9)) || ($page == 1) || ($page == $jumPage)) {
+                if (($showPage == 1) && ($page != 2))
+                    echo "...";
+                if (($showPage != ($jumPage - 1)) && ($page == $jumPage))
+                    echo "...";
+                if ($page == $noPage)
+                    echo " <span class='noblock'>" . $page . "</span> ";
+                else{
+                    $get['page']=$page;
+                    
+                    if($tab != NULL){
+                        $get['tab'] = $tab;
+                    }
+					if ($ajax != NULL) echo " <a class='block' onclick='contentloader(\"?" .  generate_get_parameter($get). "\",\"#content\")'>" . $page . "</a> ";
+                    else echo " <a class='block' href='" .app_base_url."news/".$_SESSION['bahasa']."/".$page."/list.html"."'>" . $page . "</a> ";
+                }
+                $showPage = $page;
+            }
+        }
+
+        if ($noPage < $jumPage){
+            $get['page']=($noPage + 1);
+			if ($ajax != NULL) echo "<span class='page-next' href='" .app_base_url."news/".$_SESSION['bahasa']."/".$get['page']."/list.html"."'></span>";
+            else echo "<a href='" .app_base_url."news/".$_SESSION['bahasa']."/".$get['page']."/list.html"."'><span class='page-next'></span></a>";
+        }
+    }
+    echo "</div>";
+
+    $buffer = ob_get_contents();
+    ob_end_clean();
+    return $buffer;
+}
+
+
+function galler_foto_muat_data($kategory,$page = null){
+$where="";
+   $result = array();
+	
+	if($kategory!=''){
+	$where=" and parent_id ='$kategory'";
+	}
+   	
+	$dataPerPage='20';	
+ 	if (!empty($page)) {
+        $noPage = $page;
+    } else {
+        $noPage = 1;
+    }
+		
+
+	$offset = ($noPage - 1) * $dataPerPage;
+    $batas = "";
+    if ($dataPerPage != null) {
+        $batas = "limit $offset, $dataPerPage";
+    }
+	
+	$fotolist = "select * from ".tabel_foto." where kategori = '0' $where $batas";
+	
+	$result['list']= _select_arr($fotolist);
+	$sqli = "select * from ".tabel_foto." where kategori = '0' $where";
+ 	$result['paging'] = paging($sqli , $dataPerPage);
+    $result['offset'] = $offset;
+return $result;
+}
+
+function indexnews_muat_data($idsatu,$idua){
+$where='';
+$or='';
+if($idsatu!=''){
+$where="  and id != '$idsatu' ";
+}
+if($idua!=''){
+$or=" or kategori ='0' and  status='1' and id != '$idua' ";
+}
+$where="";
+   $result = array();
+	
+	if($kategory!=''){
+	$where=" and parent_id ='$kategory'";
+	}
+   	
+	$dataPerPage='10';	
+ 	if (!empty($page)) {
+        $noPage = $page;
+    } else {
+        $noPage = 1;
+    }
+		
+
+	$offset = ($noPage - 1) * $dataPerPage;
+    $batas = "";
+    if ($dataPerPage != null) {
+        $batas = "limit $offset, $dataPerPage";
+    }
+	
+	
+    $sql = "select * from ".tabel_berita." where kategori ='0' and  status='1' $where $or $batas";
+ 	$result['list']= _select_arr($sql);
+	
+	 $sqli = "select * from ".tabel_berita." where kategori ='0' and  status='1' $where $or";
+	 $result['paging'] = pagination($sqli , $dataPerPage);
+    $result['offset'] = $offset;
+    return $result;
+}
+
+
+function katagori_foto_muat_data(){
+
+$kategorifoto = "select * from ".tabel_foto." where kategori = '1'";
+$exekategorifoto = mysql_query($kategorifoto);
+$result = array();
+
+    while ($rows = mysql_fetch_array($exekategorifoto)) {
+        $result[] = $rows;
+    }
+return $result;
+}
+
+function jumlah_foto_muat_data($id){
+$result = _select_unique_result("select count(id) from ".tabel_foto." where parent_id = '$id'");
+return $result;
 }
 ?>

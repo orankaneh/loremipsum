@@ -1,6 +1,6 @@
    <div class="agendalho">
        				<div class="headagenda">
-      					AGENDA
+      					<?=$arrTeks['agenda']?>
      				</div>
                        <ul>
 						<hr/>
@@ -25,7 +25,7 @@
           
            <div class="sociallho">
        				<div class="headsocial">
-      					FOLLOW KAMI
+      					FOLLOW <?=$arrTeks['kami']?>
      				</div>     
                     <div class="twitter">
                      <div class="logotw"></div><div class="twittertext"><b>Twitter</b></div>

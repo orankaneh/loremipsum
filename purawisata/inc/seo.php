@@ -19,7 +19,13 @@ if($_SESSION['bahasa'] == 'id'){
 	$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 	$judul = isset($_GET['judul']) ? $_GET['judul'] : NULL;
 	$bahasa = isset($_GET['bahasa']) ? $_GET['bahasa'] : NULL;
+	$kategoriurl = isset($_GET['kategori']) ? $_GET['kategori'] : NULL;
+	$jenisfile = isset($_GET['jenis']) ? $_GET['jenis'] : NULL;
+	$page = isset($_GET['page']) ? $_GET['page'] : NULL;
+	//$get=$_GET;
+	//echo generate_get_parameter($get);
 	
+	//exit;
 	if(($access=='news') and ($id!='')){
 		$deskripsi=detail_berita_muat_data(bukaid($id));
 		$variable='isi'.$temp;

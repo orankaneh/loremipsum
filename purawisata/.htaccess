@@ -17,6 +17,19 @@ RewriteEngine On
 RewriteRule form/contact-us.html$ contact-us.php [L,QSA]
 RewriteRule form/location.html$ location.php [L,QSA]
 RewriteRule location.html$ location.php [L,QSA]
+
+#news clean url
+RewriteRule news/(.*)/(.*)/list.html$  newsindex.php?bahasa=$1&page=$2[L,QSA]
+RewriteRule news/(.*)/list.html$  newsindex.php?bahasa=$1[L,QSA]
+
+#event clean url
+RewriteRule events/(.*)/(.*)/list.html$  eventindex.php?bahasa=$1&page=$2[L,QSA]
+RewriteRule events/(.*)/list.html$  eventindex.php?bahasa=$1[L,QSA]
+
 RewriteRule (.*)/(.*)/(.*)/read/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]
 RewriteRule (.*)/(.*)/(.*)/detail/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]
+RewriteRule (.*)/(.*)/gallery/(.*)/(.*).html$ gallery.php?access=gallery&kategori=$2&page=$3&jenis=$4&bahasa=$1 [L,QSA]
+RewriteRule (.*)/(.*)/gallery/(.*).html$ gallery.php?access=gallery&kategori=$2&jenis=$3&bahasa=$1 [L,QSA]
 
+
+ErrorDocument 404 http://localhost/loremipsum/purawisata/404.php
