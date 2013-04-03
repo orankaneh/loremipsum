@@ -51,14 +51,21 @@ $bannerkananlainay=bannerkananmuatdata('4');
                    <th>Ticket</th>
                    <th>Deskripsi</th>
                    </tr>
-                   <? foreach($tiketbox as $angka => $detailtiket){?>
+                   <? 
+				   if(count($tiketbox)=="0"){
+				   echo "<tr><td colspan='4' class='center'>Data not found</td></tr>";
+				   }
+				   else{
+				   foreach($tiketbox as $angka => $detailtiket){?>
                    <tr>
                    <td class="center"><?=++$angka?></td>
                    <td class="center"><?=$detailtiket['nama']?></td>
                    <td ><?=$arrTeks['simbolmata']." ".$detailtiket[$matauang]?></td>
                    <td><?=$detailtiket['deskripsi'.$temp2]?></td>
                    </tr>   
-                   <? } ?>
+                   <? } 
+				   }
+				   ?>
                    </table>      
                     </fieldset>
                     <? }?>

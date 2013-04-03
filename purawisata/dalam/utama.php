@@ -31,9 +31,6 @@ $visitor=statistik_pengunjung();
 </td>
 </tr>
 </table>
-<div style="float:right">
-Powered by Citraweb Nusa Infomedia
-</div>
 <?
 include_once("footer.php");
 ?>
