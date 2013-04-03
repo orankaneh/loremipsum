@@ -26,7 +26,8 @@ label.tbless_norm { float: left; width: 120px; }
 select.tbless, input.tbless, textarea.tbless { margin-bottom: 5px; }
 
 .dtable { 
-border-collapse: collapse; border:1px solid #000; }
+border-collapse: collapse; border:1px solid #000;
+background:#FFFFFF;}
 .dtable .dhead { font-weight:bold; 
 background:#424242;
 box-shadow: 0 150px 150px -150px rgba(255, 255, 255, 0.5) inset; 
@@ -154,5 +155,26 @@ margin-left: -23px;
 }
 .menu-hori b{
 margin-left: 15px;
+}
+
+.tiket{
+width:800px;
+background: #FFFFFF;
+}
+.tiket th{
+ color:#FFF; 
+background: rgb(78,78,78); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(78,78,78,1) 0%, rgba(119,119,119,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(78,78,78,1)), color-stop(100%,rgba(119,119,119,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(78,78,78,1) 0%,rgba(119,119,119,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(78,78,78,1) 0%,rgba(119,119,119,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(78,78,78,1) 0%,rgba(119,119,119,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(78,78,78,1) 0%,rgba(119,119,119,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4e4e4e', endColorstr='#777777',GradientType=0 ); /* IE6-9 */
+font-size:14px; 
+font-weight:bold; 
+}
+.tiket .text{
+width: 100%;
 }
 

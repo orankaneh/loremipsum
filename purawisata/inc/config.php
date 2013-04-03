@@ -18,6 +18,7 @@ if($accNya == "lokal") {
 	$connectdb2=mysql_select_db($db,$baca);
 	$urlNya = "http://".$_SERVER['HTTP_HOST']."/loremipsum/purawisata/";
 	$addLink = $urlNya;
+	$serverhost=$_SERVER['HTTP_HOST'];
 } elseif($accNya == "remote") {
 	$host="localhost";
 	$user="user_name";
@@ -62,6 +63,7 @@ define("tabel_script", "cni_script");
 define("tabel_kategori", "cni_kategori");
 define("tabel_pesan", "cni_pesan");
 define("tabel_event", "cni_event");
+define("tabel_harga", "cni_tiket");
 // - config - database & aplikasi -----------------------------------------------------------
 
 // - config - email -----------------------------------------------------------

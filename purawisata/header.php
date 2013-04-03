@@ -1,3 +1,8 @@
+<?
+error_reporting(0);
+ob_start();
+session_start();?>
+
 <div id="element_to_pop_up">
 
 </div>
@@ -12,8 +17,14 @@
 
             </div>
             <div class="flag">
-            <img src="<?=app_base_url?>images/icon/indo.jpg" />
-            <img src="<?=app_base_url?>images/icon/en.jpg" />
+            <?
+			$urlid=gantibahasa($_SERVER['REQUEST_URI'],'id',$_SESSION['bahasa']);
+			$urlen=gantibahasa($_SERVER['REQUEST_URI'],'en',$_SESSION['bahasa']);
+
+		
+			?>
+           <a href="http://<?=$serverhost.$urlid?>"> <img src="<?=app_base_url?>images/icon/indo.jpg" /></a>
+           <a href="http://<?=$serverhost.$urlen?>"> <img src="<?=app_base_url?>images/icon/en.jpg" /></a>
             </div>
 <div class="cni-object227400126">
     <form class="cni-search" name="Search" action="javascript:void(0)">
@@ -30,7 +41,7 @@ $fasilitas=menu_fasilitas_muat_data();
 <nav class="cni-nav clearfix">
     <div class="cni-nav-inner">
     <ul class="cni-hmenu">
-    <li><a href="<?=app_base_url?>" class="home active"><?=$arrTeks['home']?></a></li>    
+    <li><a href="<?=app_base_url."home/".$_SESSION['bahasa']?>.html" class="home active"><?=$arrTeks['home']?></a></li>    
     <li><a href="#" class="fasilitas"><?=$arrTeks['facilities']?></a>
     	<ul>
         <? foreach($fasilitas as $itemfasilitas){
@@ -45,7 +56,7 @@ $fasilitas=menu_fasilitas_muat_data();
         	<li><a href="<?=app_base_url."news/".$_SESSION['bahasa']."/list.html"?>">NEWS</a></li>
             <li><a href="<?=app_base_url."events/".$_SESSION['bahasa']."/list.html"?>">EVENTS</a></li>
             <li><a href="<?=app_base_url."promos/".$_SESSION['bahasa']."/list.html"?>">PROMOS</a></li>
-            <li><a href="<?=app_base_url."ticket/".$_SESSION['bahasa']."/list.html"?>">TICKET</a></li>
+            <li><a href="<?=app_base_url."list/".$_SESSION['bahasa']."/price.html"?>">TICKET</a></li>
         </ul>
         </li>
       <li><a href="<?=app_base_url?>">ARTICLE</a>

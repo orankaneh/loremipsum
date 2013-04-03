@@ -16,7 +16,7 @@ $gallery=galleryfotomuatdata('4');
           <div class="flexslider">
               <ul class="slides">
               <? foreach ($slidegambar as $data){ ?>
-   					 <li><a href="<?=$data['ket']?>"><img src="images/header/<?=$data['id']?>.jpg"></a></li>
+   					 <li><a href="<?=$data['ket']?>"><img src="<?=app_base_url?>images/header/<?=$data['id']?>.jpg"></a></li>
 				<? } ?>
  			 </ul>
 		</div><!--end slider container here -->
@@ -35,7 +35,7 @@ $gallery=galleryfotomuatdata('4');
     <div class="cni-layout-cell layout-item-0" style="width: 100%" >
         <p class="bannerattasp">
           <? foreach ($banneratas as $iklana){ ?>
-        <a href="<?=$iklana['url']?>"><img class="banneratas" width="<?=widhtnya_fasilitas?>" height="<?=height_fasilitas?>" src="images/banner/<?=$iklana['id']?>.jpg"></a>
+        <a href="<?=$iklana['url']?>"><img class="banneratas" width="<?=widhtnya_fasilitas?>" height="<?=height_fasilitas?>" src="<?=app_base_url?>images/banner/<?=$iklana['id']?>.jpg"></a>
         <? }?>
         </p>
         <p><br/></p>
@@ -52,14 +52,14 @@ $gallery=galleryfotomuatdata('4');
 				$sessioncrypt=saveid($news['id']);	
 				?>
              <div class="newnews">
-             <img src="images/berita/<?=$news['id']?>.jpg">
-             <h1><a href="news/<?=$_SESSION['bahasa']?>/<?=$sessioncrypt?>/read/<?=cleanurllho($news[$judulnews])?>.html"><?=$news[$judulnews]?></a></h1>
+             <img src="<?=app_base_url?>images/berita/<?=$news['id']?>.jpg">
+             <h1><a href="<?=app_base_url?>news/<?=$_SESSION['bahasa']?>/<?=$sessioncrypt?>/read/<?=cleanurllho($news[$judulnews])?>.html"><?=$news[$judulnews]?></a></h1>
         	<?
          		  if($_SESSION['bahasa'] == 'id'){
-						echo readmore(html_entity_decode($news['isi']),'255' ,'news/'.$_SESSION['bahasa'].'/'.$sessioncrypt.'/read/'.cleanurllho($news[$judulnews]).'.html',$arrTeks['selengkap']);
+						echo readmore(html_entity_decode($news['isi']),'255' ,app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncrypt.'/read/'.cleanurllho($news[$judulnews]).'.html',$arrTeks['selengkap']);
 				  }
 					else{
-						echo readmore(html_entity_decode($news['isi_e']),'260','news/'.$_SESSION['bahasa'].'/'.$sessioncrypt.'/read/'.cleanurllho($news[$judulnews]).'.html',$arrTeks['selengkap']);	  
+						echo readmore(html_entity_decode($news['isi_e']),'260',app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncrypt.'/read/'.cleanurllho($news[$judulnews]).'.html',$arrTeks['selengkap']);	  
 				  }
 			 ?>
              </div>
@@ -117,7 +117,7 @@ $gallery=galleryfotomuatdata('4');
                     </div>
                     <div class="galleryinfooter">
                     <? foreach ($gallery as $colection) {?>
-                  <a href="images/foto/<?=$colection['id']?>.jpg" class="fancybox-buttons" rel="gallery">  <img src="images/foto/thumb/<?=$colection['id']?>.jpg"> </a>
+                  <a href="<?=app_base_url?>images/foto/<?=$colection['id']?>.jpg" class="fancybox-buttons" rel="gallery">  <img src="<?=app_base_url?>images/foto/thumb/<?=$colection['id']?>.jpg"> </a>
                     
                      <div id="description" style="display: none;">
 					 <div>
@@ -149,9 +149,9 @@ $gallery=galleryfotomuatdata('4');
                     SELENGKAPNYA                    </div>
         </div>
       <div class="bannerdepan">
-  <img src="images/downloadbutton.png">
+  <img src="<?=app_base_url?>images/downloadbutton.png">
   <a href="<?=$bannerkanan['0']['url']?>">
-  <img src="images/banner/<?=$bannerkanan['0']['id']?>.jpg">
+  <img src="<?=app_base_url?>images/banner/<?=$bannerkanan['0']['id']?>.jpg">
    </a>
    </div>
      </div> 

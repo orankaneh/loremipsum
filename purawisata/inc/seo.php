@@ -1,20 +1,7 @@
 <?
-	$_SESSION['bahasa']='en';
-if($_SESSION['bahasa'] == 'id'){
-	$arrTeks = $arrIndo;
-	$temp ="";
-	$judulnews="nama";
-   // $flagI =$flagIn;
-   // $flagE =$flagEn_blur;	
-}else{
-    $arrTeks = $arrEn;
-	$temp = "_e";
-	$judulnews="nama_e";
-   // $flagE = $flagEn;
-   // $flagI =$flagIn_blur;
-    
-
-}
+error_reporting(0);
+ob_start();
+session_start();
     $access=isset($_GET['access']) ? $_GET['access'] : NULL;
 	$id = isset($_GET['id']) ? $_GET['id'] : NULL;
 	$judul = isset($_GET['judul']) ? $_GET['judul'] : NULL;
@@ -24,7 +11,32 @@ if($_SESSION['bahasa'] == 'id'){
 	$page = isset($_GET['page']) ? $_GET['page'] : NULL;
 	//$get=$_GET;
 	//echo generate_get_parameter($get);
+		if($bahasa!=NULL){
+			$_SESSION['bahasa']=$bahasa;
+		}
+		else{
+			$_SESSION['bahasa']="en";
+		}
 	
+	if($_SESSION['bahasa'] == 'id'){
+			$arrTeks = $arrIndo;
+			$temp ="";
+			$temp2 ="";
+			$judulnews="nama";
+			$matauang="rupiah";
+		   // $flagI =$flagIn;
+		   // $flagE =$flagEn_blur;	
+		}else{
+			$arrTeks = $arrEn;
+			$temp = "_e";
+			$temp2 = "en";
+			$judulnews="nama_e";
+			$matauang="dollar";
+		   // $flagE = $flagEn;
+		   // $flagI =$flagIn_blur;
+			
+
+}
 	//exit;
 	if(($access=='news') and ($id!='')){
 		$deskripsi=detail_berita_muat_data(bukaid($id));
@@ -46,7 +58,7 @@ if($_SESSION['bahasa'] == 'id'){
     <meta name="description" content="<?=$metad?>"/>
     
     <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
-    <meta name="Author"    content="CV Citraweb Nusa InfoMedia  - Web programmer: adhyoon | Designer : mbahweng" />
+    <meta name="Author"   content="CV Citraweb Nusa InfoMedia  - Web programmer: adhyoon | Designer : mbahweng" />
     
     
     <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->

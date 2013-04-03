@@ -28,11 +28,11 @@ $othernews=othernews_muat_data($maxid,$idtampil);
                       <?				  
 					    if($_SESSION['bahasa'] == 'id'){
 						echo datetimeid($limitdikit['tgl_buat']);
-						echo readmore(html_entity_decode($limitdikit['isi']),'100' ,'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);
+						echo readmore(html_entity_decode($limitdikit['isi']),'100' ,app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);
 				  }
 					else{
 						echo datetime($limitdikit['tgl_buat']);
-						echo readmore(html_entity_decode($limitdikit['isi_e']),'100','news/'.$_SESSION['bahasa'].'/'.$sessioncryptx.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);	  
+						echo readmore(html_entity_decode($limitdikit['isi_e']),'100',app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);	  
 				  }
 					  ?>
                  

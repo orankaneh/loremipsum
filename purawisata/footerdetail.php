@@ -2,12 +2,21 @@
      <div class="isifooterlho">
    		<div class="hotline">
          	<div class="hotlinenumber">
-        		<h4><b>HOTLINE SERVICE</b></h4><br/>
+        	<h4><b>HOTLINE SERVICE</b></h4>
         		<h6>CALL CENTER</h6>
-        		<b>+62 274 - 380643</b><br/><br/>
+        		<b>+62 274 - 380643</b><br/>
                 
                <h6> WEDDING PACKAGE</h6>
         		<b>+62 856 2969 677</b>
+                <div style="margin-top:20px;">
+				<?
+                $scripte=script_cni('1');
+                echo $scripte[0];
+                ?>
+                </div>
+                <div style="display:none">
+             <a href="http://info.flagcounter.com/sXiU"><img src="http://s03.flagcounter.com/count/sXiU/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_3/labels_0/pageviews_1/flags_0/" alt="Flag Counter" border="0"></a>
+                </div>
         	</div>
         </div>
         <div class="costumerservice">

@@ -189,7 +189,7 @@ function getKatEvent($parent_id=0,$seldId=0,$depth=0) {
 	return $uiKategori;
 }
 
-function getKatFasilitas($parent_id=0,$seldId=0,$depth=0) {
+function getKatFasilitas($parent_id='1',$seldId=0,$depth=0) {
 	global $baca;
 	$spacer = "";
 	for($i=0;$i<$depth;$i++) {
@@ -198,7 +198,8 @@ function getKatFasilitas($parent_id=0,$seldId=0,$depth=0) {
 	$depth++;
 	
 	$uiKategori = '';
-	$sqlK = "select id, nama, parent_id from ".tabel_foto." where status='1' and parent_id='".$parent_id."' and kategori='1' order by nama asc";
+	$sqlK = "select id, nama, parent_id from ".tabel_fasilitas." where status='1' and parent_id='1' and kategori='0' order by nama asc";
+	//echo $sqlK;
 	$resK = mysql_query($sqlK, $baca);
 	while($rowK=mysql_fetch_object($resK)) {
 		$seld = ($seldId==$rowK->id)? 'selected="selected"' : '';

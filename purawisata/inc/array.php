@@ -30,6 +30,7 @@ $arrEn = array(
                 "tgl2" => "Check-out" ,
                 "room" => "Type Room" ,
                 "rooms" => "Room(s)",
+				"tiket" => "TICKET",
 				"inpo" => "For online reservation please use the box below, for more information you can contact<br/> our customer service" , 
 				"news" => "NEWS",
 				"home" => "HOME",
@@ -45,6 +46,7 @@ $arrEn = array(
 				"kami" => "US",
 				"indexberita" => "NEWS INDEX",
 				"eventext" => "EVENTS",
+				"simbolmata" => "$",
 				"berita_lainya" => "OTHER NEWS"
 			);			
 
@@ -94,6 +96,8 @@ $arrIndo = array(
 				"kami" => "KAMI",
 				"indexberita" => "INDEX BERITA",
 				"eventext" => "AGENDA",
+				"tiket" => "TIKET",
+				"simbolmata" => "Rp.",
 				"berita_lainya" => "BERITA LAINYA"      
               );			  
 ?>

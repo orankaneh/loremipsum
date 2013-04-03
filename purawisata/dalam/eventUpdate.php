@@ -38,6 +38,9 @@ if($mode=="edit") {
 	$venue = $rowC->venue;
 	$isi = decodeHTML($rowC->isi);
 	$isie = decodeHTML($rowC->isi_e);
+	$dolar = $rowC->dollar;
+	$rupiah = $rowC->rupiah;
+	$tanggal_mulai = dateaja($rowC->tanggal_mulai);
 }
 
 if($_POST) {
@@ -47,10 +50,16 @@ if($_POST) {
 	$venue = (int) $_POST['venue'];
 	$isi =encodeHTML($_POST['isi']);
 	$isie = encodeHTML($_POST['isi_e']);
+	$tanggal_mulai = $_POST["tanggal_mulai"];
+	$rupiah = $_POST["rupiah"];
+	$dolar = $_POST["dolar"];
 	if(empty($nama)) $strError .= "<li>Judul masih kosong</li>";
 	if(empty($namae)) $strError .= "<li>Judul bahas inggris masih kosong</li>";
 	if(empty($isi)) $strError .= "<li>Konten kosong</li>";
+	if(empty($rupiah)) $strError .= "<li>Harga Rupiah Masih Kosong</li>";
+	if(empty($dolar)) $strError .= "<li>Harga Dollar Masih Kosong</li>";
 	if(empty($isie)) $strError .= "<li>Konten bahas inggris masih kosong</li>";
+	if(empty($tanggal_mulai)) $strError .= "<li>Tanggal Masih Kosong</li>";
 	if($parent_id==0) $strError .= "<li>Kategori belum dipilih</li>";
 	if($venue==0) $strError .= "<li>Venue belum dipilih</li>";
 	
@@ -73,8 +82,8 @@ if($_POST) {
 		if($mode=="add") {
 		
 			$sql =
-				"insert into ".tabel_event."(parent_id,venue,kategori,nama,nama_e,isi,isi_e,status,tgl_buat,tgl_update,ip_update) values
-				 ('".$parent_id."','".$venue."','0','".$nama."','".$namae."','".$isi."','".$isie."','1',now(),now(),'".$_SERVER['REMOTE_ADDR']."') ";
+				"insert into ".tabel_event."(parent_id,venue,kategori,tanggal_mulai,nama,nama_e,rupiah,dollar,isi,isi_e,status,tgl_buat,tgl_update,ip_update) values
+				 ('".$parent_id."','".$venue."','0','".date2mysql($tanggal_mulai)."','".$nama."','".$namae."','$rupiah','$dolar','".$isi."','".$isie."','1',now(),now(),'".$_SERVER['REMOTE_ADDR']."') ";
 			mysql_query($sql,$tulis) or die(mysql_error() . "<hr>" . $sql);
 			$id_s = mysql_insert_id();	
 		} 
@@ -84,8 +93,11 @@ if($_POST) {
 				 parent_id='".$parent_id."',
 				 venue='".$venue."',
 				 kategori='0',
+				 tanggal_mulai='".date2mysql($tanggal_mulai)."',
 				 nama='".$nama."',
 				 nama_e='".$namae."',
+				 rupiah='$rupiah',
+				 dollar='$dolar',
 				 isi='".$isi."',
 				 isi_e='".$isie."',
 				 tgl_update=now(),
@@ -113,6 +125,19 @@ if($_POST) {
 }
 
 ?>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$(".datepicker").datepicker({
+			showOn: 'both',
+			changeMonth: true,
+			changeYear: true,
+			gotoCurrent: true,
+			buttonImage: '../images/calendar.gif',
+			buttonImageOnly: true,
+			dateFormat: "dd-mm-yy"
+		});
+	});
+</script>
 
 
 <div class="judul_menu"><?=$judulMenu?></div>
@@ -125,10 +150,17 @@ if($_POST) {
 	<input type="text" name="nama" size="60" value="<?=$nama?>" class="inputpesan tbless"><br class="clear" />
 	<label class="tbless" for="nama">Judul bahasa Inggris</label>
 	<input type="text" name="namae" size="60" value="<?=$namae?>" class="inputpesan tbless"><br class="clear" />
-	<label class="tbless_norm" for="nama">Kategori</label>
+    <label class="tbless" for="nama">Harga Rp:</label>
+	<input type="text" name="rupiah" onkeyup="Angka(this)" size="60" value="<?=$rupiah?>" class="inputpesan tbless"><br class="clear" />
+	<label class="tbless" for="nama">Harga Dollar($):</label>
+	<input type="text" name="dolar" size="60" onkeyup="Desimal(this)" value="<?=$dolar?>" class="inputpesan tbless"><br class="clear" />
+	<label class="tbless" for="nama">Kategori</label>
 	<?=katUI("event","parent_id",$parent_id,"inputpesan tbless")?><br class="clear" />
-	<label class="tbless_norm" for="nama">Venue</label>
-	<?=katUI("fasilitas","venue",$parent_id,"inputpesan tbless")?><br class="clear" />
+	<label class="tbless" for="nama">Venue</label>
+	<?=katUI("fasilitas","venue",$venue,"inputpesan tbless")?><br class="clear" />
+    <label class="tbless" for="tanggal">Tanggal</label>
+	<input class="datepicker inputpesan tbless" readonly="readonly" type="text" name="tanggal_mulai" value="<?=$tanggal_mulai?>" size="10" /> 
+    
 	<label class="tbless2" for="nama">
 		Konten Bahasa Indonesia
 	</label>

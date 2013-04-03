@@ -69,7 +69,7 @@ if(!ereg("index.php",$_SERVER['PHP_SELF'])) {
 	<script type="text/javascript" language="javascript" src="../plugins/ui/jquery.ui.widget.min.js"></script>
 	<script type="text/javascript" language="javascript" src="../plugins/ui/jquery.ui.dialog.min.js"></script>
 	<script type="text/javascript" language="javascript" src="../plugins/ui/jquery.ui.datepicker.min.js"></script>
-	
+	<script type="text/javascript" language="javascript" src="../js/fungsi.js"></script>
 	<script type="text/javascript">
 	function bantuan(id) {
 		$("#isihelp_"+id).toggle();

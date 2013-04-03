@@ -62,20 +62,25 @@ if($i%2)
 	else{
 	$class="";
 	}
-	$status = ($row->status=="1") ? "publish" : "unpublish";
+	$status = ($row->status=="1") ? "On Sale" : "Not Started/Sold";
 	$status = '<a href="'.$link.'&id='.$row->id.'&m=ubahstatus"><img src="../images/status_'.$row->status.'.gif"/><br/>'.$status.'</a>';
 	$hapus = '<a href="'.$link.'&id='.$row->id.'&m=hapusdata" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini ?\')"><img src="../images/delete.png"/></a>';
 	$sqlK = "select nama from ".tabel_event." where kategori='1' and id='".$row->parent_id."' ";
 	$resK = mysql_query($sqlK, $baca);
 	$rowK = mysql_fetch_object($resK);
-	
+	$sqlV= "select nama from ".tabel_fasilitas." where kategori='0' and id='".$row->venue."' ";
+	//echo $sqlV;
+	$resV = mysql_query($sqlV, $baca);
+	$rowV = mysql_fetch_object($resV);
 	$ui .=
 		'<tr class="'.$class.'">
-			<td align="center" valign="top">'.($arrH['idx']+$i).'.</td>
-			<td align="center" valign="top">'.$rowK->nama.'</td>
-			<td align="left" valign="top"><a href="eventUpdate.php?id='.$row->id.'">'.$row->nama.'</a></td>
-			<td align="center" valign="top">'.$status.'</td>
-			<td align="center" valign="top">'.$hapus.'</td>
+			<td align="center" valign="middle">'.($arrH['idx']+$i).'.</td>
+			<td align="left" valign="middle">'.$row->tanggal_mulai.'</td>
+			<td align="center" valign="middle">'.$rowK->nama.'</td>
+			<td align="left" valign="middle"><a href="eventUpdate.php?id='.$row->id.'">'.$row->nama.'</a></td>
+			<td align="left" valign="middle">'.$rowV->nama.'</td>
+			<td align="center" valign="middle">'.$status.'</td>
+			<td align="center" valign="middle">'.$hapus.'</td>
 		 </tr>';
 	
 	$i++;
@@ -89,9 +94,11 @@ if($num<1) {
 		'<table width="100%" cellpadding="0" cellspacing="0" class="dtable">
 			<tr class="dhead">
 				<td align="center" valign="top" width="1%">No</td>
+					<td align="center" valign="top" width="1%">Tanggal</td>
 				<td align="center" valign="top" width="1%">Kategori</td>
 				<td align="center" valign="top">Nama</td>
-				<td align="center" valign="top" width="1%">Status</td>
+				<td align="center" valign="top">Venue</td>
+				<td align="center" valign="top" width="10%">Status Penjualan</td>
 				<td align="center" valign="top" width="1%">Hapus</td>
 			</tr>
 			'.$ui.'

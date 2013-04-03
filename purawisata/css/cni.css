@@ -127,9 +127,12 @@ width:250px;
 float:left;
 margin: -5px 120px;
 overflow:hidden;
-text-align:justify;
 font-size: 12px;
 line-height:normal;
+}
+
+.othernews p{
+text-align:justify;
 }
 
 .othernews h1{
@@ -681,6 +684,10 @@ margin: 0;
 height: 100%;
 min-height: 700px;
 }
+
+.indexberita a{
+color:#ba985d;
+}
 .galleryinfooter{
 	margin-top: 10px;
 }
@@ -725,7 +732,7 @@ min-height: 700px;
 	margin-left: -50px;
 }
 .hotlinenumber{
-	margin-top: 320px;
+	margin-top: 325px;
 	color: #4e3623;
 		background:url(../images/telepon_13.jpg) top no-repeat;
 }
@@ -1093,4 +1100,27 @@ font-size: 12px;
 
 .dosis{
 font-family: dosis;
+}
+.tabelharga{
+width:100%;
+background-color:#fff;
+border: none;
+}
+.tabelharga th{
+background: #d8cf9c;
+color:#FFFFFF;
+border: none;
+}
+.tabelharga td{
+color:#161616;
+border: none;
+font-family:dosis;
+font-weight:bold;
+font-size: 14px;
+}
+.center{
+text-align:center !important;
+}
+.left{
+text-align:left !important;
 }

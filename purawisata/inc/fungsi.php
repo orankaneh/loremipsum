@@ -2065,8 +2065,17 @@ function sessionvisitor($panjang,$ip) {
  
    return "Cni-".$unik; 
 } 
-
-
+function sessionadmin($panjang) { 
+   $pstring =md5(date("YmdH:i:s")."citraweb"); 
+   $plen = strlen($pstring); 
+   $unik='';
+      for ($i = 1; $i <= $panjang+3; $i++) { 
+          $start = rand(1,$plen); 
+          $unik.= substr($pstring, $start, 1); 
+      } 
+ 
+   return "citraweb".$unik; 
+} 
 function GenerateCode(){
 	global $baca;
 	$sql = "select invoice_number from cni_order where 1 Order By invoice_number DESC LIMIT 1";
@@ -2397,8 +2406,8 @@ function deskripsi($text,$char) {
 
 }
 function cleanurllho($judul){
-$letters = array(' ?', ' ');
-$fruit   = array('', '-');
+$letters = array(' ?', ' ','?','? ');
+$fruit   = array('', '-', '', '');
 $output  = str_replace($letters, $fruit, $judul);
 return $output;
 }
@@ -2588,6 +2597,28 @@ function generate_get_parameter($get,$addArr=array(),$removeArr=array()) {
     return $link;
 }
 
+function generate_url_parameter($get,$addArr=array(),$removeArr=array()) {
+    if($addArr==null)
+        $addArr=array();
+    foreach($removeArr as $rm){
+        unset($get[$rm]);
+    }
+    $link = "";
+    $get=array_merge($get, $addArr);
+    foreach ($get as $key => $val) {
+        if ($link == null) {
+            $link.="$key=$val";
+        }else
+            $link.="&$key=$val";
+    }
+    return $link;
+}
+function gantibahasa($url,$pengganti,$asal){
+$letters = array("/".$asal."/", "/".$asal);
+$fruit   = array("/".$pengganti."/", "/".$pengganti);
+$output  = str_replace($letters, $fruit, $url);
+return $output;
+}
 function paging($sql, $dataPerPage) {
 
     $showPage = NULL;
@@ -2800,5 +2831,14 @@ return $result;
 function jumlah_foto_muat_data($id){
 $result = _select_unique_result("select count(id) from ".tabel_foto." where parent_id = '$id'");
 return $result;
+}
+
+function tiket_package_muat_data($id){
+$where="";
+if($id!=''){
+$where=" where id_fasilitas='$id'";
+}
+$sql=_select_arr("select * from cni_tiket $where");
+return $sql;
 }
 ?>
