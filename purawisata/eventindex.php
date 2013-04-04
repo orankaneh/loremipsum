@@ -13,10 +13,7 @@ $(".berita").append("<div class='triangle'></div>");
 </script>
 <div id="cni-main">
 <? include "header.php";
-$max=maxidnews_muat_data();
-$maxid=$max[0][0];
-$idtampil=$maxid-1;
-$indexnews=indexnews_muat_data(bukaid($id));
+$indexnews=indexevent_muat_data($page);
 $bannerkananlainay=bannerkananmuatdata('4');
 //show_array($indexnews);
 ?>
@@ -45,25 +42,23 @@ $bannerkananlainay=bannerkananmuatdata('4');
 					?>   
                      <div class="othernews">
                      
-                       <?	if (file_exists("images/berita/thumb/" . $limitdikit['id'] . ".jpg")){?>
-                       <img src="<?=app_base_url?>images/berita/thumb/<?=$limitdikit['id']?>.jpg">
+                       <?	if (file_exists("images/event/thumb/" . $limitdikit['id'] . ".jpg")){?>
+                       <img src="<?=app_base_url?>images/event/thumb/<?=$limitdikit['id']?>.jpg">
                      <? }
 					 else{
 					 ?>  
-                       <img src="<?=app_base_url?>images/berita/thumb/default.jpg">
+                       <img src="<?=app_base_url?>images/event/thumb/default.jpg">
                        <?
 					   }
 					   ?>
                     <div class="newstext">
-                     <h1><a href="<?=app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html'?>"><?=$limitdikit[$judulnews]?></a></h1>
+                     <h1><a href="<?=app_base_url.'event/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html'?>"><?=$limitdikit[$judulnews]?></a></h1>
                       <?				  
 					    if($_SESSION['bahasa'] == 'id'){
-						echo datetimeid($limitdikit['tgl_buat']);
-						echo readmore(html_entity_decode($limitdikit['isi']),'100' ,app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);
+						echo readmore(html_entity_decode($limitdikit['isi']),'100' ,app_base_url.'event/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);
 				  }
 					else{
-						echo datetime($limitdikit['tgl_buat']);
-						echo readmore(html_entity_decode($limitdikit['isi_e']),'100',app_base_url.'news/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);	  
+						echo readmore(html_entity_decode($limitdikit['isi_e']),'100',app_base_url.'event/'.$_SESSION['bahasa'].'/'.$sessioncryptx2.'/read/'.cleanurllho($limitdikit[$judulnews]).'.html',$arrTeks['selengkap']);	  
 				  }
 					  ?>
                     </div>

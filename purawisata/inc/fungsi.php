@@ -2372,6 +2372,18 @@ $id=anti_injection($id);
     }
     return $result;
 }
+function detail_event_muat_data($id){
+$id=anti_injection($id);
+    $sql = "select te.*,tf.nama as namavenue from ".tabel_event." te
+	join ".tabel_fasilitas." tf on(tf.id=te.venue)
+	 where te.kategori ='0' and te.id='$id'";
+    $exe = mysql_query($sql);
+    $result = array();
+    while ($row = mysql_fetch_array($exe)) {
+        $result[] = $row;
+    }
+    return $result;
+}
 function detail_fasilitas_muat_data($id){
 $id=anti_injection($id);
     $sql = "select * from ".tabel_fasilitas." where id='$id'";
@@ -2742,7 +2754,67 @@ function pagination($sql, $dataPerPage) {
     ob_end_clean();
     return $buffer;
 }
+function pagination2($sql, $dataPerPage, $access) {
 
+    $showPage = NULL;
+    ob_start();
+    echo "
+        <div class='body-page2'>";
+    if (!empty($_GET['page'])) {
+        $noPage = $_GET['page'];
+    } else {
+        $noPage = 1;
+    }
+	$kategoriurl = isset($_GET['kategori']) ? $_GET['kategori'] : NULL;
+
+    $dataPerPage = $dataPerPage;
+    $offset = ($noPage - 1) * $dataPerPage;
+
+    $hasil = mysql_query($sql);
+
+    $data = mysql_num_rows($hasil);
+    $jumData = $data;
+    $jumPage = ceil($jumData / $dataPerPage);
+    $get=$_GET;
+    if ($jumData > $dataPerPage) {
+        if ($noPage > 1){            
+            $get['page']=($noPage - 1);
+			if ($ajax != NULL) "<a href='" .app_base_url.$access."/".$_SESSION['bahasa']."/".$get['page']."/list.html"."'><span class='page-prev'></span></a>";
+            else echo "<a href='" .app_base_url.$access."/".$_SESSION['bahasa']."/".$get['page']."/list.html"."'><span class='page-prev'></span></a>";
+        }
+        for ($page = 1; $page <= $jumPage; $page++) {
+            if ((($page >= $noPage - 9) && ($page <= $noPage + 9)) || ($page == 1) || ($page == $jumPage)) {
+                if (($showPage == 1) && ($page != 2))
+                    echo "...";
+                if (($showPage != ($jumPage - 1)) && ($page == $jumPage))
+                    echo "...";
+                if ($page == $noPage)
+                    echo " <span class='noblock'>" . $page . "</span> ";
+                else{
+                    $get['page']=$page;
+                    
+                    if($tab != NULL){
+                        $get['tab'] = $tab;
+                    }
+					if ($ajax != NULL) echo " <a class='block' onclick='contentloader(\"?" .  generate_get_parameter($get). "\",\"#content\")'>" . $page . "</a> ";
+                    else echo " <a class='block' href='" .app_base_url.$access."/".$_SESSION['bahasa']."/".$page."/list.html"."'>" . $page . "</a> ";
+                }
+                $showPage = $page;
+            }
+        }
+
+        if ($noPage < $jumPage){
+            $get['page']=($noPage + 1);
+			if ($ajax != NULL) echo "<span class='page-next' href='" .app_base_url."news/".$_SESSION['bahasa']."/".$get['page']."/list.html"."'></span>";
+            else echo "<a href='" .app_base_url.$access."/".$_SESSION['bahasa']."/".$get['page']."/list.html"."'><span class='page-next'></span></a>";
+        }
+    }
+    echo "</div>";
+
+    $buffer = ob_get_contents();
+    ob_end_clean();
+    return $buffer;
+}
 
 function galler_foto_muat_data($kategory,$page = null){
 $where="";
@@ -2775,7 +2847,7 @@ $where="";
 return $result;
 }
 
-function indexnews_muat_data($idsatu,$idua){
+function indexnews_muat_data($idsatu,$idua,$page){
 $where='';
 $or='';
 if($idsatu!=''){
@@ -2791,7 +2863,7 @@ $where="";
 	$where=" and parent_id ='$kategory'";
 	}
    	
-	$dataPerPage='10';	
+	$dataPerPage='5';	
  	if (!empty($page)) {
         $noPage = $page;
     } else {
@@ -2815,6 +2887,42 @@ $where="";
     return $result;
 }
 
+function indexevent_muat_data($page){
+   $result = array();
+	
+	if($kategory!=''){
+	$where=" and parent_id ='$kategory'";
+	}
+   	
+	$dataPerPage='5';	
+ 	if (!empty($page)) {
+        $noPage = $page;
+    } else {
+        $noPage = 1;
+    }
+		
+
+	$offset = ($noPage - 1) * $dataPerPage;
+    $batas = "";
+    if ($dataPerPage != null) {
+        $batas = "limit $offset, $dataPerPage";
+    }
+	
+	
+    $sql = "select * from ".tabel_event." where kategori ='0' order by id desc $batas";
+ 	$result['list']= _select_arr($sql);
+	
+	 $sqli = "select * from ".tabel_event." where kategori ='0'";
+	 $result['paging'] = pagination2($sqli , $dataPerPage, 'events');
+    $result['offset'] = $offset;
+    return $result;
+}
+function indexlistevent_muat_data($limit){
+   $result = array();
+    $sql = "select * from ".tabel_event." where kategori ='0'  order by id desc limit $limit";
+ 	$result['list']= _select_arr($sql);
+    return $result;
+}
 
 function katagori_foto_muat_data(){
 
@@ -2839,6 +2947,16 @@ if($id!=''){
 $where=" where id_fasilitas='$id'";
 }
 $sql=_select_arr("select * from cni_tiket $where");
+return $sql;
+}
+
+function about_us_muat_data(){
+$sql=_select_unique_result("SELECT * FROM ".tabel_halaman." WHERE top_halaman=1 AND halaman_id!=1   ORDER BY urut_halaman");
+return $sql;
+}
+
+function dinamis_halaman_muat_data(){
+$sql=_select_arr("SELECT * FROM ".tabel_halaman." WHERE top_halaman>1 AND halaman_id!=1   ORDER BY urut_halaman");
 return $sql;
 }
 ?>

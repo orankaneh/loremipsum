@@ -2,6 +2,9 @@
 if($access=='news'){
 $class='berita';
 }
+else if($access=='event'){
+$class='berita';
+}
 else if($access=='facilities'){
 $class='fasilitas';
 }
@@ -66,6 +69,50 @@ $_SESSION['bahasa']=$bahasa;
              <?=decodeHTML2($data['isi_e'])?>
              <? }?>
            <? } 
+		   }
+		   else if($access=="event"){
+			 	$detailberita=detail_event_muat_data(bukaid($id));
+			 	foreach ($detailberita as $data){
+			 	if($_SESSION['bahasa'] == 'id'){ ?>
+                 <h1><?=$data['nama']?></h1>
+                <?=getSocialMediaUI()?>
+                <div class="imagenews">
+                  <?	if (file_exists("images/event/thumb/" . $data['id'] . ".jpg")){?>
+                       <img src="<?=app_base_url?>images/event/thumb/<?=$data['id']?>.jpg">
+                     <? }
+					 else{
+					 ?>  
+                       <img src="<?=app_base_url?>images/event/thumb/default.jpg">
+                       <?
+					   }
+					   ?>
+               </div>
+               <div>Harga: Rp. <?=$data[$matauang]?></div>
+               <div>Venue: <?=$data['namavenue']?></div>
+               <div>Deskripsi</div>
+               <?=decodeHTML2($data['isi'])?>
+                <div class="reservered"><a>PESAN SEKARANG</a></div>
+             <? } else{ ?>
+                <h1><?=$data['nama_e']?></h1>
+              <?=getSocialMediaUI()?>
+               <div class="imagenews">
+                  <?	if (file_exists("images/event/thumb/" . $data['id'] . ".jpg")){?>
+                       <img src="<?=app_base_url?>images/event/thumb/<?=$data['id']?>.jpg">
+                     <? }
+					 else{
+					 ?>  
+                       <img src="<?=app_base_url?>images/event/thumb/default.jpg">
+                       <?
+					   }
+					   ?>
+               </div>
+                   <div>Price : $<?=$data[$matauang]?></div>
+                   <div>Venue: <?=$data['namavenue']?></div>
+                   <div>Decription:</div>
+             		<?=decodeHTML2($data['isi_e'])?>
+                    <div class="reservered"><a>RESERVE NOW</a></div>
+             <? }
+			 } 
 		   }
 		  else if($access=="facilities"){
 		  $detailfasilitas=detail_fasilitas_muat_data(bukaid($id));

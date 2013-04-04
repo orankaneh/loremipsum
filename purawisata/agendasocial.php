@@ -1,23 +1,20 @@
+<?
+$indexevent=indexlistevent_muat_data('6');
+?>
    <div class="agendalho">
        				<div class="headagenda">
       					<?=$arrTeks['agenda']?>
      				</div>
                        <ul>
 						<hr/>
-                       <li>TEMBANG KENANGAN - THE FAMILY ( INDARDI )</li>
+                         <? foreach($indexevent['list'] as $agenda){
+						 $sessioncryptx7=saveid($agenda['id']);	
+						 ?>
+                       <li><a href="<?=app_base_url.'event/'.$_SESSION['bahasa'].'/'.$sessioncryptx7.'/read/'.cleanurllho($agenda[$judulnews]).'.html'?>"><?=$agenda[$judulnews]?></a></li>
                        <hr/>
-                       <li>DANGDUT NEVER DIES (OM. NEW SATRIA)</li>
-                       <hr/>
-                       <li>TEMBANG KENANGAN - THE FAMILY ( INDARDI )</li>
-                       <hr/>
-                       <li>DANGDUT NEVER DIES (OM. NEW SATRIA)</li>
-                       <hr/>
-                       <li>TEMBANG KENANGAN - THE FAMILY ( INDARDI )</li>
-                       <hr/>
-                       <li>DANGDUT NEVER DIES (OM. NEW SATRIA)</li>
-                       <hr/>
+                       <? }?>
                         <div class="buttonselengkapagenda">
-                    SELENGKAPNYA
+                   <a href="<?=app_base_url."events/".$_SESSION['bahasa']."/list.html"?>"> SELENGKAPNYA</a>
                     </div>
                        </ul>
       		</div><!--End Agenda-->

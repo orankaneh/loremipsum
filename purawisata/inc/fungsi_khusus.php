@@ -68,13 +68,29 @@ function tataHalaman($argIDKey,$argJmlLevel)
 	     $strDown='<img src="../images/dis_down.gif" border="0">';
 	     $strInUp='<img src="../images/bs_inup.gif" border="0">';
 	     $strInDown='<img src="../images/bs_indown.gif" border="0">';
-	     
+	    
+		 if($idNya=="2"){
+		$strLeft2="";
+		$strInUp2="";
+		 $strInDown2="";
+		 $strRight2="";
+		}
+		
+		else{
 	     $strLeft2='<a href="halamanList.php?act=left&idLeftNya='.$top_halaman.'&noAsliNya='.$kodeAkun.'&idAsliNya='.$argIDKey.'"><img src="../images/bs_back.gif" border="0" alt="Merubah halaman '.$nama_halaman.' menjadi '.$namaLeftNya.'" title="Merubah halaman '.$nama_halaman.' menjadi '.$namaLeftNya.'"></a>';
+		 
 	     $strRight2='<a href="halamanList.php?act=right&idRightNya='.$idRightNya.'&topAsliNya='.$top_halaman.'&noAsliNya='.$kodeAkun.'&idAsliNya='.$argIDKey.'"><img src="../images/bs_forward.gif" border="0" alt="Merubah halaman '.$nama_halaman.' menjadi sub halaman '.$namaUpNya.'" title="Merubah halaman '.$nama_halaman.' menjadi sub halaman '.$namaUpNya.'"></a>';
-	     $strUp2='<a href="halamanList.php?act=up&noUpNya='.$noUpNya.'&idUpNya='.$idUpNya.'&noAsliNya='.$kodeAkun.'&idAsliNya='.$argIDKey.'"><img src="../images/bs_up.gif" border="0" alt="Menaikkan halaman '.$nama_halaman.' menjadi urutan ke '.$noUpNya.'" title="Menaikkan halaman '.$nama_halaman.' menjadi urutan ke '.$noUpNya.'"></a>';
-	     $strDown2='<a href="halamanList.php?act=down&noDownNya='.$noDownNya.'&idDownNya='.$idDownNya.'&noAsliNya='.$kodeAkun.'&idAsliNya='.$argIDKey.'"><img src="../images/bs_down.gif" border="0" alt="Menurunkan halaman '.$nama_halaman.' menjadi urutan ke '.$noDownNya.'" title="Menurunkan halaman '.$nama_halaman.' menjadi urutan ke '.$noDownNya.'"></a>';
-	     $strInUp2='<a href="halamanAdd.php?act=insertUP&topTU='.$top_halaman.'&noAsliNya='.$kodeAkun.'"><img src="../images/bs_inup.gif" border="0" alt="Tambah halaman diatas '.$nama_halaman.'" title="Tambah halaman diatas '.$nama_halaman.'"></a>';
-	     $strInDown2='<a href="halamanAdd.php?act=insertDown&topTU='.$top_halaman.'&noAsliNya='.($kodeAkun+1).'"><img src="../images/bs_indown.gif" border="0" alt="Tambah halaman dibawah '.$nama_halaman.'" title="Tambah halaman dibawah '.$nama_halaman.'"></a>';
+	    
+		 $strUp2='<a href="halamanList.php?act=up&noUpNya='.$noUpNya.'&idUpNya='.$idUpNya.'&noAsliNya='.$kodeAkun.'&idAsliNya='.$argIDKey.'"><img src="../images/bs_up.gif" border="0" alt="Menaikkan halaman '.$nama_halaman.' menjadi urutan ke '.$noUpNya.'" title="Menaikkan halaman '.$nama_halaman.' menjadi urutan ke '.$noUpNya.'"></a>';
+	    
+		 $strDown2='<a href="halamanList.php?act=down&noDownNya='.$noDownNya.'&idDownNya='.$idDownNya.'&noAsliNya='.$kodeAkun.'&idAsliNya='.$argIDKey.'"><img src="../images/bs_down.gif" border="0" alt="Menurunkan halaman '.$nama_halaman.' menjadi urutan ke '.$noDownNya.'" title="Menurunkan halaman '.$nama_halaman.' menjadi urutan ke '.$noDownNya.'"></a>';
+	    
+		
+		
+		 $strInUp2='<a href="halamanAdd.php?act=insertUP&topTU='.$top_halaman.'&noAsliNya='.$kodeAkun.'"><img src="../images/bs_inup.gif" border="0" alt="Tambah halaman diatas '.$nama_halaman.'" title="Tambah halaman diatas '.$nama_halaman.'"></a>';
+	    
+		 $strInDown2='<a href="halamanAdd.php?act=insertDown&topTU='.$top_halaman.'&noAsliNya='.($kodeAkun+1).'"><img src="../images/bs_indown.gif" border="0" alt="Tambah halaman dibawah '.$nama_halaman.'" title="Tambah halaman dibawah '.$nama_halaman.'"></a>';
+		 }
 		if($top_halaman=="1")
 		{
 			$strHapus='&nbsp;';
@@ -85,7 +101,7 @@ function tataHalaman($argIDKey,$argJmlLevel)
 		}
 	}
 	
-	if($top_halaman < 2) $strLeft2=$strLeft;
+	if($top_halaman < 3) $strLeft2=$strLeft;
 	if($idUpNya==0 or $noUpNya==0) $strUp2=$strUp;
 	if($idDownNya==0 or $noDownNya==0) $strDown2=$strDown;
 	if($kodeAkun == 1) $strRight2=$strRight;

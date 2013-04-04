@@ -43,9 +43,11 @@ $arrEn = array(
 				"kontaklho" => "Contact Us",
 				"lakasilho" => "Our Location",
 				"agenda" => "EVENTS",
+				"event" => "EVENTS",
 				"kami" => "US",
 				"indexberita" => "NEWS INDEX",
 				"eventext" => "EVENTS",
+				"about" => "ABOUT US",
 				"simbolmata" => "$",
 				"berita_lainya" => "OTHER NEWS"
 			);			
@@ -97,6 +99,8 @@ $arrIndo = array(
 				"indexberita" => "INDEX BERITA",
 				"eventext" => "AGENDA",
 				"tiket" => "TIKET",
+				"event" => "AGENDA",
+				"about" => "TENTANG KAMI",
 				"simbolmata" => "Rp.",
 				"berita_lainya" => "BERITA LAINYA"      
               );			  

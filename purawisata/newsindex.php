@@ -16,7 +16,7 @@ $(".berita").append("<div class='triangle'></div>");
 $max=maxidnews_muat_data();
 $maxid=$max[0][0];
 $idtampil=$maxid-1;
-$indexnews=indexnews_muat_data(bukaid($id));
+$indexnews=indexnews_muat_data(NULL,NULL,$page);
 $bannerkananlainay=bannerkananmuatdata('4');
 //show_array($indexnews);
 ?>

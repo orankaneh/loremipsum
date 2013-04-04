@@ -278,7 +278,7 @@ body
    padding: 0;
    margin:0;
    min-width: 1000px;
-   color: #C9D3DE;
+   color: #D8CF9C;
 }
 
 .clearfix:before, .clearfix:after {
@@ -1532,7 +1532,7 @@ pre
 .cni-postcontent li, .cni-post li, .cni-textblock li
 {
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
-   color: #303F50;
+   color: #D8CF9C;
    margin: 3px 0 0 11px;
 }
 
@@ -1636,7 +1636,7 @@ blockquote p,
 .cni-footer th,
 .cni-footer caption
 {
-   color: #4E3623;
+   color: #D8CF9C;
    font-size: 13px;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    line-height: 175%;
@@ -1651,7 +1651,7 @@ blockquote p,
 .cni-footer a,
 .cni-footer a:link
 {
-   color: #394C60;
+   color: #D8CF9C;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: none;
 }
@@ -1665,7 +1665,7 @@ blockquote p,
 
 .cni-footer a:hover
 {
-   color: #963403;
+   color: #D8CF9C;
    font-family: Arial, 'Arial Unicode MS', Helvetica, Sans-Serif;
    text-decoration: underline;
 }
