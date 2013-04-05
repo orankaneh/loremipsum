@@ -46,7 +46,7 @@ define("banner_h1",70);
 define("banner_w2",300);
 define("banner_h2",140);
 define("banner_size",512000);
-define("file_download_size",512000);
+define("file_download_size",5120000);
 define("tabel_halaman", "cni_halaman");
 define("tabel_user", "cni_user");
 define("tabel_user_detail", "cni_user_detail");
@@ -64,6 +64,7 @@ define("tabel_kategori", "cni_kategori");
 define("tabel_pesan", "cni_pesan");
 define("tabel_event", "cni_event");
 define("tabel_harga", "cni_tiket");
+define("tabel_download", "cni_download");
 // - config - database & aplikasi -----------------------------------------------------------
 
 // - config - email -----------------------------------------------------------

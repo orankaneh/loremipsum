@@ -36,9 +36,13 @@ session_start();?>
                     
 </header>
 <?
+//show_array($_SERVER);
 $fasilitas=menu_fasilitas_muat_data();
 $menudinamisutama=about_us_muat_data();
 $menucomplit=dinamis_halaman_muat_data();
+foreach ($menucomplit as $menudinamis){
+$menu.=menu_clean('dropdown', $menudinamis['halaman_id'], $menudinamis['nama_halaman'.$temp], '');
+}
 ?>
 <nav class="cni-nav clearfix">
     <div class="cni-nav-inner">
@@ -46,10 +50,8 @@ $menucomplit=dinamis_halaman_muat_data();
     <li><a href="<?=app_base_url."home/".$_SESSION['bahasa']?>.html" class="home active"><?=$arrTeks['home']?></a></li>
     <li><a href="<?=app_base_url?>"><?=$menudinamisutama['nama_halaman'.$temp]?></a>
     <ul>
-    <? foreach ($menucomplit as $menudinamis){?>
-        	<li><a href="fasilitas/loremimsum.html"><?=$menudinamis['nama_halaman'.$temp]?></a></li>
-      <? }?>      
-        </ul>
+    <?=$menu;?>
+    </ul>
     </li>    
     <li><a href="#" class="fasilitas"><?=$arrTeks['facilities']?></a>
     	<ul>
@@ -63,8 +65,8 @@ $menucomplit=dinamis_halaman_muat_data();
       <li><a href="#" class="berita">NEWS AND EVENTS</a>
           <ul>
         	<li><a href="<?=app_base_url."news/".$_SESSION['bahasa']."/list.html"?>">NEWS</a></li>
-            <!--<li><a href="<?//app_base_url."events/".$_SESSION['bahasa']."/list.html"?>">EVENTS</a></li>
-            <li><a href="<?//app_base_url."promos/".$_SESSION['bahasa']."/list.html"?>">PROMOS</a></li>-->
+            <li><a href="<?=app_base_url."events/".$_SESSION['bahasa']."/list.html"?>">EVENTS</a></li>
+            <!--<li><a href="<?//app_base_url."promos/".$_SESSION['bahasa']."/list.html"?>">PROMOS</a></li>-->
             <li><a href="<?=app_base_url."list/".$_SESSION['bahasa']."/price.html"?>">TICKET</a></li>
         </ul>
         </li>
@@ -74,8 +76,9 @@ $menucomplit=dinamis_halaman_muat_data();
             <li><a href="<?=app_base_url.$_SESSION['bahasa']."/".saveurl('all')?>/gallery/video.html">VIDEO</a></li>
         </ul>
     </li>
-     <li><a class="contact">CONTACT-US</a>
+     <li><a class="contact">CONTACT US</a>
      <ul>
+     <li><a onclick="loadmap()"><?=$arrTeks['lakasilho']?></a></li>
      <li><a href="<?=app_base_url?>form/contact-us.html">Contact Us</a></li>
      <li><a>Guest Book</a></li>
      </ul>

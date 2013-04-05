@@ -15,6 +15,7 @@ RewriteEngine On
 #RewriteRule form/(.*)\.html$ detailpage.php?form=$1 [L,QSA]
 #RewriteRule form/(.*)\.html$ detailpage.php?form=$1 [L,QSA]
 RewriteRule form/contact-us.html$ contact-us.php [L,QSA]
+RewriteRule form/guest-book.html$ guest-book.php [L,QSA]
 RewriteRule form/location.html$ location.php [L,QSA]
 RewriteRule location.html$ location.php [L,QSA]
 RewriteRule home/(.*).html$  index.php?bahasa=$1 [L,QSA]
@@ -30,6 +31,9 @@ RewriteRule events/(.*)/list.html$  eventindex.php?bahasa=$1 [L,QSA]
 
 #tiket clean url
 RewriteRule list/(.*)/price.html$  tiket.php?bahasa=$1 [L,QSA]
+
+#download clean url
+RewriteRule list/(.*)/download.html$  downloadindex.php?bahasa=$1 [L,QSA]
 
 RewriteRule (.*)/(.*)/(.*)/read/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]
 RewriteRule (.*)/(.*)/(.*)/detail/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]

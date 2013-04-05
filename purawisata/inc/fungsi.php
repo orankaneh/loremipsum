@@ -1,5 +1,4 @@
 <?php
-
 function removeEvilAttributes($tagSource)
 {
        $stripAttrib = "' (style|class)=\"(.*?)\"'i";
@@ -1945,7 +1944,10 @@ return $output;
 function getSocialMediaUI() {
 	return '<div>
 			<!-- AddThis Button BEGIN -->
-			<div class="addthis_toolbox addthis_default_style ">
+			<div class="addthis_toolbox addthis_default_style coklat">
+			<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+			<a class="addthis_button_tweet"></a>
+			<a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
 			<a class="addthis_counter addthis_pill_style"></a>
 			</div>
 			<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=xa-4fd7f9c01d3c94cd"></script>
@@ -2959,4 +2961,58 @@ function dinamis_halaman_muat_data(){
 $sql=_select_arr("SELECT * FROM ".tabel_halaman." WHERE top_halaman>1 AND halaman_id!=1   ORDER BY urut_halaman");
 return $sql;
 }
+
+function menu_clean($tipe, $id, $url, $image=null) {
+	if ($tipe!="sitemap" && $tipe!="dropdown") return;
+
+	$menu = "";
+	$submenu = "";
+	$s = "select * from ".tabel_halaman." where top_halaman='2' and halaman_id=".$id;
+	$r = mysql_query($s);
+	if($d = mysql_fetch_assoc($r)) {
+		$menu = $d['nama_halaman'];
+	}
+	$submenu = submenu_clean($id, $url);
+			if($d['top_halaman']=="2"){
+	if (empty($submenu)) {
+		$menu = '<li id='.$d['nama_halaman'].'><a href="'.$url.'">'.$d['nama_halaman'.$temp].'</a></li>';
+	} else {
+		if ($tipe=="sitemap") $menu = '<li>'.$menu.''.$submenu.'</li>';
+		if ($tipe=="dropdown") {
+			if (empty($image)) $menu = '<li><a href="#" style="text-align:center;">'.$menu.'</a>'.$submenu.'</li>';
+			else $menu = '<li><a href="#"><img border="0" src="'.$image.'"/></a>'.$submenu.'</li>';			
+		}
+	}
+	}
+	return $menu;
+}
+
+function submenu_clean($id,$url) {
+	$menu = "";
+	$submenu = "";
+	$childmenu = "";
+	$s2 = "select * from ".tabel_halaman." where status_halaman='1' and top_halaman=".$id." ".$addSql." order by urut_halaman";
+	$r2 = mysql_query($s2);
+	$n2 = mysql_num_rows($r2);
+	if ($n2>0) {
+		while($d2 = mysql_fetch_assoc($r2)) {
+			$childmenu = submenu_clean($d2['halaman_id'], $url);
+			$url2 = !empty($childmenu)? "#" : $url;
+			$addClass = !empty($childmenu)? 'class="haschild"' : 'class="nochild"';
+			$submenu .= '<li ><a '.$addClass.' href="'.$d2['nama_halaman_e'].'">'.$d2['nama_halaman'].'</a>';
+			$submenu .= $childmenu;
+			$submenu .= '</li>';
+		}
+		$menu .= "<ul>";
+		$menu .= $submenu;
+		$menu .= "</ul>";
+	}
+	return $menu;
+}
+
+function download_file_data(){
+$sql= _select_arr("select * from ".tabel_download." order by id desc");
+return $sql;
+} 
+
 ?>

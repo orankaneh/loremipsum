@@ -46,7 +46,7 @@ $bannerkananlainay=bannerkananmuatdata('4');
                     SELENGKAPNYA
                     </div>
                    <div class="bannerdetaildepan">
-                   <img src="<?=app_base_url?>images/downloadbutton.png" />
+                  <a href="<?=app_base_url."list/".$_SESSION['bahasa']."/download.html"?>"> <img src="<?=app_base_url?>images/downloadbutton.png" /></a>
                    <? foreach($bannerkananlainay as $iklanx){
 				   //show_array($iklanx);
 				   ?>

@@ -54,7 +54,7 @@ $_SESSION['bahasa']=$bahasa;
 			 	if($_SESSION['bahasa'] == 'id'){ ?>
                  <h1><?=$data['nama']?></h1>
                 Ditulis Oleh : <?=client?> |  <?=datetimeid($data['tgl_buat']);?>
-                <?=getSocialMediaUI()?>
+                <?=getSocialMediaUI()?><br/>
                 <div class="imagenews">
                <img align="left" src="<?=$addLink?>images/berita/<?=$data['id']?>.jpg" title="" alt="">
                </div>
@@ -62,7 +62,7 @@ $_SESSION['bahasa']=$bahasa;
              <? } else{ ?>
                 <h1><?=$data['nama_e']?></h1>
              Writen by : <?=client?> | <?=datetime($data['tgl_buat']);?>
-              <?=getSocialMediaUI()?>
+              <?=getSocialMediaUI()?><br/>
                <div class="imagenews">
                <img align="left" height="100" src="<?=$addLink?>images/berita/<?=$data['id']?>.jpg" title="" alt="">
                </div>
@@ -75,7 +75,7 @@ $_SESSION['bahasa']=$bahasa;
 			 	foreach ($detailberita as $data){
 			 	if($_SESSION['bahasa'] == 'id'){ ?>
                  <h1><?=$data['nama']?></h1>
-                <?=getSocialMediaUI()?>
+                <?=getSocialMediaUI()?><br/>
                 <div class="imagenews">
                   <?	if (file_exists("images/event/thumb/" . $data['id'] . ".jpg")){?>
                        <img src="<?=app_base_url?>images/event/thumb/<?=$data['id']?>.jpg">
@@ -94,7 +94,7 @@ $_SESSION['bahasa']=$bahasa;
                 <div class="reservered"><a>PESAN SEKARANG</a></div>
              <? } else{ ?>
                 <h1><?=$data['nama_e']?></h1>
-              <?=getSocialMediaUI()?>
+              <?=getSocialMediaUI()?><br/>
                <div class="imagenews">
                   <?	if (file_exists("images/event/thumb/" . $data['id'] . ".jpg")){?>
                        <img src="<?=app_base_url?>images/event/thumb/<?=$data['id']?>.jpg">
@@ -126,7 +126,7 @@ $_SESSION['bahasa']=$bahasa;
 				?>
                  <h1><?=$data[$namanya]?></h1>
                 <?
-                echo getSocialMediaUI();
+                echo getSocialMediaUI()."<br/>";
 				echo decodeHTML2($data[$varnya]);
      		 } 
 		   }

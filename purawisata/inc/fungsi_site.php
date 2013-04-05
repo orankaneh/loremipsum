@@ -49,12 +49,24 @@ function menuAdmin() {
 						<li><a href="bannerList.php" class="nochild"><b>Daftar Banner</b></a></li>
 					</ul>
 				</li>
+				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/abacus.png" class="iconadmin">File download</b></a>
+					<ul>
+						<li><a href="fileUpdate.php" class="nochild"><b>Tambah Download</b></a></li>
+						<li><a href="fileList.php" class="nochild"><b>Daftar Download</b></a></li>
+					</ul>
+				</li>
 				<li><a href="paypalaccount.php" class="nochild"><b><img src="../images/icon/gray_18/user_woman.png" class="iconadmin">Paypal Account</b></a></li>
+				
 				<li><a href="visitorcounter.php" class="nochild"><b><img src="../images/icon/gray_18/group.png" class="iconadmin">Visitor Counter</b></a></li>
-                <li><a href="headerList.php" class="nochild"><b><img src="../images/icon/gray_18/photo_album.png" class="iconadmin">Header Slide Show</b></a></li>
+                
+				<li><a href="headerList.php" class="nochild"><b><img src="../images/icon/gray_18/photo_album.png" class="iconadmin">Header Slide Show</b></a></li>
+				
 				<li><a href="guestList.php" class="nochild"><b><img src="../images/icon/gray_18/book.png" class="iconadmin">Buku Tamu</b></a></li>
+				
 				<li><a href="halamanList.php" class="nochild"><b><img src="../images/icon/gray_18/list.png" class="iconadmin">Halaman</b></a></li>
+				
 				<li><a href="gantiPassword.php" class="nochild"><b><img src="../images/icon/gray_18/password.png" class="iconadmin">Ganti Password</b></a></li>
+				
 				<li><a href="logout.php" class="nochild"><b><img src="../images/icon/gray_18/disconnect.png" class="iconadmin">Logout</b></a></li>
 			</ul>
 			<br class="clear"/>
@@ -251,6 +263,7 @@ function getArrExtFile() {
 	$arr = array();
 	$arr[1] = "pdf";
 	$arr[2] = "zip";
+	$arr[3] = "rar";
 	return $arr;
 }
 

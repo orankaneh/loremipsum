@@ -4,6 +4,10 @@ $video=video_muat_data(NULL,NULL,'1');
 <body id="page">
 <div id="cni-main">
 <? include "header.php";
+if (!preg_match("/home/i", $_SERVER['REQUEST_URI'])) {
+   header("location:".app_base_url."home/".$_SESSION['bahasa'].".html");
+}
+//header("location:".app_base_url."home/".$_SESSION['bahasa'].".html");
 $slidegambar=slideshow_muat_data();
 $newnews=newnews_muat_data();
 $banneratas=banneratasmuatdata();

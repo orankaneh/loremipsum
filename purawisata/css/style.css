@@ -1963,4 +1963,13 @@ img.cni-lightbox-image.active
 
 /* End Additional CSS Styles */
 
+.coklat{
+background: #BA985D;
+height: 30px;
+width: 550px;
+position:absolute;
+}
 
+.coklat .addthis_button_facebook_like, .coklat .addthis_button_tweet, .coklat .addthis_button_google_plusone, .coklat .addthis_counter{
+margin-top: 5px;
+}

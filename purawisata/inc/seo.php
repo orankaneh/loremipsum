@@ -72,7 +72,8 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="<?=app_plugin_url?>fancybox/helpers/jquery.fancybox-buttons.css?v=2.0.3" />
 	<link rel="stylesheet" type="text/css" href="<?=app_plugin_url?>fancybox/helpers/jquery.fancybox-thumbs.css?v=2.0.3" />  
     <link rel="stylesheet" type="text/css" href="<?=app_plugin_url?>crousel/jquery.bxslider.css" />  
-  
+  	<link rel="stylesheet" type="text/css" href="<?=app_plugin_url?>jScrollPane/jquery.jscrollpane.css" />  
+    
     <script type="text/javascript" src="<?=app_base_url?>js/jquery.js"></script>
     <script type="text/javascript" src="<?=app_base_url?>js/script.js"></script>
     <script type="text/javascript" src="<?=app_base_url?>js/script.responsive.js"></script>
@@ -83,5 +84,6 @@ session_start();
     <script type="text/javascript" src="<?=app_plugin_url?>fancybox/helpers/jquery.fancybox-buttons.js?v=2.0.3"></script>
     <script type="text/javascript" src="<?=app_plugin_url?>fancybox/helpers/jquery.fancybox-thumbs.js"></script>
 	<script type="text/javascript" src="<?=app_plugin_url?>crousel/jquery.bxslider.min.js"></script>
-    
+    <script type="text/javascript" src="<?=app_plugin_url?>jScrollPane/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" src="<?=app_plugin_url?>jScrollPane/jquery.mousewheel.js"></script>
     
