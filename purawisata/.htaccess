@@ -37,6 +37,9 @@ RewriteRule list/(.*)/download.html$  downloadindex.php?bahasa=$1 [L,QSA]
 
 RewriteRule (.*)/(.*)/(.*)/read/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]
 RewriteRule (.*)/(.*)/(.*)/detail/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]
+
+RewriteRule (.*)/(.*)/(.*).html$ dinamis.php?access=about&id=$2&judul=$3&bahasa=$1 [L,QSA]
+
 RewriteRule (.*)/(.*)/gallery/(.*)/(.*).html$ gallery.php?access=gallery&kategori=$2&page=$3&jenis=$4&bahasa=$1 [L,QSA]
 RewriteRule (.*)/(.*)/gallery/(.*).html$ gallery.php?access=gallery&kategori=$2&jenis=$3&bahasa=$1 [L,QSA]
 

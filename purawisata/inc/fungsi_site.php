@@ -1,6 +1,11 @@
 <?php
 function menuAdmin() {
 	if (!isset($_SESSION["admSession"])) return "&nbsp;";
+	$unreadtesti=count(unread_testi());
+	$testi="";
+	if($unreadtesti!="0"){
+	$testi="(".$unreadtesti.")";
+	}
 	$hasil =
 		'<td align="left" valign="top" width="196px">
 		 <ul class="menu-hori">
@@ -56,12 +61,12 @@ function menuAdmin() {
 					</ul>
 				</li>
 				<li><a href="paypalaccount.php" class="nochild"><b><img src="../images/icon/gray_18/user_woman.png" class="iconadmin">Paypal Account</b></a></li>
-				
+				<li><a href="ym.php" class="nochild"><b><img src="../images/icon/gray_18/user_woman.png" class="iconadmin">YM Account</b></a></li>
 				<li><a href="visitorcounter.php" class="nochild"><b><img src="../images/icon/gray_18/group.png" class="iconadmin">Visitor Counter</b></a></li>
                 
 				<li><a href="headerList.php" class="nochild"><b><img src="../images/icon/gray_18/photo_album.png" class="iconadmin">Header Slide Show</b></a></li>
 				
-				<li><a href="guestList.php" class="nochild"><b><img src="../images/icon/gray_18/book.png" class="iconadmin">Buku Tamu</b></a></li>
+				<li><a href="guestList.php" class="nochild"><b><img src="../images/icon/gray_18/book.png" class="iconadmin">Buku Tamu '.$testi.'</b></a></li>
 				
 				<li><a href="halamanList.php" class="nochild"><b><img src="../images/icon/gray_18/list.png" class="iconadmin">Halaman</b></a></li>
 				

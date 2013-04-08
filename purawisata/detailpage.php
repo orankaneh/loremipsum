@@ -155,7 +155,7 @@ $_SESSION['bahasa']=$bahasa;
                     </div>
             
                     <div class="buttonselengkapfoto">
-                    SELENGKAPNYA
+                   <a href="<?=app_base_url.$_SESSION['bahasa']."/".saveurl($idfoto)?>/gallery/foto.html"> SELENGKAPNYA</a>
                     </div>
                   
         </div>

@@ -43,7 +43,7 @@ $bannerkananlainay=bannerkananmuatdata('4');
 &nbsp;
 </div> 
                        <div class="buttonselengkapothernews">
-                    SELENGKAPNYA
+                   <a href="<?=app_base_url?>news/<?=$_SESSION['bahasa']?>/list.html"> SELENGKAPNYA</a>
                     </div>
                    <div class="bannerdetaildepan">
                   <a href="<?=app_base_url."list/".$_SESSION['bahasa']."/download.html"?>"> <img src="<?=app_base_url?>images/downloadbutton.png" /></a>

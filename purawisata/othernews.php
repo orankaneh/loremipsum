@@ -43,7 +43,7 @@ $othernews=othernews_muat_data($maxid,$idtampil);
 &nbsp;
 </div>                 
                        <div class="buttonselengkapothernews">
-                    SELENGKAPNYA
+                     <a href="<?=app_base_url?>news/<?=$_SESSION['bahasa']?>/list.html"> SELENGKAPNYA</a>
                     </div>
       		</div>
           

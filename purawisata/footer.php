@@ -23,8 +23,12 @@
          	<div class="isics">
           ONLINE SUPPORT
            		 <div class="yahoomassanger">
-            		<a href="ymsgr:sendIM?martinharendra"><img src="http://opi.yahoo.com/online?u=martinharendra&amp;m=g&amp;t=1" border="0"></a>
-           			<a href="ymsgr:sendIM?limawan.nugroho"><img src="http://opi.yahoo.com/online?u=limawan.nugroho&amp;m=g&amp;t=1" border="0"></a>
+                 <?
+                 $ym=yahoo_account();
+				 foreach ($ym as $accountym){
+				 ?>
+            		<a href="ymsgr:sendIM?<?=$accountym['account']?>"><img src="http://opi.yahoo.com/online?u=<?=$accountym['account']?>&amp;m=g&amp;t=1" border="0"></a>
+                    <? }?>
            		 </div>
                  <div class="metodepembayaran">
                  PAYMENT METHOD

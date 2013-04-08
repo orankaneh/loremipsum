@@ -125,19 +125,19 @@ if($aksi=="1") {
 				<table width="100%" border="0" class="kotak_DFDFDF">
 				<tr>
 				<td align=left valign=top width="10%">Nama Halaman (Indonesia)</td><td align=left valign=top>:</td>
-				<td align=left valign=top><INPUT TYPE=TEXT NAME="namaTU" value="<?echo htmlspecialchars($namaTU);?>" class="readonly" size="30" maxlength="100" readonly="readonly"></td>
+				<td align=left valign=top><INPUT TYPE=TEXT NAME="namaTU" value="<?echo htmlspecialchars($namaTU);?>" class="readonly" size="30" maxlength="100"></td>
 				</tr>
 				<tr>
 				<td align=left valign=top width="10%">Nama Halaman (English)</td><td align=left valign=top>:</td>
-				<td align=left valign=top><INPUT TYPE=TEXT NAME="namaTU_e" value="<?echo htmlspecialchars($namaTU_e);?>" class="readonly" size="30" maxlength="100" readonly="readonly"></td>
+				<td align=left valign=top><INPUT TYPE=TEXT NAME="namaTU_e" value="<?echo htmlspecialchars($namaTU_e);?>" class="readonly" size="30" maxlength="100"></td>
 				</tr>
 				<tr>
 				<td align=left valign=top>Kategori</td><td align=left valign=top>:</td>
 				<td align=left valign=top>
-				<select class="inputpesan" name="kategori" onChange="disableTextField(this.form);" onLoad="disableTextField(this.form);">
+				<select class="inputpesan" disabled="disabled" name="kategori" onChange="disableTextField(this.form);" onLoad="disableTextField(this.form);">
 				<option value="0" <? if($kategori=="0") { echo "selected";}?>>Non Aplikasi</option>
 				<option value="1" <? if($kategori=="1") { echo "selected";}?>>Aplikasi</option>
-				</select>, include file: <input type="text" name="includeNya" value="<?=$includeNya?>" size="30" maxlength="255" class="inputpesan">
+				</select>, include file: <input type="text" name="includeNya" value="<?=$includeNya?>" size="30" maxlength="255" class="inputpesan" disabled="disabled">
 				</td>
 				</tr>
 				<tr>

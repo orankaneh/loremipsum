@@ -44,6 +44,12 @@ session_start();
 		$metad=deskripsi(clearhtml($deskripsi[0][$variable]),'160');
 		$keyd=keyword(client).', '.keyword($judul);
 	}
+	else if(($access=='about') and ($id!='')){
+		$deskripsi=detail_dinamis_muat_data(bukaid($id));
+		$variable='isi_halaman'.$temp;
+		$metad=deskripsi(clearhtml($deskripsi[0][$variable]),'160');
+		$keyd=keyword(client).', '.keyword($judul);
+	}
 	else{
 		$metad="";
 		$keyd='';
@@ -56,7 +62,9 @@ session_start();
              
     <meta name="keywords" content="<?=$keyd?>"/>
     <meta name="description" content="<?=$metad?>"/>
-    
+   <!-- <link href="/en.feed?type=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+    <link href="/en.feed?type=atom" rel="alternate" type="application/atom+xml" title="Atom 1.0" />-->
+    <link href="<?=app_base_url?>images/favicon.jpg" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="initial-scale = 1.0, maximum-scale = 1.0, user-scalable = no, width = device-width">
     <meta name="Author"   content="CV Citraweb Nusa InfoMedia  - Web programmer: adhyoon | Designer : mbahweng" />
     

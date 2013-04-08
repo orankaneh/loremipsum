@@ -153,7 +153,7 @@ $gallery=galleryfotomuatdata('4');
                     SELENGKAPNYA                    </div>
         </div>
       <div class="bannerdepan">
-  <img src="<?=app_base_url?>images/downloadbutton.png">
+        <a href="<?=app_base_url."list/".$_SESSION['bahasa']."/download.html"?>"> <img src="<?=app_base_url?>images/downloadbutton.png" /></a>
   <a href="<?=$bannerkanan['0']['url']?>">
   <img src="<?=app_base_url?>images/banner/<?=$bannerkanan['0']['id']?>.jpg">
    </a>

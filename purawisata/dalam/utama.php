@@ -18,10 +18,6 @@ $visitor=statistik_pengunjung();
 <td>: <?=$visitor['jmtd']?></td>
 </tr>
 <tr>
-<td>Jumlah IP Pengunjung Hari Ini</td>
-<td>: <?=$visitor['perip']?></td>
-</tr>
-<tr>
 <td>Total Pengunjung</td>
 <td>: <?=$visitor['jumlah']?></td>
 </tr>

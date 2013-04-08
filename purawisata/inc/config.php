@@ -65,6 +65,7 @@ define("tabel_pesan", "cni_pesan");
 define("tabel_event", "cni_event");
 define("tabel_harga", "cni_tiket");
 define("tabel_download", "cni_download");
+define("yahoo_mesangger", "cni_ym");
 // - config - database & aplikasi -----------------------------------------------------------
 
 // - config - email -----------------------------------------------------------

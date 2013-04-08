@@ -40,15 +40,19 @@ session_start();?>
 $fasilitas=menu_fasilitas_muat_data();
 $menudinamisutama=about_us_muat_data();
 $menucomplit=dinamis_halaman_muat_data();
+$eventauto=event_expire();
+//show_array($eventauto);
+
 foreach ($menucomplit as $menudinamis){
-$menu.=menu_clean('dropdown', $menudinamis['halaman_id'], $menudinamis['nama_halaman'.$temp], '');
+$sessioncrypt2561=saveid($menudinamis['halaman_id']);	
+$menu.=menu_clean('dropdown', $menudinamis['halaman_id'], app_base_url.$_SESSION['bahasa']."/".$sessioncrypt2561."/".cleanurllho($menudinamis['nama_halaman'.$temp]).".html", '',$temp);
 }
 ?>
 <nav class="cni-nav clearfix">
     <div class="cni-nav-inner">
     <ul class="cni-hmenu">
     <li><a href="<?=app_base_url."home/".$_SESSION['bahasa']?>.html" class="home active"><?=$arrTeks['home']?></a></li>
-    <li><a href="<?=app_base_url?>"><?=$menudinamisutama['nama_halaman'.$temp]?></a>
+    <li><a href="#" class="tentang"><?=$menudinamisutama['nama_halaman'.$temp]?></a>
     <ul>
     <?=$menu;?>
     </ul>
@@ -80,7 +84,7 @@ $menu.=menu_clean('dropdown', $menudinamis['halaman_id'], $menudinamis['nama_hal
      <ul>
      <li><a onclick="loadmap()"><?=$arrTeks['lakasilho']?></a></li>
      <li><a href="<?=app_base_url?>form/contact-us.html">Contact Us</a></li>
-     <li><a>Guest Book</a></li>
+     <li><a href="<?=app_base_url?>form/guest-book.html">Guest Book</a></li>
      </ul>
      </li>
      <li><a href="<?=app_base_url?>form/contact-us.html">Reservation</a></li>

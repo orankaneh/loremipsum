@@ -1,4 +1,5 @@
 <?php
+
 function removeEvilAttributes($tagSource)
 {
        $stripAttrib = "' (style|class)=\"(.*?)\"'i";
@@ -1936,9 +1937,11 @@ function decodeHTML2($html) {
 }
 function clearhtml($html){
 $isi=decodeHTML($html);
-$letters = array('<p>','</p>',"'");
-$fruit   = array('','','');
+$letters = array('<p>','</p>',"'",'<br/>','<br>','<br />','  ','   ');
+$fruit   = array('','','','','','','','');
 $output  = str_replace($letters, $fruit, $isi);
+$re = '/<img[^>]*>/i';
+$output = preg_replace($re,'',$output);
 return $output;
 }
 function getSocialMediaUI() {
@@ -2123,7 +2126,7 @@ function tgl_indo($tgl){
 
 }
 function statistik_pengunjung(){
-	$info=_select_unique_result("select cv.*,count(cv.id) as jumlah,(select count(cv2.id) from cni_visitor cv2 where cv2.tanggal='".date("Y-m-d")."' ) as jmtd,(select count(DISTINCT cv3.ip) from cni_visitor cv3 where cv3.tanggal='".date("Y-m-d")."' group by cv3.ip) as perip from cni_visitor cv");
+	$info=_select_unique_result("select cv.*,count(cv.id) as jumlah,(select count(cv2.id) from cni_visitor cv2 where cv2.tanggal='".date("Y-m-d")."' ) as jmtd from cni_visitor cv");
 	return $info;	
 }
 function script_cni($id){
@@ -2420,9 +2423,9 @@ function deskripsi($text,$char) {
 
 }
 function cleanurllho($judul){
-$letters = array(' ?', ' ','?','? ');
-$fruit   = array('', '-', '', '');
-$output  = str_replace($letters, $fruit, $judul);
+$letters = array(' ?', ' ','?','? ','(',')');
+$fruit   = array('', '-', '', '', '', '');
+$output  = str_replace($letters, $fruit, strtolower($judul));
 return $output;
 }
 
@@ -2962,7 +2965,7 @@ $sql=_select_arr("SELECT * FROM ".tabel_halaman." WHERE top_halaman>1 AND halama
 return $sql;
 }
 
-function menu_clean($tipe, $id, $url, $image=null) {
+function menu_clean($tipe, $id, $url, $image=null, $temp) {
 	if ($tipe!="sitemap" && $tipe!="dropdown") return;
 
 	$menu = "";
@@ -2970,16 +2973,16 @@ function menu_clean($tipe, $id, $url, $image=null) {
 	$s = "select * from ".tabel_halaman." where top_halaman='2' and halaman_id=".$id;
 	$r = mysql_query($s);
 	if($d = mysql_fetch_assoc($r)) {
-		$menu = $d['nama_halaman'];
+		$menu = $d['nama_halaman'.$temp];
 	}
-	$submenu = submenu_clean($id, $url);
+	$submenu = submenu_clean($id, $url,$temp);
 			if($d['top_halaman']=="2"){
 	if (empty($submenu)) {
 		$menu = '<li id='.$d['nama_halaman'].'><a href="'.$url.'">'.$d['nama_halaman'.$temp].'</a></li>';
 	} else {
 		if ($tipe=="sitemap") $menu = '<li>'.$menu.''.$submenu.'</li>';
 		if ($tipe=="dropdown") {
-			if (empty($image)) $menu = '<li><a href="#" style="text-align:center;">'.$menu.'</a>'.$submenu.'</li>';
+			if (empty($image)) $menu = '<li><a href="#">'.$menu.'</a>'.$submenu.'</li>';
 			else $menu = '<li><a href="#"><img border="0" src="'.$image.'"/></a>'.$submenu.'</li>';			
 		}
 	}
@@ -2987,7 +2990,7 @@ function menu_clean($tipe, $id, $url, $image=null) {
 	return $menu;
 }
 
-function submenu_clean($id,$url) {
+function submenu_clean($id,$url,$temp) {
 	$menu = "";
 	$submenu = "";
 	$childmenu = "";
@@ -2996,13 +2999,17 @@ function submenu_clean($id,$url) {
 	$n2 = mysql_num_rows($r2);
 	if ($n2>0) {
 		while($d2 = mysql_fetch_assoc($r2)) {
+		//echo $d2['nama_halaman'.$temp];
+		
 			$childmenu = submenu_clean($d2['halaman_id'], $url);
 			$url2 = !empty($childmenu)? "#" : $url;
 			$addClass = !empty($childmenu)? 'class="haschild"' : 'class="nochild"';
-			$submenu .= '<li ><a '.$addClass.' href="'.$d2['nama_halaman_e'].'">'.$d2['nama_halaman'].'</a>';
+			$sessioncrypt2562=saveid($d2['halaman_id']);	
+			$submenu .= '<li ><a '.$addClass.' href="'.app_base_url.$_SESSION['bahasa']."/".$sessioncrypt2562."/".cleanurllho($d2['nama_halaman'.$temp]).".html".'">'.$d2['nama_halaman'.$temp].'</a>';
 			$submenu .= $childmenu;
 			$submenu .= '</li>';
 		}
+		
 		$menu .= "<ul>";
 		$menu .= $submenu;
 		$menu .= "</ul>";
@@ -3015,4 +3022,40 @@ $sql= _select_arr("select * from ".tabel_download." order by id desc");
 return $sql;
 } 
 
+function buku_tamu_muat_data(){
+$sql= _select_arr("select * from ".tabel_tamu." where kategori =  'pengunjung' and status='1'");
+return $sql;
+}
+
+function respon_admin($parent){
+$sql= _select_arr("select * from ".tabel_tamu." where id_parent =  '$parent'  and status='1'");
+return $sql;
+}
+function unread_testi(){
+$sql= _select_arr("select * from ".tabel_tamu." where status='0'");
+return $sql;
+}
+function yahoo_account(){
+$sql= _select_arr("select * from ".yahoo_mesangger);
+return $sql;
+}
+function nama_top_halaman($id){
+$sql= _select_unique_result("select thdua.nama_halaman,thdua.nama_halaman_e from ".tabel_halaman." th
+join ".tabel_halaman." thdua on(thdua.halaman_id=th.top_halaman) where th.halaman_id ='$id'");
+return $sql;
+}
+function detail_dinamis_muat_data($id){
+$sql= _select_arr("select * from ".tabel_halaman." where halaman_id ='$id'");
+return $sql;
+}
+function event_expire(){
+$today=date("Y-m-d");
+$sql= _select_arr("select * from ".tabel_event." where kategori ='0' and tanggal_mulai <'$today' and status ='1'");
+$total=count($sql);	
+if($total !="0"){	
+		foreach($sql as $data){
+	mysql_query("update ".tabel_event." set status='0' where id='$data[id]'");
+		}
+	}
+}
 ?>
