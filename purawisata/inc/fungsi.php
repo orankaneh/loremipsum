@@ -1937,8 +1937,8 @@ function decodeHTML2($html) {
 }
 function clearhtml($html){
 $isi=decodeHTML($html);
-$letters = array('<p>','</p>',"'",'<br/>','<br>','<br />','  ','   ');
-$fruit   = array('','','','','','','','');
+$letters = array('<p>','</p>',"'",'<br/>','<br>','<br />','  ','   ','<strong>','</strong>');
+$fruit   = array('','','','','','','','','','');
 $output  = str_replace($letters, $fruit, $isi);
 $re = '/<img[^>]*>/i';
 $output = preg_replace($re,'',$output);
@@ -2400,7 +2400,7 @@ $id=anti_injection($id);
     return $result;
 }
 function menu_fasilitas_muat_data(){
-    $sql = "select * from ".tabel_fasilitas;
+    $sql = "select * from ".tabel_fasilitas." where status ='1'";
     $exe = mysql_query($sql);
     $result = array();
     while ($row = mysql_fetch_array($exe)) {
@@ -2458,8 +2458,8 @@ return $output;
 }
 
 function  keyword($key){
-$letters = array(' ','-');
-$fruit   = array(', ',', ');
+$letters = array(' ','-',', ,');
+$fruit   = array(', ',', ','');
 $output  = str_replace($letters, $fruit, $key);
 return $output;
 }

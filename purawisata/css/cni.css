@@ -1132,7 +1132,7 @@ border-radius: 5px;
 }
 .tabelharga th{
 background: #d8cf9c;
-color:#FFFFFF;
+color:#161616;
 border: none;
 }
 .tabelharga td{
@@ -1141,6 +1141,32 @@ border: none;
 font-family:dosis;
 font-weight:bold;
 font-size: 14px;
+}
+
+
+.tabelharga2{
+width:100%;
+background-color:#fff;
+border: none;
+}
+.tabelharga2 th{
+background: #d8cf9c;
+color:#161616;
+border: none;
+font-size: 11px;
+}
+.tabelharga2 td{
+color:#161616;
+border: none;
+font-family:dosis;
+font-weight:bold;
+font-size: 14px;
+}
+
+.tabelharga2 input{
+width: 100px !important;
+border: 1px solid #161616;
+color: #161616 !important;
 }
 .center{
 text-align:center !important;
@@ -1306,4 +1332,28 @@ border-color: transparent #ba985d;
 display: block;
 width: 0;
 z-index: 0;
+}
+
+.eventasolole{
+font-family: dosis;
+font-weight:bolder;
+font-size: 15px;
+}
+
+.tabelharga2 .tombolapus{
+ background: none repeat scroll 0 0 #715F50;
+    border: medium none !important;
+    border-radius: 3px 3px 3px 3px;
+    color: #FFFFFF !important;
+    float: left;
+    font-family: swiss;
+    padding: 3px;
+    text-align: center;
+    width: 130px !important;
+	cursor:pointer;
+}
+.tabelharga2 .tombolapus:hover{
+ background: #BA985D !important;
+ color: #ffffff !important;
+ cursor:pointer;
 }

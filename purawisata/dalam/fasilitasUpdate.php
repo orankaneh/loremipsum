@@ -129,13 +129,13 @@ if($_POST) {
     function hapusBarang(count,el){
         var parent = el.parentNode.parentNode;
         parent.parentNode.removeChild(parent);
-        var penerimaan=$('.barang_tr');
+        var penerimaan=$('.tiket_tr');
         var countPenerimaanTr=penerimaan.length;
         for(var i=0;i<countPenerimaanTr;i++){
-            $('.barang_tr:eq('+i+')').children('td:eq(0)').html(i+1);
-            $('.barang_tr:eq('+i+')').removeClass('even');
-            $('.barang_tr:eq('+i+')').removeClass('odd');
-            $('.barang_tr:eq('+i+')').addClass(((i+1) % 2 != 0)?'even':'odd');
+            $('.tiket_tr:eq('+i+')').children('td:eq(0)').html(i+1);
+            $('.tiket_tr:eq('+i+')').removeClass('even');
+            $('.tiket_tr:eq('+i+')').removeClass('odd');
+            $('.tiket_tr:eq('+i+')').addClass(((i+1) % 2 != 0)?'even':'odd');
         }
     }
 </script>

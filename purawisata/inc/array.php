@@ -49,6 +49,14 @@ $arrEn = array(
 				"eventext" => "EVENTS",
 				"about" => "ABOUT US",
 				"simbolmata" => "$",
+				"type" => "Type",
+				"fasilitas" => "Facilities",
+				"agend" => "Events",
+				"pilihtype" => "Select Type",
+				"paket" => "Package",
+				"pilih" => "select ",
+				"jumlah" => "Quantity",
+				"duit" => "dollar",
 				"berita_lainya" => "OTHER NEWS"
 			);			
 
@@ -102,6 +110,14 @@ $arrIndo = array(
 				"event" => "AGENDA",
 				"about" => "TENTANG KAMI",
 				"simbolmata" => "Rp.",
+				"type" => "Jenis",
+				"fasilitas" => "Fasilitas",
+				"agend" => "Acara",
+				"pilihtype" => "Pilih Jenis",
+				"paket" => "Paket",
+				"pilih" => "pilih ",
+				"jumlah" => "Jumlah",	
+				"duit" => "rupiah",			
 				"berita_lainya" => "BERITA LAINYA"      
               );			  
 ?>

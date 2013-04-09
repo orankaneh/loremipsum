@@ -83,11 +83,11 @@ $menu.=menu_clean('dropdown', $menudinamis['halaman_id'], app_base_url.$_SESSION
      <li><a class="contact">CONTACT US</a>
      <ul>
      <li><a onclick="loadmap()"><?=$arrTeks['lakasilho']?></a></li>
-     <li><a href="<?=app_base_url?>form/contact-us.html">Contact Us</a></li>
-     <li><a href="<?=app_base_url?>form/guest-book.html">Guest Book</a></li>
+     <li><a href="<?=app_base_url.$_SESSION['bahasa']?>/form/contact-us.html">Contact Us</a></li>
+     <li><a href="<?=app_base_url.$_SESSION['bahasa']?>/form/guest-book.html">Guest Book</a></li>
      </ul>
      </li>
-     <li><a href="<?=app_base_url?>form/contact-us.html">Reservation</a></li>
+     <li><a class="booking" href="<?=app_base_url.$_SESSION['bahasa']?>/form/reservation.html">Reservation</a></li>
     </ul> 
      </div>
 </nav>

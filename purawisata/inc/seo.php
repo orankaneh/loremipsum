@@ -50,6 +50,12 @@ session_start();
 		$metad=deskripsi(clearhtml($deskripsi[0][$variable]),'160');
 		$keyd=keyword(client).', '.keyword($judul);
 	}
+	else if(($access=='event') and ($id!='')){
+		$deskripsi=detail_event_muat_data(bukaid($id));
+		$variable='isi'.$temp;
+		$metad=deskripsi(clearhtml($deskripsi[0][$variable]),'160');
+		$keyd=keyword(client).', '.keyword($judul);
+	}
 	else{
 		$metad="";
 		$keyd='';
@@ -84,6 +90,7 @@ session_start();
     
     <script type="text/javascript" src="<?=app_base_url?>js/jquery.js"></script>
     <script type="text/javascript" src="<?=app_base_url?>js/script.js"></script>
+    <script type="text/javascript" src="<?=app_base_url?>js/fungsi.js"></script>
     <script type="text/javascript" src="<?=app_base_url?>js/script.responsive.js"></script>
     
     <script type="text/javascript" src="<?=app_plugin_url?>slider/jquery.flexslider.js"></script>

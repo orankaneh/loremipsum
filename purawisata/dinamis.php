@@ -32,7 +32,7 @@ $_SESSION['bahasa']=$bahasa;
     </div>
       <div class="beritainindex">
 	<div class="detailberita">	
-         <div class="beritakiri">
+         <div class="beritakiri" style="text-align:justify;">
        		<div class="isikiri">
       			<?
 				$pertamax=nama_top_halaman(bukaid($id));

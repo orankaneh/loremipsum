@@ -36,3 +36,39 @@ function Desimal2(obj){
     }
     
 }
+function formtype(type,url) {
+	$.ajax({
+	url: url+"form.php?type="+type,
+	type:'GET',
+	dataType:'html',
+	success: function(msg){
+    $('#ajaxdata').html(msg);
+	$('#ajaxdata2').html("");
+       }
+	});
+}
+function package(type,url) {
+	$.ajax({
+	url: url+"form.php?type=package&id="+type,
+	type:'GET',
+	dataType:'html',
+	success: function(msg){
+    $('#ajaxdata2').html(msg);
+       }
+	});
+}
+
+function tarif(id,url){
+							$.ajax({
+							url:  url+"form.php?type=harga&id="+$("#package1").val(),
+							type:'GET',
+							dataType: 'json',
+							success: function(data){
+							//alert(data.harga);
+							$('#harga1').val(data.harga);
+							$('#hargapaypall1').val(data.paypall);
+							$('#hargangumpet1').val(data.ngumpet);
+							$('#jumlah1').val("1");
+							   }
+							});
+}

@@ -128,9 +128,40 @@ $_SESSION['bahasa']=$bahasa;
                 <?
                 echo getSocialMediaUI()."<br/>";
 				echo decodeHTML2($data[$varnya]);
+				 $tiketbox=tiket_package_muat_data($data['id']);
+				  
+                ?><p>
+                  <table class="tabelharga2" cellpadding="0" cellspacing="0" border="0">
+                   <tr>
+                   <th>No</th>
+                   <th>Package</th>
+                   <th>Price</th>
+                   <th>Deskripsi</th>
+                   </tr>
+                   <? 
+				   if(count($tiketbox)=="0"){
+				   echo "<tr><td colspan='4' class='center'>Data not found</td></tr>";
+				   }
+				   else{
+				   foreach($tiketbox as $angka => $detailtiket){?>
+                   <tr>
+                   <td class="center"><?=++$angka?></td>
+                   <td class="center"><?=$detailtiket['nama']?></td>
+                   <td ><?=$arrTeks['simbolmata']." ".$detailtiket[$matauang]?></td>
+                   <td><?=$detailtiket['deskripsi'.$temp2]?></td>
+                   </tr>   
+                   <? } 
+				   }
+				   ?>
+                   </table>      
+                </p>
+                <p>&nbsp;</p>
+                <?
      		 } 
 		   }
+		  
 		   ?>
+          
 		</div>
     	  </div><!-- End Berita Kiri-->
            
