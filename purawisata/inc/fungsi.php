@@ -2423,8 +2423,8 @@ function deskripsi($text,$char) {
 
 }
 function cleanurllho($judul){
-$letters = array(' ?', ' ','?','? ','(',')');
-$fruit   = array('', '-', '', '', '', '');
+$letters = array(' ?', ' ','?','? ','(',')','-/-');
+$fruit   = array('', '-', '', '', '', '','-');
 $output  = str_replace($letters, $fruit, strtolower($judul));
 return $output;
 }

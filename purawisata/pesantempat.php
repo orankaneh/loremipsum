@@ -133,6 +133,11 @@ if (isset($_POST['submit'])) {
 		package(fasilitas,'<?=app_base_url?>');
 		});
 	  });
+	   $(function() {
+		$( "#tanggal" ).datetimepicker({ minDate: "+2D",hourMin: 9,
+	hourMax: 22,minuteGrid: 10,stepMinute: 10});
+		  $( "#tanggal" ).datepicker( "option", "showAnim", "bounce" );
+	  });
   </script>
 	 <div class="field-group">
         <label><?=$arrTeks['type']?>* :</label>
@@ -144,6 +149,11 @@ if (isset($_POST['submit'])) {
     </div>
     <div id="ajaxdata"></div>
     <div id="ajaxdata2"></div>
+    
+    <div class="field-group">
+        <label><?=$arrTeks['tanggalresev']?>* :</label>
+        <input class="inputpesan" type="text" id="tanggal"/>
+    </div>
     <div class="field-group">
         <label><?=$arrTeks['kontak_nama']?>* :</label>
         <input class="inputpesan" type="text" name="vNama" value="<?=$vNama?>"/>

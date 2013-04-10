@@ -87,6 +87,7 @@ session_start();
 	<link rel="stylesheet" type="text/css" href="<?=app_plugin_url?>fancybox/helpers/jquery.fancybox-thumbs.css?v=2.0.3" />  
     <link rel="stylesheet" type="text/css" href="<?=app_plugin_url?>crousel/jquery.bxslider.css" />  
   	<link rel="stylesheet" type="text/css" href="<?=app_plugin_url?>jScrollPane/jquery.jscrollpane.css" />  
+    <link rel="stylesheet" type="text/css" href="<?=app_plugin_url?>jquery-ui-1.10.2.custom/css/humanity/jquery-ui-1.10.2.custom.min.css" />  
     
     <script type="text/javascript" src="<?=app_base_url?>js/jquery.js"></script>
     <script type="text/javascript" src="<?=app_base_url?>js/script.js"></script>
@@ -101,4 +102,5 @@ session_start();
 	<script type="text/javascript" src="<?=app_plugin_url?>crousel/jquery.bxslider.min.js"></script>
     <script type="text/javascript" src="<?=app_plugin_url?>jScrollPane/jquery.jscrollpane.min.js"></script>
     <script type="text/javascript" src="<?=app_plugin_url?>jScrollPane/jquery.mousewheel.js"></script>
-    
+    <script type="text/javascript" src="<?=app_plugin_url?>jquery-ui-1.10.2.custom/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script type="text/javascript" src="<?=app_plugin_url?>jquery-ui-1.10.2.custom/js/DateTimePicker.js"></script>

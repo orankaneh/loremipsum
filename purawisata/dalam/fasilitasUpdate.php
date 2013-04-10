@@ -92,7 +92,7 @@ if($_POST) {
 		$deletealltiket=mysql_query("delete from cni_tiket where id_fasilitas ='$idtersembunyi'");
 		
 		foreach($tikets as $datapaket){
-		$tiketing="insert into cni_tiket values ('','$idtersembunyi','$datapaket[package]','$datapaket[deskripsi]','$datapaket[deskripsien]','$datapaket[rupiah]','$datapaket[dollar]')";
+		$tiketing="insert into cni_tiket values ('','$idtersembunyi','".encodeHTML($datapaket[package])."','$datapaket[deskripsi]','$datapaket[deskripsien]','$datapaket[rupiah]','$datapaket[dollar]')";
 		mysql_query($tiketing,$tulis) or die(mysql_error() . "<hr>" . $tiketing);
 		}
 		
@@ -162,7 +162,7 @@ if($_POST) {
 		$editor->disableFeatures(array('print','spelling','dirltr','dirrtl','preview'));
 		$editor->name = 'isi'; // nama editor
 		$editor->value = $isi; // isi editor
-		$editor->setupEditor("/".WPRO_DIR.'images/gambar/', site_img_dir, "/".WPRO_DIR.'images/dokumen/', site_doc_dir);
+		$editor->setupEditor(WPRO_DIR.'images/gambar/', site_img_dir, "/".WPRO_DIR.'images/dokumen/', site_doc_dir);
 		$editor->cssText = "body {color:#000;background:#FFF;}";
 		$editor->display(800, 480);
 	?>
@@ -176,7 +176,7 @@ if($_POST) {
 		$editor->disableFeatures(array('print','spelling','dirltr','dirrtl','preview'));
 		$editor->name = 'isi_e'; // nama editor
 		$editor->value = $isie; // isi editor
-		$editor->setupEditor("/".WPRO_DIR.'images/gambar/', site_img_dir, "/".WPRO_DIR.'images/dokumen/', site_doc_dir);
+		$editor->setupEditor(WPRO_DIR.'images/gambar/', site_img_dir, "/".WPRO_DIR.'images/dokumen/', site_doc_dir);
 		$editor->cssText = "body {color:#000;background:#FFF;}";
 		$editor->display(800, 480);
 	?>

@@ -29,7 +29,6 @@ $indexevent=indexlistevent_muat_data('6');
                      <hr/>
                      <script src="http://widgets.twimg.com/j/2/widget.js"></script>
 <script>
-
 new TWTR.Widget({
 
   version: 2,

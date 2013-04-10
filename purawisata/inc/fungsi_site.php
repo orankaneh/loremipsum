@@ -68,6 +68,8 @@ function menuAdmin() {
 				
 				<li><a href="guestList.php" class="nochild"><b><img src="../images/icon/gray_18/book.png" class="iconadmin">Buku Tamu '.$testi.'</b></a></li>
 				
+				<li><a href="pesan.php" class="nochild"><b><img src="../images/icon/gray_18/book.png" class="iconadmin">Pesan Masuk</b></a></li>
+				
 				<li><a href="halamanList.php" class="nochild"><b><img src="../images/icon/gray_18/list.png" class="iconadmin">Halaman</b></a></li>
 				
 				<li><a href="gantiPassword.php" class="nochild"><b><img src="../images/icon/gray_18/password.png" class="iconadmin">Ganti Password</b></a></li>

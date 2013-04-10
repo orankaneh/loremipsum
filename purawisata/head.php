@@ -24,10 +24,6 @@ ob_start();
   	 });
 
 	$(document).ready(function() {
-	$(function()
-{
-	$('.twtr-bd').jScrollPane();
-});
 	 $(".fancybox-buttons").fancybox({
         padding: 0,
 		margin : [-20, 300, 100, 0],

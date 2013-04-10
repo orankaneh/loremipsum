@@ -80,12 +80,13 @@ $(document).ready(function(){
     $(function() {
         $('.pesanerror').fadeOut(10000);
     })
-$(function()
-{
-	$('.isibuku').jScrollPane();
-});
+	
+	$(function()
+	{
+		$('.isibuku').jScrollPane();
+	});
 
- });
+});
 </script>
 <div class="pesanerror">
 <?
@@ -99,11 +100,11 @@ if (isset($_POST['submit'])) {
 <script>
 $(document).ready(function(){
     $(function() {
-   setTimeout(function() {
-    window.location = "<?=app_base_url?>/form/guest-book.html";
-    }, 1500);
+   		setTimeout(function() {
+   		 	window.location = "<?=app_base_url?>/form/guest-book.html";
+    	}, 1500);
     })
-  });
+});
 </script>    
 <?
         echo "<li>Thank you</li>";

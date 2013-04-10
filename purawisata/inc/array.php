@@ -57,6 +57,7 @@ $arrEn = array(
 				"pilih" => "select ",
 				"jumlah" => "Quantity",
 				"duit" => "dollar",
+				"tanggalresev"=>"Date",
 				"berita_lainya" => "OTHER NEWS"
 			);			
 
@@ -117,7 +118,8 @@ $arrIndo = array(
 				"paket" => "Paket",
 				"pilih" => "pilih ",
 				"jumlah" => "Jumlah",	
-				"duit" => "rupiah",			
+				"duit" => "rupiah",		
+				"tanggalresev"=>"Tanggal",	
 				"berita_lainya" => "BERITA LAINYA"      
               );			  
 ?>
