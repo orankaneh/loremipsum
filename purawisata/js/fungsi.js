@@ -57,7 +57,6 @@ function package(type,url) {
        }
 	});
 }
-
 function tarif(id,url){
 							$.ajax({
 							url:  url+"form.php?type=harga&id="+$("#package1").val(),

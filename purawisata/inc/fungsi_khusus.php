@@ -375,27 +375,5 @@ function dataMember($strArgID)
 		}
 	return $ar_DM;
 	}
-function paypalgatweway(){
-$paypal_url="https://www.sandbox.paypal.com/cgi-bin/webscr"; // Test Paypal API URL
-$paypal_id="citra._1362632633_biz@gmail.com";
-$html='
-<form action="'.$paypal_url.'" method="post" name="form7">
-<input type="hidden" name="business" value="'.$paypal_id.'">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="item_name" value="Mie Ayam Bakso">
-<input type="hidden" name="amount" value="100">
-<input type="hidden" name="no_shipping" value="2">
-<input type="hidden" name="currency_code" value="USD">
-<input type="hidden" name="cancel_return" value="http://yoursite.com/cancel.php">
-<input type="hidden" name="return" value="http://yoursite.com/success.php">
-<input type="hidden" name="address_override" value="Jl Petung 31">
-<input type="hidden" name="invoice" value="ABCD11212">
 
-<input type="hidden" name="image_url" value="http://www.citrahost.com/images/logo_cni.jpg">
-
-<input type="image" src="https://paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit">
-</form> 
-';
- return $html;
-}
 ?>

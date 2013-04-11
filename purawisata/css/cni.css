@@ -926,14 +926,13 @@ margin: 0 !important;
     display: inline-block;
     padding: 12px 10px;
 	width: 450px;
-	margin-left: 20px;
 }
 
 .field-group label{
 	font-family: swiss;
 	font-size:14px;
 	clear:both;
-	width: 80px !important;
+	width: 110px !important;
 	display: inline-block;
 }
 .field-group input {
@@ -955,7 +954,7 @@ margin: 0 !important;
 	font-family: swiss;
 	font-size:14px;
 	clear:both;
-	width: 350px;
+	width: 300px;
 	margin: 0 auto;
 }
 .contactusform .capcaycontact{
@@ -964,7 +963,7 @@ margin: 0 !important;
 	border-radius: 3px;
 }
 #capcay{
-margin: -35px 84px;
+margin: -35px 120px;
 }
 .contactusform .pesanerror{
 	width: 490px;
@@ -1017,6 +1016,40 @@ input[class="tombol"]:hover{
 background: #FFFFFF;
 color: #715F50 !important;
 cursor:pointer;
+}
+
+input[class="tomboltambah"]{
+width: 40px !important;
+font-family: swiss;
+float:left;
+text-align:center;
+background: #715F50;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+color: #FFFFFF;
+padding: 3px;
+border: none !important;
+background:url(../images/plus.jpg) no-repeat;
+cursor:pointer;
+height:35px;
+}
+
+input[class="tomboltambah"]:hover{
+width: 40px !important;
+font-family: swiss;
+float:left;
+text-align:center;
+background: #715F50;
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+border-radius: 3px;
+color: #FFFFFF;
+padding: 3px;
+border: none !important;
+background:url(../images/plus2.jpg) no-repeat;
+cursor:pointer;
+height:35px;
 }
 
 a {outline: 0 none;}
@@ -1168,6 +1201,35 @@ width: 100px !important;
 border: 1px solid #161616;
 color: #161616 !important;
 }
+
+.tabelharga3{
+width:100%;
+background-color:#fff;
+border: none;
+}
+.tabelharga3 th{
+background: #d8cf9c;
+color:#161616;
+border: none;
+font-size: 11px;
+}
+.tabelharga3 td{
+color:#161616;
+border: none;
+font-family:dosis;
+font-weight:bold;
+font-size: 14px;
+
+}
+.tabelharga3 .sebelahkirilho{
+text-align:right;
+}
+.tabelharga3 input{
+width: 100px !important;
+border: 1px solid #161616;
+color: #161616 !important;
+}
+
 .center{
 text-align:center !important;
 }
@@ -1335,9 +1397,8 @@ z-index: 0;
 }
 
 .eventasolole{
-font-family: dosis;
-font-weight:bolder;
-font-size: 15px;
+font-family:"Times New Roman", Times, serif;
+font-size: 12px;
 }
 
 .tabelharga2 .tombolapus{
@@ -1356,4 +1417,7 @@ font-size: 15px;
  background: #BA985D !important;
  color: #ffffff !important;
  cursor:pointer;
+}
+.ui-datepicker{
+z-index: 100 !important;
 }

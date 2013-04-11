@@ -143,16 +143,16 @@ foreach($respone as $tanggapan){
 </div>
 <? if ($hideform=='0'){ ?>
     <div class="field-group">
-        <label><?=$arrTeks['kontak_nama']?>* :</label>
-        <input class="inputpesan" type="text" name="vNama" value="<?=$vNama?>"/>
+        <label><?=$arrTeks['kontak_nama']?>* </label>
+        :&nbsp;<input class="inputpesan" type="text" name="vNama" value="<?=$vNama?>"/>
     </div>
     <div class="field-group">
-        <label><?=$arrTeks['kontak_email']?>* :</label>
-        <input class="inputpesan" type="text" name="vEmail" value="<?=$vEmail?>"/>
+        <label><?=$arrTeks['kontak_email']?>* </label>
+        :&nbsp;<input class="inputpesan" type="text" name="vEmail" value="<?=$vEmail?>"/>
     </div>
     <div class="field-group">
-        <label><?=$arrTeks['kontak_pesan']?>* :</label>
-        <textarea name="vPesan" rows="8" class="inputpesan"><?=$vPesan?></textarea>
+        <label><?=$arrTeks['kontak_pesan']?>* </label>
+        :&nbsp;<textarea name="vPesan" rows="8" class="inputpesan"><?=$vPesan?></textarea>
     </div>
     <div class="field-group">
     <label>&nbsp;</label>
@@ -163,8 +163,8 @@ foreach($respone as $tanggapan){
     </div>
     
      <div class="field-group">
-    <label>Verification* :</label>
-		<input type="text" name="code" id="code" size="12" title="Secure Code" class="secure" maxlength="5"/>
+    <label>Verification* </label>
+		:&nbsp;<input type="text" name="code" id="code" size="12" title="Secure Code" class="secure" maxlength="5"/>
 	</div>
 
     <div class="field-group" align="center">

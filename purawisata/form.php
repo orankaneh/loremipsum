@@ -26,8 +26,8 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 	if($type=="event"){
 	$sql=_select_arr("select * from ".tabel_event." where kategori ='0' and status ='1' order by tanggal_mulai desc");
 	echo '<div class="field-group">';
-	echo '<label>'.$arrTeks['agend'].'* :</label>';
-	echo '<select name="event" id="event" class="eventasolole">';
+	echo '<label>'.$arrTeks['agend'].'* </label>';
+	echo ' :&nbsp;<select name="event" id="event" class="eventasolole">';
 		foreach($sql as $data){
 		echo '<option value="'.$data['id'].'">'.$data['nama'.$temp].' | '.dateaja($data['tanggal_mulai']).'</option>';
 		}
@@ -58,8 +58,8 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
   <?
 	$sql=_select_arr("select * from ".tabel_fasilitas." where status ='1'");
 	echo '<div class="field-group">';
-	echo '<label>'.$arrTeks['fasilitas'].'* :</label>';
-	echo '<select name="fasilitas" id="fasilitas" class="eventasolole">';
+	echo '<label>'.$arrTeks['fasilitas'].'* </label>';
+	echo ' :&nbsp;<select name="fasilitas" id="fasilitas" class="eventasolole">';
 	echo '<option value=""> -'.$arrTeks['pilih'].$arrTeks['fasilitas'].'- </option>';
 		foreach($sql as $data){
 		echo '<option value="'.$data['id'].'">'.$data['nama'.$temp].'</option>';
@@ -84,7 +84,7 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 				<? }?>
 				"</select></div></td>"+
 				"<td><input type='text' name='tiket["+numb+"][jumlah]' id='jumlah"+numb+"' onkeyup='Angka(this)' maxlength='3'/></td>"+
-				"<td><input type='text' name='tiket["+numb+"][harga]' id='harga"+numb+"' readonly/><input type='hidden' name='tiket["+numb+"][hargangumpet]' id='hargangumpet"+numb+"' readonly/><input type='hidden' name='tiket["+numb+"][hargapaypall]' id='hargapaypall"+numb+"' readonly/></td>"+
+				"<td><input type='text' name='tiket["+numb+"][harga]' id='harga"+numb+"' readonly/><input type='hidden' name='tiket["+numb+"][hargangumpet]' id='hargangumpet"+numb+"' readonly/></td>"+
 				  "<td align='center'><input type='button' class='tombolapus' value='Delete' onclick='hapusBarang(1,this)'></td>"+
                 "</tr>";
             $(".tabelharga2").append(string);
@@ -140,7 +140,7 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
                    <th>Price(<?=$arrTeks['simbolmata']?>)</th>
                    <th>Delete</th>
                    </tr>
-                   <tr class="tiket_tr">
+                   <tr class="tiket_tr">                  
                    <td align="center">
                    <select name="tiket[1][package]" id="package1" class="eventasolole" onchange="harga(this.value)">
                    <? 
@@ -153,13 +153,13 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
                    </td>
                    <td><input type="text" name="tiket[1][jumlah]" id="jumlah1" onkeyup="Angka(this);hitungtotal(this.value)" maxlength="3"/></td>
                     <td><input type="text" name="tiket[1][harga]" id="harga1" readonly/>
-                     <input type="hidden" name="tiket[1][hargangumpet]" id="hargangumpet1" readonly/>
-                    <input type="hidden" name="tiket[1][hargapaypall]" id="hargapaypall1" readonly/>
+                    <input type="hidden" name="tiket[1][hargangumpet]" id="hargangumpet1" readonly/>
                     </td>
                     <td></td>
                    </tr>
     </table>
-    <input type="button" class="tombol" value="Tambah Baris" id="tambahBaris">
+
+    <input type="button" class="tomboltambah" id="tambahBaris">
     <?
 	}
 	else if($type=="harga"){

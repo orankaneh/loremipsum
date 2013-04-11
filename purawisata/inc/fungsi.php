@@ -2011,6 +2011,9 @@ function formatrp2($angka){
 	$rupiah=number_format($angka,2,',','.'); 
 	return "Rp ".$rupiah;
 }
+function _last_id() {
+    return mysql_insert_id();
+}
 
 function toAscii($str, $replace=array(), $delimiter='-') {
     if( !empty($replace) ) {
@@ -3057,5 +3060,62 @@ if($total !="0"){
 	mysql_query("update ".tabel_event." set status='0' where id='$data[id]'");
 		}
 	}
+}
+function bank_rek_muat_data(){
+$sql= _select_arr("select * from ".bank_account." order by id desc");
+return $sql;
+}
+function invoice_number(){
+	global $baca;
+	$sql = "select booking from ".tabel_pemesanan." where 1 Order By booking DESC LIMIT 1";
+	$res = mysql_query($sql,$baca);
+	$num = mysql_num_rows($res);
+	$row = mysql_fetch_object($res);
+    $nomori = $row->booking;
+   
+	if($num==0){
+	   $urutan = "00001";
+	}else{
+		$hitung = $nomori+ 1;
+		$urutan = sprintf("%05d",$hitung);
+	}
+	return $urutan;
+}
+function invoice_huruf($panjang) { 
+   $ip=$_SERVER['REMOTE_ADDR'];
+   $pstring =md5($ip."purawisata jogjakarta").sessionadmin($panjang); 
+   $plen = strlen($pstring); 
+   $unik='';
+      for ($i = 1; $i <= $panjang; $i++) { 
+          $start = rand(1,$plen); 
+          $unik.= substr($pstring, $start, 1); 
+      } 
+ 
+   return $unik; 
+} 
+
+function paypalgatweway(){
+$sql= _select_unique_result("select account from ".tabel_paypal." where id='1'");
+$paypal_url="https://www.paypal.com/cgi-bin/webscr"; // Test Paypal API URL
+$paypal_id="citra._1362632633_biz@gmail.com";
+$html='
+<form action="'.$paypal_url.'" method="post" name="form7">
+<input type="hidden" name="business" value="'.$paypal_id.'">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="item_name" value="Mie Ayam Bakso">
+<input type="hidden" name="amount" value="100">
+<input type="hidden" name="no_shipping" value="2">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="cancel_return" value="http://yoursite.com/cancel.php">
+<input type="hidden" name="return" value="http://yoursite.com/success.php">
+<input type="hidden" name="address_override" value="Jl Petung 31">
+<input type="hidden" name="invoice" value="ABCD11212">
+
+<input type="hidden" name="image_url" value="http://www.citrahost.com/images/logo_cni.jpg">
+
+<input type="image" src="https://paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" name="submit">
+</form> 
+';
+ return $html;
 }
 ?>

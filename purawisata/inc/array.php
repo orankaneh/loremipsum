@@ -19,6 +19,9 @@ $arrEn = array(
                 "kontak_erorr_mobile" => "Sorry, mobile can't empty", 
                 "kontak_erorr_pesan" => "Please enter your message",
                 "kontak_erorr_kode" => "Please enter Verification",
+				"type_erorr_kode" => "Please select type",
+				"tanggal_erorr_kode" => "Please select date",
+				"payment_erorr_kode" => "Please select payment",
                 "kontak_erorr_format" => "Please enter a valid email address",
                 "kontak_erorr_code_isi" => "The text you entered did not match. Please try again.",
 			    "room_empty" => "Sorry, type room can't empty",
@@ -57,7 +60,9 @@ $arrEn = array(
 				"pilih" => "select ",
 				"jumlah" => "Quantity",
 				"duit" => "dollar",
-				"tanggalresev"=>"Date",
+				"tanggalresev"=>"Reservation Date",
+				"pembayaran"=>"Payment",
+				"pilihpem" => "Select Payment",
 				"berita_lainya" => "OTHER NEWS"
 			);			
 
@@ -115,11 +120,16 @@ $arrIndo = array(
 				"fasilitas" => "Fasilitas",
 				"agend" => "Acara",
 				"pilihtype" => "Pilih Jenis",
+				"pilihpem" => "Pilih Pembayaran",
 				"paket" => "Paket",
 				"pilih" => "pilih ",
 				"jumlah" => "Jumlah",	
-				"duit" => "rupiah",		
+				"duit" => "rupiah",	
+				"type_erorr_kode" => "type belum dipilih",
+				"tanggal_erorr_kode" => "tanggal belum di isi",
+				"payment_erorr_kode" => "payment belum di isi",	
 				"tanggalresev"=>"Tanggal",	
+				"pembayaran"=>"Pembayaran",
 				"berita_lainya" => "BERITA LAINYA"      
               );			  
 ?>

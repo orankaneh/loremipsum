@@ -13,16 +13,16 @@ $(".booking").append("<div class='triangle'></div>");
 </script>
 <? include "header.php"; ?>
 <div class="cni-sheet clearfix">
-            <div class="cni-layout-wrapper clearfix">
-                <div class="cni-content-layout">
-                    <div class="cni-content-layout-row">
-                        <div class="cni-layout-cell cni-content clearfix"><article class="cni-post cni-article">
-                                
-                                                
-                <div class="cni-postcontent cni-postcontent-0 clearfix"><div class="cni-content-layout">
+    <div class="cni-layout-wrapper clearfix">
+<div class="cni-content-layout">
+    <div class="cni-content-layout-row">
+<div class="cni-layout-cell cni-content clearfix"><article class="cni-post cni-article">
+
+
+<div class="cni-postcontent cni-postcontent-0 clearfix"><div class="cni-content-layout">
     <div class="cni-content-layout-row">
     <div class="cni-layout-cell layout-item-0" style="width: 100%" >
-        <p><br/></p>
+<p><br/></p>
     </div>
     </div>
       <div class="beritainindex">
@@ -34,49 +34,155 @@ include_once("plugins/captcha/securimage.php");
 $vPesan="";
 $hideform='0';
 if (isset($_POST['submit'])) {
+//show_array($_POST);
 	$strError = "";
 
 	$vNama = trim(htmlspecialchars($_POST['vNama'], ENT_QUOTES));
 	$vAlamat = trim(htmlspecialchars($_POST['vAlamat'], ENT_QUOTES));
 	$vEmail = trim(htmlspecialchars($_POST['vEmail'], ENT_QUOTES));
-	$vSitus = trim(htmlspecialchars($_POST['vSitus'], ENT_QUOTES));
 	$vPesan = trim(htmlspecialchars($_POST['vPesan'], ENT_QUOTES));
 	$vMobile = trim(htmlspecialchars($_POST['vMobile'], ENT_QUOTES));
 	$vTelp = trim(htmlspecialchars($_POST['vTelp'], ENT_QUOTES));
+	$type = trim(htmlspecialchars($_POST['type'], ENT_QUOTES));
+	$tanggal = trim(htmlspecialchars($_POST['tanggal'], ENT_QUOTES));
+	$payment = trim(htmlspecialchars($_POST['payment'], ENT_QUOTES));
+	
 	$code = $_POST['code'];
+	$booking = $_POST['kodebooking'];
 	
 	if (empty($vNama)) $strError .= "<li>".$arrTeks[kontak_erorr_nama]."</li>";
 //	if (empty($vAlamat)) $strError .= "<li>".$StrErrAlamat."</li>";
     if (empty($vMobile)) $strError .= "<li>".$arrTeks[kontak_erorr_mobile]."</li>";
 	if (empty($vEmail)) $strError .= "<li>".$arrTeks[kontak_erorr_email]."</li>";
 	if (cekEmail($vEmail)!=1) $strError .= "<li>".$arrTeks[kontak_erorr_format]."</li>";
-	if (empty($vPesan)) $strError .= "<li>".$arrTeks[kontak_erorr_pesan]."</li>";
+	//if (empty($vPesan)) $strError .= "<li>".$arrTeks[kontak_erorr_pesan]."</li>";
 	if (empty($code)) $strError .= "<li>".$arrTeks[kontak_erorr_kode]."</li>";
+	if (empty($type)) $strError .= "<li>".$arrTeks[type_erorr_kode]."</li>";
+	if (empty($tanggal)) $strError .= "<li>".$arrTeks[tanggal_erorr_kode]."</li>";
+	if (empty($payment)) $strError .= "<li>".$arrTeks[payment_erorr_kode]."</li>";
+	
+	if($type=="fasilitas"){
+	$fasilitas = trim(htmlspecialchars($_POST['fasilitas'], ENT_QUOTES));
+	$tikets = $_POST['tiket'];
+	if (empty($fasilitas)) $strError .= "<li>Please Select Fasilitas </li>";
+	$jmlhpaket=count($tikets);
+	if ($jmlhpaket=="0") $strError .= "<li>Please Select Package </li>";
+	$item=$fasilitas;
+	}
+	if($type=="event"){
+	$event = trim(htmlspecialchars($_POST['event'], ENT_QUOTES));
+	$jumlah = trim(htmlspecialchars($_POST['jumlah'], ENT_QUOTES));
+	if (empty($event)) $strError .= "<li>Please Select Event </li>";
+	if (empty($jumlah)) $strError .= "<li>Quantity is empty </li>";
+	$item=$event;
+	}
 	$simg = new Securimage();
 	$valid = $simg->check($code);
 	if (!$valid && !empty($code)) $strError .= "<li>".$arrTeks[kontak_erorr_code_isi]."</li>";
 	$include_email_tujuan='rizaldy@citra.web.id';
 	//$include_email_tujuan='info@aryukahotel.com';
 	if (empty($strError)) {
-	    $ip=$_SERVER['REMOTE_ADDR'];	        
+	    $ip=$_SERVER['REMOTE_ADDR'];	
 		$include_email_dari=$vNama;
 		$include_nama_dari=$vEmail;
-		$include_subyek='Contact Us - '.client;
-		$include_pesan .= "	
-        
-        Nama            : " . $vNama . "  \n
-        Email           : " . $vEmail . "  \n
-        Phone           : " . $vTelp . "  \n
-        Mobile          : " . $vMobile . "\n
-        Pesan           : " . $vPesan . " \n                                                                         
-		============================================ \n\r
-        IP Address	: " . getenv("REMOTE_ADDR") . " \n
-        Time		: " . tglIndo(time(),"l_e",$selisihJam)." \n
+		$include_subyek='New Invoice '.$booking.' @ '.client;
 		
-		Thank You";
-        
-	_insert("insert into ".tabel_pesan." VALUES ('','$vNama','$vEmail','$vTelp','$vMobile','$vPesan','$ip')");
-	kirimEmail("", false, $include_email_tujuan, client, $vEmail, $vNama, $include_subyek, $include_pesan);		
+
+	
+			
+		
+
+	_insert("insert into ".tabel_pemesanan." VALUES ('',now(),'$booking','$tanggal','$type','$item','$payment','$vNama','$vEmail','$vTelp','$vMobile','$vPesan','order','$ip')");
+	$id_pesan=_last_id();
+		if($type=="event"){
+_insert("insert into detail_pemesanan VALUES ('','$id_pesan','$event','$jumlah')");
+	}
+	else{
+	$totalall="0";
+	//show_array($tikets);
+		foreach($tikets as $datapaket){
+		$totalall=$totalall+($datapaket['harga']*$datapaket['jumlah']);
+		$tiketing=_insert("insert into detail_pemesanan values ('','$id_pesan','$datapaket[package]','$datapaket[jumlah]')");
+		//mysql_query($tiketing,$tulis) or die(mysql_error() . "<hr>" . $tiketing);
+		}
+	}
+$include_pesan .= "	
+".client." New Reservation
+		
+Reservation Date: " . datetimeid($tanggal) . "  \n
+Nama    : " . $vNama . "  \n
+Email   : " . $vEmail . " \n
+Phone   : " . $vTelp . "  \n
+Mobile  : " . $vMobile ." \n
+Pesan   : " . $vPesan . " \n 
+\n       
+============================================ \n\r
+IP Address	: " . getenv("REMOTE_ADDR") . " \n
+Time		: " . tglIndo(time(),"l_e",$selisihJam)." \n
+		
+untuk detail reservation dapat dilihat pada  halaman administrator \n
+		
+terima kasih 
+		";
+
+
+$include_pesan_pengunjung= "	
+Thank you for your order, please make payment and make payment confirmation to continue the booking process \n
+
+Below is the copy of your invoice at ".client.": \n
+
+		
+		
+Invoice No		: " . $booking ." \n
+Reservation Date: " . datetime($tanggal) . "  \n
+Name    : " . $vNama . "  \n  
+Phone   : " . $vTelp . "  \n
+Mobile  : " . $vMobile ." \n
+Email   : " . $vEmail . " \n
+Message : " . $vPesan . " \n
+Payment Status  : Unpaid \n  
+\n       
+		
+
+PT. Ganesha Dwipaya Bhakti
+Purawisata Yogyakarta
+Jl. Brigjen Katamso 55152 - INDONESIA
+Phone: +62-274-375705, +62-274-380643 (Hunting)
+Ext.16 (Marketing Department)
+Faximile: +62-274-417620
+info@purawisatajogjakarta.com \n   
+		
+		
+----------------------------------------------------------------------------------------------------------------------- \n\r
+		
+		
+Terima kasih atas pesanan Anda, silahkan melakukan pembayaran dan melakukan konfirmasi pembayaran untuk melanjutkan proses pemesanan
+		   
+Berikut adalah detail pemesanan anda di ".client.":   
+		
+		
+		
+Invoice No		: " . $booking ." \n
+Reservation Date: " . datetimeid($tanggal) . "  \n  
+Name    : " . $vNama . "  \n  
+Phone   : " . $vTelp . "  \n
+Mobile  : " . $vMobile ." \n
+Email   : " . $vEmail . " \n
+Message : " . $vPesan . " \n
+Pembayaran		: Belum Dibayar \n 
+		
+		\n
+PT. Ganesha Dwipaya Bhakti
+Purawisata Yogyakarta
+Jl. Brigjen Katamso 55152 - INDONESIA
+Phone: +62-274-375705, +62-274-380643 (Hunting)
+Ext.16 (Marketing Department)
+Faximile: +62-274-417620
+info@purawisatajogjakarta.com\n    
+";	
+	kirimEmail("", false, $include_email_tujuan, "info@purawisatajogjakarta.com", $vEmail, $vNama, $include_subyek, $include_pesan);	
+    kirimEmail("", false, $vEmail, client, "rizaldy@citra.web.id", client, $include_subyek, $include_pesan_pengunjung);	
+	//kirimEmail("", false, $include_email_tujuan, client, $vEmail, $vNama, $include_subyek, $include_pesan);		
 		
 	}
 }
@@ -94,14 +200,8 @@ $isPesanOk = false;
 <form method="post" id="form1">
 <div class="contactusform">
 <fieldset>
-<legend>&nbsp;Reservation &nbsp;</legend>
-<script>
-$(document).ready(function(){
-    $(function() {
-        $('.pesanerror').fadeOut(10000);
-    })
-  });
-</script>
+<legend>&nbsp;Online Reservation &nbsp;</legend>
+
 <div class="pesanerror">
 <?
 if(strlen($strError)>0) {
@@ -109,7 +209,7 @@ if(strlen($strError)>0) {
 }
 else {
 if (isset($_POST['submit'])) {
-        echo "<li>Thank you</li>";
+echo "<li>Thank you for reservation</li>";
 		echo "<li>Your message has been successfully sent. We will contact you very soon! </li>";
 		$isPesanOk = true;
 		$hideform='1';
@@ -135,61 +235,70 @@ if (isset($_POST['submit'])) {
 	  });
 	   $(function() {
 		$( "#tanggal" ).datetimepicker({ minDate: "+2D",hourMin: 9,
-	hourMax: 22,minuteGrid: 10,stepMinute: 10});
-		  $( "#tanggal" ).datepicker( "option", "showAnim", "bounce" );
+	hourMax: 22,minuteGrid: 10,stepMinute: 10,showAnim: "fold",dateFormat: "yy-mm-dd",timeFormat: 'HH:mm:ss'});
 	  });
   </script>
+  
 	 <div class="field-group">
-        <label><?=$arrTeks['type']?>* :</label>
-        <select name="type" id="type" class="eventasolole">
-         <option value="">-<?=$arrTeks['pilihtype']?>-</option>
-        <option value="fasilitas"><?=$arrTeks['fasilitas']?></option>
-        <option value="event"><?=$arrTeks['agend']?></option>
-        </select>
+<label><?=$arrTeks['type']?>* </label>
+:&nbsp;<select name="type" id="type" class="eventasolole">
+ <option value="">-<?=$arrTeks['pilihtype']?>-</option>
+<option value="fasilitas"><?=$arrTeks['fasilitas']?></option>
+<option value="event"><?=$arrTeks['agend']?></option>
+</select>
     </div>
     <div id="ajaxdata"></div>
     <div id="ajaxdata2"></div>
     
     <div class="field-group">
-        <label><?=$arrTeks['tanggalresev']?>* :</label>
-        <input class="inputpesan" type="text" id="tanggal"/>
+<label><?=$arrTeks['tanggalresev']?>* </label>
+:&nbsp;<input class="inputpesan" type="text" id="tanggal" name="tanggal"/>
+    </div>
+     <div class="field-group">
+<label><?=$arrTeks['pembayaran']?>* </label>
+:&nbsp;<select name="payment" id="payment" class="eventasolole">
+ <option value="">-<?=$arrTeks['pilihpem']?>-</option>
+<option value="bank">Bank Trasnfer</option>
+<option value="paypal">Paypal</option>
+</select>
     </div>
     <div class="field-group">
-        <label><?=$arrTeks['kontak_nama']?>* :</label>
-        <input class="inputpesan" type="text" name="vNama" value="<?=$vNama?>"/>
+<label><?=$arrTeks['kontak_nama']?>* </label>
+:&nbsp;<input class="inputpesan" type="text" name="vNama" value="<?=$vNama?>"/>
     </div>
     <div class="field-group">
-        <label><?=$arrTeks['kontak_email']?>* :</label>
-        <input class="inputpesan" type="text" name="vEmail" value="<?=$vEmail?>"/>
+<label><?=$arrTeks['kontak_email']?>* </label>
+:&nbsp;<input class="inputpesan" type="text" name="vEmail" value="<?=$vEmail?>"/>
     </div>
     <div class="field-group">
-        <label><?=$arrTeks['kontak_telp']?>&nbsp; :</label>
-        <input class="inputpesan" type="text" name="vTelp" value="<?=$vTelp?>"/>
+<label><?=$arrTeks['kontak_telp']?>&nbsp;</label>
+:&nbsp;<input class="inputpesan" type="text" name="vTelp" value="<?=$vTelp?>"/>
     </div>
     <div class="field-group">
-        <label><?=$arrTeks['kontak_hp']?>* :</label>
-        <input class="inputpesan" type="text" name="vMobile" value="<?=$vMobile?>"/>
+<label><?=$arrTeks['kontak_hp']?>* </label>
+:&nbsp;<input class="inputpesan" type="text" name="vMobile" value="<?=$vMobile?>"/>
+<input type="hidden" name="kodebooking" id="kodebooking" value="<?=invoice_huruf("6")?>">
     </div>
     <div class="field-group">
-        <label><?=$arrTeks['kontak_pesan']?>* :</label>
-        <textarea name="vPesan" rows="8" class="inputpesan"><?=$vPesan?></textarea>
+<label><?=$arrTeks['kontak_pesan']?>* </label>
+:&nbsp;<textarea name="vPesan" rows="4" class="inputpesan"><?=$vPesan?></textarea>
     </div>
     <div class="field-group">
     <label>&nbsp;</label>
        <div id="capcay">
        <img id="image" src="<?=app_base_url?>plugins/captcha/capcay.php?sid=<?=md5(uniqid(time()))?>" class="capcaycontact">
        <a href="#" onClick="refreshcapcay()"><img src="<?=app_base_url?>plugins/captcha/refresh.png" border="0" alt="refresh image" title="refresh image" class="refreshcapcay"/></a>  
-        </div>     
+</div>     
     </div>
     
      <div class="field-group">
-    <label>Verification* :</label>
-		<input type="text" name="code" id="code" size="12" title="Secure Code" class="secure" maxlength="5"/>
+    <label>Verification* </label>
+		: &nbsp;<input type="text" name="code" id="code" size="12" title="Secure Code" class="secure" maxlength="5"/>
 	</div>
 
     <div class="field-group" align="center">
-        <input type="hidden" name="hKode" value="<?=$hKode?>"/>
-        <input class="tombol" type="Submit" name="submit" id="submit" value="Submit"/>
+<input type="hidden" name="hKode" value="<?=$hKode?>"/>
+<input class="tombol" type="Submit" name="submit" id="submit" value="Next"/>
     </div>
   <? }?>  
 </fieldset>
@@ -198,27 +307,27 @@ if (isset($_POST['submit'])) {
 </form>
 <?php } ?>
     	  </div><!-- End Berita Kiri-->
-           
-         	<div class="detailberita2">	 
-         <? include "beritalainya.php";?>   
-            </div>
-        </div><!--End index berita-->
-        
+   
+ 	<div class="detailberita2">	 
+ <? include "beritalainya.php";?>   
+    </div>
+</div><!--End index berita-->
+
       
 	</div>
    
 </div>
 </article></div>
-                    </div>
-                </div>
-            </div>
+    </div>
+</div>
+    </div>
     </div>
 
 <footer class="cni-footer clearfix">
 <!--Foto dan video content mulai di sini-->
    <div class="bedawarnadetail">
     <div class="isibeda">
-                <? include "agendasocial.php";?>
+<? include "agendasocial.php";?>
        </div> 
    </div>   
 <!--Foto dan video content berakhir di sini-->   
