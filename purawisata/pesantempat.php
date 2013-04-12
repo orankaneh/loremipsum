@@ -101,12 +101,13 @@ _insert("insert into detail_pemesanan VALUES ('','$id_pesan','$event','$jumlah')
 	$totalall="0";
 	//show_array($tikets);
 		foreach($tikets as $datapaket){
+
 		$totalall=$totalall+($datapaket['harga']*$datapaket['jumlah']);
 		$tiketing=_insert("insert into detail_pemesanan values ('','$id_pesan','$datapaket[package]','$datapaket[jumlah]')");
 		//mysql_query($tiketing,$tulis) or die(mysql_error() . "<hr>" . $tiketing);
 		}
 	}
-$include_pesan .= "	
+$include_pesan .= "
 ".client." New Reservation
 		
 Reservation Date: " . datetimeid($tanggal) . "  \n
@@ -135,14 +136,16 @@ Below is the copy of your invoice at ".client.": \n
 		
 Invoice No		: " . $booking ." \n
 Reservation Date: " . datetime($tanggal) . "  \n
+Total   : $" .$_POST['totaldolar']." \n
 Name    : " . $vNama . "  \n  
 Phone   : " . $vTelp . "  \n
 Mobile  : " . $vMobile ." \n
 Email   : " . $vEmail . " \n
 Message : " . $vPesan . " \n
 Payment Status  : Unpaid \n  
-\n       
-		
+\n
+       
+
 
 PT. Ganesha Dwipaya Bhakti
 Purawisata Yogyakarta
@@ -164,25 +167,30 @@ Berikut adalah detail pemesanan anda di ".client.":
 		
 Invoice No		: " . $booking ." \n
 Reservation Date: " . datetimeid($tanggal) . "  \n  
+Total   : Rp" . $_POST['totalrupiah'] ." \n
 Name    : " . $vNama . "  \n  
 Phone   : " . $vTelp . "  \n
 Mobile  : " . $vMobile ." \n
 Email   : " . $vEmail . " \n
 Message : " . $vPesan . " \n
 Pembayaran		: Belum Dibayar \n 
-		
-		\n
+\n
+
+	
+
+
 PT. Ganesha Dwipaya Bhakti
 Purawisata Yogyakarta
 Jl. Brigjen Katamso 55152 - INDONESIA
 Phone: +62-274-375705, +62-274-380643 (Hunting)
 Ext.16 (Marketing Department)
 Faximile: +62-274-417620
-info@purawisatajogjakarta.com\n    
+info@purawisatajogjakarta.com\n  
+
 ";	
-	kirimEmail("", false, $include_email_tujuan, "info@purawisatajogjakarta.com", $vEmail, $vNama, $include_subyek, $include_pesan);	
-    kirimEmail("", false, $vEmail, client, "rizaldy@citra.web.id", client, $include_subyek, $include_pesan_pengunjung);	
-	//kirimEmail("", false, $include_email_tujuan, client, $vEmail, $vNama, $include_subyek, $include_pesan);		
+kirimEmail("", false, $include_email_tujuan, "info@purawisatajogjakarta.com", $vEmail, $vNama, $include_subyek, $include_pesan);	
+kirimEmail("", false, $vEmail, client, "rizaldy@citra.web.id", client, $include_subyek, $include_pesan_pengunjung);	
+//kirimEmail("", false, $include_email_tujuan, client, $vEmail, $vNama, $include_subyek, $include_pesan);		
 		
 	}
 }
@@ -249,7 +257,14 @@ echo "<li>Thank you for reservation</li>";
     </div>
     <div id="ajaxdata"></div>
     <div id="ajaxdata2"></div>
-    
+        <div class="field-group">
+<label>Total </label>
+:&nbsp;<?=$arrTeks['simbolmata']?>
+<input class="inputpesan" type="text" id="total" name="total" value="<?=$vTotal?>" readonly/>
+<input class="inputpesan" type="hidden" id="totalrupiah" name="totalrupiah" readonly/>
+<input class="inputpesan" type="hidden" id="totaldolar" name="totaldolar" readonly/>
+
+    </div>
     <div class="field-group">
 <label><?=$arrTeks['tanggalresev']?>* </label>
 :&nbsp;<input class="inputpesan" type="text" id="tanggal" name="tanggal"/>
@@ -262,6 +277,7 @@ echo "<li>Thank you for reservation</li>";
 <option value="paypal">Paypal</option>
 </select>
     </div>
+
     <div class="field-group">
 <label><?=$arrTeks['kontak_nama']?>* </label>
 :&nbsp;<input class="inputpesan" type="text" name="vNama" value="<?=$vNama?>"/>

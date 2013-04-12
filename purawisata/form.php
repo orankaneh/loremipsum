@@ -48,6 +48,7 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 		}
 	}
 	
+	
 	  $(function() {
 		$("#fasilitas").change(function(){
 		var fasilitas=$("#fasilitas").val();
@@ -84,8 +85,8 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 				<? }?>
 				"</select></div></td>"+
 				"<td><input type='text' name='tiket["+numb+"][jumlah]' id='jumlah"+numb+"' onkeyup='Angka(this)' maxlength='3'/></td>"+
-				"<td><input type='text' name='tiket["+numb+"][harga]' id='harga"+numb+"' readonly/><input type='hidden' name='tiket["+numb+"][hargangumpet]' id='hargangumpet"+numb+"' readonly/></td>"+
-				  "<td align='center'><input type='button' class='tombolapus' value='Delete' onclick='hapusBarang(1,this)'></td>"+
+				"<td><input type='text' name='tiket["+numb+"][harga]' id='harga"+numb+"' readonly/><input type='hidden' name='tiket["+numb+"][hargangumpet]' id='hargangumpet"+numb+"' readonly/><input type='hidden' name='tiket["+numb+"][hargarupiah]' id='hargarupiah"+numb+"' readonly/><input type='hidden' name='tiket["+numb+"][hargadolar]' id='hargadolar"+numb+"' readonly/></td>"+
+				  "<td align='center'><input type='button' class='tombolapus' value='Delete' onclick='hapusBarang(1,this);hitunghasil();'></td>"+
                 "</tr>";
             $(".tabelharga2").append(string);
             $('.tiket_tr:eq('+(numb-1)+')').addClass((numb% 2 != 0)?'odd':'even');
@@ -100,7 +101,10 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 							$('#harga'+numb).val(data.harga);
 							$('#hargangumpet'+numb).val(data.ngumpet);
 							$('#hargapaypall'+numb).val(data.paypall);
-							$('#jumlah'+numb).val("1");
+							$('#hargarupiah'+numb).val(data.rp);
+							$('#hargadolar'+numb).val(data.paypall);
+							$('#jumlah'+numb).val("1");	
+							hitunghasil();				
 							   }
 							});
 					   });
@@ -111,17 +115,22 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 						var jumlah=$("#jumlah"+numb).val();
 							if((jumlah!="0") && (jumlah!="00") && (jumlah!="000") && (jumlah!="")){
 								var harga=$("#hargangumpet"+numb).val();
+								var hargat=$("#harga"+numb).val();
+								var total=$("#total").val();
 								var hasilnya=jumlah*harga;
+								var totalall=total+hasilnya;
 								$('#harga'+numb).val(hasilnya);
+								hitunghasil();
 							}
 					   });
 				  });
+				  
 				  
   
         });
     })
     function hapusBarang(count,el){
-        var parent = el.parentNode.parentNode;
+	var parent = el.parentNode.parentNode;
         parent.parentNode.removeChild(parent);
         var penerimaan=$('.tiket_tr');
         var countPenerimaanTr=penerimaan.length;
@@ -131,6 +140,24 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
             $('.tiket_tr:eq('+i+')').addClass(((i+1) % 2 != 0)?'even':'odd');
         }
     }
+	
+   	function hitunghasil(){
+                   //alert('auo');
+                   tot = 0;
+                   var totalTemp = 0;
+				   var totalrp = 0;
+				   var totaldolar = 0;
+                   for(var i=1;i<=$('.tiket_tr').length;i++){
+                        totalTemp = totalTemp + ($('#hargangumpet'+i).val()*$('#jumlah'+i).val());
+						totalrp = totalrp + ($('#hargarupiah'+i).val()*$('#jumlah'+i).val());
+						totaldolar = totaldolar + ($('#hargadolar'+i).val()*$('#jumlah'+i).val());
+                   }                   
+                   $('#total').val(totalTemp);
+				   $('#totalrupiah').val(totalrp);
+				   $('#totaldolar').val(totaldolar);
+				 
+   }
+	
 	
 </script>
      <table class="tabelharga2" cellpadding="0" cellspacing="0" border="0">
@@ -151,9 +178,11 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 					echo '</select></div>';
 				   ?>
                    </td>
-                   <td><input type="text" name="tiket[1][jumlah]" id="jumlah1" onkeyup="Angka(this);hitungtotal(this.value)" maxlength="3"/></td>
+                   <td><input type="text" name="tiket[1][jumlah]" id="jumlah1" onkeyup="Angka(this);hitungtotal(this.value);hitunghasil()" maxlength="3"/></td>
                     <td><input type="text" name="tiket[1][harga]" id="harga1" readonly/>
                     <input type="hidden" name="tiket[1][hargangumpet]" id="hargangumpet1" readonly/>
+                     <input type="hidden" name="tiket[1][hargarupiah]" id="hargarupiah1" readonly/>
+                     <input type="hidden" name="tiket[1][hargadolar]" id="hargadolar1" readonly/>
                     </td>
                     <td></td>
                    </tr>
@@ -163,7 +192,7 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
     <?
 	}
 	else if($type=="harga"){
-		$sql=_select_unique_result("select ".$arrTeks['duit']." as harga,dollar as paypall, ".$arrTeks['duit']." as ngumpet from cni_tiket where id ='$id'");
+		$sql=_select_unique_result("select ".$arrTeks['duit']." as harga,dollar as paypall,rupiah as rp, ".$arrTeks['duit']." as ngumpet from cni_tiket where id ='$id'");
 		die(json_encode($sql));	
 	}
 exit;

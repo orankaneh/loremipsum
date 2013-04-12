@@ -65,9 +65,118 @@ function tarif(id,url){
 							success: function(data){
 							//alert(data.harga);
 							$('#harga1').val(data.harga);
-							$('#hargapaypall1').val(data.paypall);
+							$('#hargadolar1').val(data.paypall);
+							$('#hargarupiah1').val(data.rp);
 							$('#hargangumpet1').val(data.ngumpet);
 							$('#jumlah1').val("1");
+							$('#total').val(data.harga);
+							$('#totalrupiah').val(data.rp);
+							$('#totaldolar').val(data.paypall);
+							hitunghasil();
 							   }
 							});
 }
+function titikKeKoma(obj){
+    var a=obj.toString();
+    var b='';
+    if(a!=null){
+        b=a.replace(/\./g,',');
+    }
+    return b;
+}
+
+function komaKeTitik(obj){
+    var a=obj.toString();
+    var b='';
+    if(a!=null){
+        b=a.replace(/\,/g,'.');
+    }
+    return b;
+}
+
+function numberToCurrency(a){
+       if(a!=''&&a!=null){
+       a=a.toString();       
+        var b = a.replace(/[^\d\,]/g,'');
+		var dump = b.split(',');
+        var c = '';
+        var lengthchar = dump[0].length;
+        var j = 0;
+        for (var i = lengthchar; i > 0; i--) {
+                j = j + 1;
+                if (((j % 3) == 1) && (j != 1)) {
+                        c = dump[0].substr(i-1,1) + '.' + c;
+                } else {
+                        c = dump[0].substr(i-1,1) + c;
+                }
+        }
+		
+		if(dump.length>1){
+			if(dump[1].length>0){
+				c += ','+dump[1];
+			}else{
+				c += ',';
+			}
+		}
+    return c;}
+    else{
+        return '';
+    }
+}
+
+
+
+function numberToCurrency2(a){
+        if(a!=null&&!isNaN(a)){
+        //var b=Math.ceil(parseFloat(a));
+        var b=parseInt(a);
+        var angka=b.toString();        
+        var c = '';    
+        var lengthchar = angka.length;
+        var j = 0;
+        for (var i = lengthchar; i > 0; i--) {
+                j = j + 1;
+                if (((j % 3) == 1) && (j != 1)) {
+                        c = angka.substr(i-1,1) + '.' + c;
+                } else {
+                        c = angka.substr(i-1,1) + c;
+                }
+        }        
+        return c;
+    }else{
+        return '';
+    }
+}
+
+function floatToCurrency(a){
+    if(a!=''&&a!=null){
+       a=a.toString();       
+       var b = a.replace(/[^\d\.]/g,'');
+       var temp=a.split('.');
+       if(temp.length>1){
+           return numberToCurrency2(temp[0])+','+temp[1];
+       }else{
+           return numberToCurrency2(b);
+       }
+       
+    }else{
+        return '';
+    }    
+}
+
+function currencyToNumber(a){
+    var b=a.toString();
+    
+    var c='';
+    if(a!=null||a!=''){
+        c=b.replace(/\.+/g, '');
+    }
+    
+    return parseFloat(komaKeTitik(c));
+}
+
+function batasiAngka(angka,digit){
+    return angka.toFixed(digit);
+}
+
+
