@@ -37,6 +37,14 @@ function Desimal2(obj){
     
 }
 function formtype(type,url) {
+	if(type=="fasilitas"){
+	$('#reservasitgl').show();
+	$('#eventjumlah').hide();
+	}
+	else{
+	$('#reservasitgl').hide();
+	$('#eventjumlah').show();
+	}
 	$.ajax({
 	url: url+"form.php?type="+type,
 	type:'GET',
@@ -46,6 +54,7 @@ function formtype(type,url) {
 	$('#ajaxdata2').html("");
        }
 	});
+	
 }
 function package(type,url) {
 	$.ajax({
@@ -54,6 +63,24 @@ function package(type,url) {
 	dataType:'html',
 	success: function(msg){
     $('#ajaxdata2').html(msg);
+       }
+	});
+}
+function hargaevent(type,url) {
+	$.ajax({
+	url: url+"form.php?type=hargaevent&id="+type,
+	type:'GET',
+	dataType:'json',
+	success: function(data){
+							$('#jumlahevent').val("1");
+							$('#total').val(data.harga);
+							$('#hargaevents').val(data.harga);
+							$('#hargangumpet').val(data.ngumpet);
+							$('#hargadollar').val(data.paypall);
+							$('#hargarupiah').val(data.rp);
+							$('#totalrupiah').val(data.rp);
+							$('#totaldolar').val(data.paypall);					  				
+							
        }
 	});
 }
@@ -76,6 +103,8 @@ function tarif(id,url){
 							   }
 							});
 }
+
+
 function titikKeKoma(obj){
     var a=obj.toString();
     var b='';

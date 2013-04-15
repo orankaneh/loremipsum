@@ -63,6 +63,7 @@ $arrEn = array(
 				"tanggalresev"=>"Reservation Date",
 				"pembayaran"=>"Payment",
 				"pilihpem" => "Select Payment",
+				"reservasi_pesan" => "Thank you for your order, please make payment and make payment confirmation to continue the booking process<br/>Please check your email,We also have to send your booking details to your email",
 				"berita_lainya" => "OTHER NEWS"
 			);			
 
@@ -130,6 +131,7 @@ $arrIndo = array(
 				"payment_erorr_kode" => "payment belum di isi",	
 				"tanggalresev"=>"Tanggal",	
 				"pembayaran"=>"Pembayaran",
+				"reservasi_pesan" => "Terima kasih atas pesanan Anda, silahkan melakukan pembayaran dan melakukan konfirmasi pembayaran untuk melanjutkan proses pemesanan<br/>kami juga sudah mengirimkan detail pemesanan anda ke email anda,silahkan cek email anda",
 				"berita_lainya" => "BERITA LAINYA"      
               );			  
 ?>

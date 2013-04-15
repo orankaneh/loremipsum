@@ -18,6 +18,7 @@ RewriteRule (.*)/form/contact-us.html$ contact-us.php?bahasa=$1  [L,QSA]
 RewriteRule (.*)/form/guest-book.html$ guest-book.php?bahasa=$1  [L,QSA]
 RewriteRule (.*)/form/reservation.html$ pesantempat.php?bahasa=$1  [L,QSA]
 RewriteRule form/location.html$ location.php [L,QSA]
+RewriteRule payment/(.*)/paypal.html$ paypai.php?invoice=$1 [L,QSA]
 RewriteRule location.html$ location.php [L,QSA]
 RewriteRule home/(.*).html$  index.php?bahasa=$1 [L,QSA]
 

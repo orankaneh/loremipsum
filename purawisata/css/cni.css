@@ -851,7 +851,12 @@ width: 100%;
 float:left;
 width: 90px;
 margin: 10px 30px;
-
+}
+.hubungikami a{
+color:#5B452F !important;
+}
+.hubungikami a:hover{
+text-decoration: none !important;
 }
 .hubungikami img{
 position:absolute;

@@ -24,14 +24,59 @@ $type = isset($_GET['type']) ? $_GET['type'] : NULL;
 $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 
 	if($type=="event"){
+	?>
+   <script type="text/javascript">
+	  $(function() {
+		$("#event").change(function(){
+		var kegiatan=$("#event").val();
+		hargaevent(kegiatan,"<?=app_base_url?>");
+		});
+	  }); 
+	  	   $(function() {
+					$("#jumlahevent").keyup(function(){
+						var jumlah=$("#jumlahevent").val();
+							if((jumlah!="0") && (jumlah!="00") && (jumlah!="000") && (jumlah!="")){
+								var harga=$("#hargangumpet").val();
+								var hargat=$("#hargaevents").val();
+								var hargarp=$("#hargarupiah").val();
+								var hargadolar=$("#hargadollar").val();
+								var total=$("#total").val();
+								var hasilnya=jumlah*harga;
+								var hasilrpnya=jumlah*hargarp;
+								var hasildollarnya=jumlah*hargadolar;
+								var totalall=total+hasilnya;
+								$('#total').val(hasilnya);
+								$('#totalrupiah').val(hasilrpnya);
+								$('#totaldolar').val(hasildollarnya);
+								//hitunghasil();
+							}
+					   });
+					 });  	  
+  </script>
+    <?
 	$sql=_select_arr("select * from ".tabel_event." where kategori ='0' and status ='1' order by tanggal_mulai desc");
 	echo '<div class="field-group">';
 	echo '<label>'.$arrTeks['agend'].'* </label>';
 	echo ' :&nbsp;<select name="event" id="event" class="eventasolole">';
+    echo '<option value=""> -'.$arrTeks['pilih'].$arrTeks['agend'].'- </option>';
 		foreach($sql as $data){
 		echo '<option value="'.$data['id'].'">'.$data['nama'.$temp].' | '.dateaja($data['tanggal_mulai']).'</option>';
 		}
 	echo '</select></div>';
+	?>
+        <div class="field-group" id="eventjumlah">
+        <label><?=$arrTeks['jumlah']?>* </label>
+        :&nbsp;<input class="inputpesan" type="text" id="jumlahevent" name="jumlahevent" maxlength="3"/>
+    </div>
+          <div class="field-group" id="hargaevent">
+        <label> Price* </label>:&nbsp; <?=$arrTeks['simbolmata']?>
+        <input class="inputpesan" type="text" id="hargaevents"  name="hargaevents" readonly="readonly"/>
+        <input class="inputpesan" type="hidden" id="hargangumpet" name="hargangumpet" readonly="readonly"/>
+        <input class="inputpesan" type="hidden" id="hargarupiah"  name="hargarupiah" readonly="readonly"/>
+        <input class="inputpesan" type="hidden" id="hargadollar"  name="hargadollar" readonly="readonly"/>
+    </div>
+
+    <?
 	}
     
 	else if($type=="fasilitas"){
@@ -67,7 +112,7 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 		}
 	echo '</select></div>';
 	}
-	
+
 	else if($type=="package"){
 	$sql=_select_arr("select * from cni_tiket where id_fasilitas ='$id'");
 	echo '<div class="field-group">';
@@ -92,6 +137,7 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
             $('.tiket_tr:eq('+(numb-1)+')').addClass((numb% 2 != 0)?'odd':'even');
 			 	 $(function() {
 					$("#package"+numb).change(function(){
+					if($("#package"+numb).val()!=''){
 							$.ajax({
 							url:  "<?=app_base_url?>form.php?type=harga&id="+$("#package"+numb).val(),
 							type:'GET',
@@ -107,6 +153,7 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 							hitunghasil();				
 							   }
 							});
+						  }
 					   });
 				  });
 				  
@@ -189,10 +236,17 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
     </table>
 
     <input type="button" class="tomboltambah" id="tambahBaris">
+    
+    
+
     <?
 	}
 	else if($type=="harga"){
 		$sql=_select_unique_result("select ".$arrTeks['duit']." as harga,dollar as paypall,rupiah as rp, ".$arrTeks['duit']." as ngumpet from cni_tiket where id ='$id'");
+		die(json_encode($sql));	
+	}
+	else if($type=="hargaevent"){
+		$sql=_select_unique_result("select ".$arrTeks['duit']." as harga,dollar as paypall,rupiah as rp, ".$arrTeks['duit']." as ngumpet from cni_event where id ='$id'");
 		die(json_encode($sql));	
 	}
 exit;

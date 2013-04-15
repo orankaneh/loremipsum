@@ -15,7 +15,6 @@ function menuAdmin() {
 						<li><a href="fasilitasList.php" class="nochild"><b>Daftar Fasilitas</b></a></li>
 					</ul>
 				</li>
-				
 				<li><a href="#" class="haschild"><b><img src="../images/icon/gray_18/diary.png" class="iconadmin">Berita</b></a>
 					<ul>
 						<li><a href="beritaUpdate.php" class="nochild"><b>Tambah Berita</b></a></li>
@@ -62,6 +61,7 @@ function menuAdmin() {
 				</li>
 				<li><a href="paypalaccount.php" class="nochild"><b><img src="../images/icon/gray_18/user_woman.png" class="iconadmin">Paypal Account</b></a></li>
 				<li><a href="norek.php" class="nochild"><b><img src="../images/icon/gray_18/money_bag.png" class="iconadmin">No Rekening</b></a></li>
+				<li><a href="OrderList.php" class="nochild"><b><img src="../images/icon/gray_18/money_bag.png" class="iconadmin">Pemesanan</b></a></li>
 				<li><a href="ym.php" class="nochild"><b><img src="../images/icon/gray_18/emoticon_grin.png" class="iconadmin">YM Account</b></a></li>
 				<li><a href="visitorcounter.php" class="nochild"><b><img src="../images/icon/gray_18/group.png" class="iconadmin">Visitor Counter</b></a></li>
                 

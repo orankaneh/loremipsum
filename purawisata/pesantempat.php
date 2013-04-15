@@ -9,6 +9,8 @@ $(".desktop-nav").removeClass("cni-nav");
 $(".desktop-nav").addClass("cni-navwhite");
 $(".cni-hmenu").addClass("spasi");
 $(".booking").append("<div class='triangle'></div>");
+$('#reservasitgl').hide();
+$('#eventjumlah').hide();
   });
 </script>
 <? include "header.php"; ?>
@@ -44,7 +46,6 @@ if (isset($_POST['submit'])) {
 	$vMobile = trim(htmlspecialchars($_POST['vMobile'], ENT_QUOTES));
 	$vTelp = trim(htmlspecialchars($_POST['vTelp'], ENT_QUOTES));
 	$type = trim(htmlspecialchars($_POST['type'], ENT_QUOTES));
-	$tanggal = trim(htmlspecialchars($_POST['tanggal'], ENT_QUOTES));
 	$payment = trim(htmlspecialchars($_POST['payment'], ENT_QUOTES));
 	
 	$code = $_POST['code'];
@@ -58,11 +59,12 @@ if (isset($_POST['submit'])) {
 	//if (empty($vPesan)) $strError .= "<li>".$arrTeks[kontak_erorr_pesan]."</li>";
 	if (empty($code)) $strError .= "<li>".$arrTeks[kontak_erorr_kode]."</li>";
 	if (empty($type)) $strError .= "<li>".$arrTeks[type_erorr_kode]."</li>";
-	if (empty($tanggal)) $strError .= "<li>".$arrTeks[tanggal_erorr_kode]."</li>";
 	if (empty($payment)) $strError .= "<li>".$arrTeks[payment_erorr_kode]."</li>";
 	
 	if($type=="fasilitas"){
 	$fasilitas = trim(htmlspecialchars($_POST['fasilitas'], ENT_QUOTES));
+	$tanggal = trim(htmlspecialchars($_POST['tanggal'], ENT_QUOTES));
+	if (empty($tanggal)) $strError .= "<li>".$arrTeks[tanggal_erorr_kode]."</li>";
 	$tikets = $_POST['tiket'];
 	if (empty($fasilitas)) $strError .= "<li>Please Select Fasilitas </li>";
 	$jmlhpaket=count($tikets);
@@ -71,7 +73,7 @@ if (isset($_POST['submit'])) {
 	}
 	if($type=="event"){
 	$event = trim(htmlspecialchars($_POST['event'], ENT_QUOTES));
-	$jumlah = trim(htmlspecialchars($_POST['jumlah'], ENT_QUOTES));
+	$jumlah = trim(htmlspecialchars($_POST['jumlahevent'], ENT_QUOTES));
 	if (empty($event)) $strError .= "<li>Please Select Event </li>";
 	if (empty($jumlah)) $strError .= "<li>Quantity is empty </li>";
 	$item=$event;
@@ -217,8 +219,10 @@ if(strlen($strError)>0) {
 }
 else {
 if (isset($_POST['submit'])) {
-echo "<li>Thank you for reservation</li>";
-		echo "<li>Your message has been successfully sent. We will contact you very soon! </li>";
+		echo $arrTeks['reservasi_pesan'];
+		if($payment=="paypal"){
+		echo '<a href="'.app_base_url.'payment/'.$booking.'/paypal.html"><img src="http://www.pedsbasin.com/images/titles/btn_paynow_SM.gif"></a>';
+		}
 		$isPesanOk = true;
 		$hideform='1';
 	} else {
@@ -245,6 +249,7 @@ echo "<li>Thank you for reservation</li>";
 		$( "#tanggal" ).datetimepicker({ minDate: "+2D",hourMin: 9,
 	hourMax: 22,minuteGrid: 10,stepMinute: 10,showAnim: "fold",dateFormat: "yy-mm-dd",timeFormat: 'HH:mm:ss'});
 	  });
+
   </script>
   
 	 <div class="field-group">
@@ -257,18 +262,18 @@ echo "<li>Thank you for reservation</li>";
     </div>
     <div id="ajaxdata"></div>
     <div id="ajaxdata2"></div>
-        <div class="field-group">
-<label>Total </label>
-:&nbsp;<?=$arrTeks['simbolmata']?>
-<input class="inputpesan" type="text" id="total" name="total" value="<?=$vTotal?>" readonly/>
-<input class="inputpesan" type="hidden" id="totalrupiah" name="totalrupiah" readonly/>
-<input class="inputpesan" type="hidden" id="totaldolar" name="totaldolar" readonly/>
+    <div class="field-group" id="reservasitgl">
+        <label><?=$arrTeks['tanggalresev']?>* </label>
+        :&nbsp;<input class="inputpesan" type="text" id="tanggal" name="tanggal"/>
+    </div>
+     <div class="field-group">
+        <label>Total </label>
+        :&nbsp;<?=$arrTeks['simbolmata']?>
+        <input class="inputpesan" type="text" id="total" name="total" value="<?=$vTotal?>" readonly/>
+        <input class="inputpesan" type="hidden" id="totalrupiah" name="totalrupiah" readonly/>
+        <input class="inputpesan" type="hidden" id="totaldolar" name="totaldolar" readonly/>
+    </div>
 
-    </div>
-    <div class="field-group">
-<label><?=$arrTeks['tanggalresev']?>* </label>
-:&nbsp;<input class="inputpesan" type="text" id="tanggal" name="tanggal"/>
-    </div>
      <div class="field-group">
 <label><?=$arrTeks['pembayaran']?>* </label>
 :&nbsp;<select name="payment" id="payment" class="eventasolole">
@@ -314,7 +319,7 @@ echo "<li>Thank you for reservation</li>";
 
     <div class="field-group" align="center">
 <input type="hidden" name="hKode" value="<?=$hKode?>"/>
-<input class="tombol" type="Submit" name="submit" id="submit" value="Next"/>
+<input class="tombol" type="Submit" name="submit" id="submit" value="Submit"/>
     </div>
   <? }?>  
 </fieldset>
