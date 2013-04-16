@@ -14,12 +14,16 @@ RewriteEngine On
 #RewriteRule ^(.*)\.html$ $1.php [L,QSA]
 #RewriteRule form/(.*)\.html$ detailpage.php?form=$1 [L,QSA]
 #RewriteRule form/(.*)\.html$ detailpage.php?form=$1 [L,QSA]
+
 RewriteRule (.*)/form/contact-us.html$ contact-us.php?bahasa=$1  [L,QSA]
 RewriteRule (.*)/form/guest-book.html$ guest-book.php?bahasa=$1  [L,QSA]
 RewriteRule (.*)/form/reservation.html$ pesantempat.php?bahasa=$1  [L,QSA]
+RewriteRule (.*)/form/payment-confirm.html$ konfirmasipembayaran.php?bahasa=$1  [L,QSA]
 RewriteRule form/location.html$ location.php [L,QSA]
-RewriteRule payment/(.*)/paypal.html$ paypai.php?invoice=$1 [L,QSA]
+RewriteRule form/rekber.html$ location.php [L,QSA]
+#RewriteRule payment/(.*)/paypal.html$ paypai.php?invoice=$1 [L,QSA]
 RewriteRule location.html$ location.php [L,QSA]
+RewriteRule rekber.html$ rekber.php [L,QSA]
 RewriteRule home/(.*).html$  index.php?bahasa=$1 [L,QSA]
 
 
@@ -40,12 +44,13 @@ RewriteRule list/(.*)/download.html$  downloadindex.php?bahasa=$1 [L,QSA]
 RewriteRule (.*)/(.*)/(.*)/read/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]
 RewriteRule (.*)/(.*)/(.*)/detail/(.*).html$ detailpage.php?access=$1&id=$3&judul=$4&bahasa=$2 [L,QSA]
 
-#url halaman dinamis
-RewriteRule (.*)/(.*)/(.*).html$ dinamis.php?access=about&id=$2&judul=$3&bahasa=$1 [L,QSA]
 
 #url gallery
 RewriteRule (.*)/(.*)/gallery/(.*)/(.*).html$ gallery.php?access=gallery&kategori=$2&page=$3&jenis=$4&bahasa=$1 [L,QSA]
 RewriteRule (.*)/(.*)/gallery/(.*).html$ gallery.php?access=gallery&kategori=$2&jenis=$3&bahasa=$1 [L,QSA]
+
+#url halaman dinamis
+RewriteRule (.*)/(.*)/(.*).html$ dinamis.php?access=about&id=$2&judul=$3&bahasa=$1 [L,QSA]
 
 
 ErrorDocument 404 http://localhost/loremipsum/purawisata/404.php

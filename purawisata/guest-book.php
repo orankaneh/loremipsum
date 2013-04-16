@@ -158,7 +158,7 @@ foreach($respone as $tanggapan){
     <label>&nbsp;</label>
        <div id="capcay">
        <img id="image" src="<?=app_base_url?>plugins/captcha/capcay.php?sid=<?=md5(uniqid(time()))?>" class="capcaycontact">
-       <a href="#" onClick="refreshcapcay()"><img src="<?=app_base_url?>plugins/captcha/refresh.png" border="0" alt="refresh image" title="refresh image" class="refreshcapcay"/></a>  
+       <a href="#" onClick="refreshcapcay('<?=app_base_url?>')"><img src="<?=app_base_url?>plugins/captcha/refresh.png" border="0" alt="refresh image" title="refresh image" class="refreshcapcay"/></a>  
         </div>     
     </div>
     

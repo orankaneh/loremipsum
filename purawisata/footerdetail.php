@@ -44,7 +44,7 @@
 		Email   : info@purawisatajogja.com<br/>
         <div class="footercontak">
        <div class="hubungikami pointer">
-         <a href="<?=app_base_url?>form/contact-us.html"><img src="<?=app_base_url?>images/purawisata_depan_b_rev_03.jpg"/><?=$arrTeks['kontaklho']?></a> &nbsp;|
+         <a href="<?=app_base_url.$_SESSION['bahasa']?>/form/contact-us.html"><img src="<?=app_base_url?>images/purawisata_depan_b_rev_03.jpg"/><?=$arrTeks['kontaklho']?></a> &nbsp;|
        </div> 
         <div class="lokasikami pointer" onclick="loadmap()"><img src="<?=app_base_url?>images/purawisata_depan_b_rev_05.jpg"/> <?=$arrTeks['lakasilho']?></div>
        </div>

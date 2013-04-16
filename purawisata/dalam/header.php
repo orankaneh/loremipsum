@@ -86,8 +86,10 @@ if(!ereg("index.php",$_SERVER['PHP_SELF'])) {
 			width: 500,
 			height: 'auto'
 		});
-	});
-	</script>
+		
+ });
+
+</script>
 </head>
 <body>
 	<table align="<?=$layoutPosition?>" width="100%" border="0" cellpadding="0" cellspacing="0">

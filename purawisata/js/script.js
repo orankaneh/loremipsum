@@ -1139,9 +1139,9 @@ function loadmap(){
 	});
 }
 
- function refreshcapcay() {
+ function refreshcapcay(url) {
 	$.ajax({
-	  url: "./../plugins/captcha/imagehtmldepan.php",
+	  url: url+"plugins/captcha/imagehtmldepan.php",
 	  type:'GET',
 	  success: function(html){
 	  	$("#capcay").html(html);	

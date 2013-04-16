@@ -3,9 +3,7 @@ $class=$access;
 ?>
 <body>
 <div id="cni-main">
-
 <? include "header.php";
-
 $kategorie=bukaurl($kategoriurl);
 $idkategorie='';
 if($kategorie!='all'){

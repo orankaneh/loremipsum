@@ -91,7 +91,6 @@ $_SESSION['bahasa']=$bahasa;
                <div>Venue: <?=$data['namavenue']?></div>
                <div>Deskripsi</div>
                <?=decodeHTML2($data['isi'])?>
-                <div class="reservered"><a>PESAN SEKARANG</a></div>
              <? } else{ ?>
                 <h1><?=$data['nama_e']?></h1>
               <?=getSocialMediaUI()?><br/>
@@ -110,7 +109,6 @@ $_SESSION['bahasa']=$bahasa;
                    <div>Venue: <?=$data['namavenue']?></div>
                    <div>Decription:</div>
              		<?=decodeHTML2($data['isi_e'])?>
-                    <div class="reservered"><a>RESERVE NOW</a></div>
              <? }
 			 } 
 		   }

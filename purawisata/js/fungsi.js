@@ -208,4 +208,17 @@ function batasiAngka(angka,digit){
     return angka.toFixed(digit);
 }
 
-
+function rekber(){
+	$.ajax({
+	  url: "rekber.html",
+	  cache: false,
+	  success: function(html){
+		 $("#element_to_pop_up").html(html);
+	   $('#element_to_pop_up').bPopup({
+            modalColor: '#000000',
+			 speed: 450,
+            transition: 'slideDown'
+        });
+	  }
+	});
+}

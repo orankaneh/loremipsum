@@ -399,7 +399,7 @@ height: 370px;
 
 .bedawarnadetail .headagenda, .bedawarnadetail .headsocial{
    margin-left: 20px;
-   margin-top: -23px;
+   margin-top: -22px;
    background: #715f50;
    color: #d8cf9c;
    width: 150px;
@@ -880,7 +880,7 @@ margin: 0 !important;
 }
 #element_to_pop_up {
     background-color:#ffffff;
-    color:#FFF;
+    color:#161616;
     padding:10px;
     height: 500px;
 	top : 0;
@@ -1426,3 +1426,36 @@ font-size: 12px;
 .ui-datepicker{
 z-index: 100 !important;
 }
+
+.paypai, .antarbank{
+width: 550px;
+background:#FFFFFF;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+.paypai .field-group, .antarbank .field-group{
+    display: inline-block;
+    padding: 12px 10px;
+	width: 450px;
+	color:#161616;
+}
+.antarbank .field-groupgede{
+ display: inline-block;
+    padding: 12px 10px;
+	width: 450px;
+	color:#161616;
+	 font-family: swiss;
+	 font-size: 16px;
+	 text-decoration:underline;
+}
+.paypai .bannerpaypal{
+text-align:right
+}
+.gambarpaypal {
+width: 200px;
+}
+.paypaibutton{
+padding: 15px;
+}
+

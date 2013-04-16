@@ -87,7 +87,14 @@ $menu.=menu_clean('dropdown', $menudinamis['halaman_id'], app_base_url.$_SESSION
      <li><a href="<?=app_base_url.$_SESSION['bahasa']?>/form/guest-book.html">Guest Book</a></li>
      </ul>
      </li>
-     <li><a class="booking" href="<?=app_base_url.$_SESSION['bahasa']?>/form/reservation.html">Reservation</a></li>
+     <li>
+     <li><a class="booking" href="#">Reservation</a>
+     <ul>
+     <li><a onclick="rekber()" href="#"><?=$arrTeks['banklistaccount']?></a></li>
+     <li><a  href="<?=app_base_url.$_SESSION['bahasa']?>/form/reservation.html">Reservation</a></li>
+     <li><a  href="<?=app_base_url.$_SESSION['bahasa']?>/form/payment-confirm.html">Confirm Reservation</a></li>
+     </ul>
     </ul> 
      </div>
 </nav>
+

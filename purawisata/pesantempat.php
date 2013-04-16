@@ -11,6 +11,8 @@ $(".cni-hmenu").addClass("spasi");
 $(".booking").append("<div class='triangle'></div>");
 $('#reservasitgl').hide();
 $('#eventjumlah').hide();
+$('.paypai').hide();
+$('.antarbank').hide();
   });
 </script>
 <? include "header.php"; ?>
@@ -205,8 +207,109 @@ $isPesanOk = false;
 //echo "<br /><br />";
 ?>
 
-<?php if (!$isPesanOk) { ?>
+<?php if (!$isPesanOk) { 
+		if($payment=="paypal"){
+?>
+<script>
+$(document).ready(function(){
+ $(function() {
+   setTimeout(function() {
+   	$('.pesanerror').hide();
+	$('.contactusform').hide();
+	$('.paypai').show();
+    }, 1000);
+    })
+});
+</script>
+ 
+<?
+		echo '<div class="paypai">';
+        $sqlp= _select_unique_result("select account from ".tabel_paypal." where id='1'");
+		//$paypal_url="https://www.paypal.com/cgi-bin/webscr"; // Test Paypal API URL
+		$paypal_id=$sqlp['account'];
+?>   
+	 <div class="field-group">
+        <label><u>Invoice Info</u></label>
+    </div>
+	 <div class="field-group">
+        <label>No Invoice</label>
+        :&nbsp;<?=$booking?>
+    </div>
+	<div class="field-group">
+        <label>Total (Rp)</label>
+        :&nbsp;$<?=$_POST['totaldolar']?>
+    </div>
 
+
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" name="form7">
+        <input type="hidden" name="business" value="<?=$paypal_id?>">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="item_name" value="Payment No Invoice <?=$booking?>">
+        <input type="hidden" name="amount" value="<?=$_POST['totaldolar']?>">
+        <input type="hidden" name="no_shipping" value="1">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="cancel_return" value="<?=app_base_url.$_SESSION['bahasa']?>/form/reservation.html">
+        <input type="hidden" name="return" value="<?=app_base_url.$_SESSION['bahasa']?>/form/payment-confirm.html">
+        <input type="hidden" name="address_override" value="Jl. Brigjen Katamso 55152 - INDONESIA">
+        <input type="hidden" name="invoice" value="<?=$booking?>">
+        
+        <input type="hidden" name="image_url" value="http://purawisatajogjakarta.com/images/logo/logo_login.png">
+        
+        <input type="image" src="<?=app_base_url?>/images/paynow.jpg" name="submit" class="paypaibutton">
+        
+        </form> 
+        <div class="bannerpaypal">
+     <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_SbyPP_mc_vs_dc_ae.jpg" class="gambarpaypal">
+      </div>
+      </div>
+      <? } 
+	  else if($payment=="bank"){
+	  ?>
+      <script>
+$(document).ready(function(){
+ $(function() {
+   setTimeout(function() {
+   	$('.pesanerror').hide();
+	$('.contactusform').hide();
+	$('.antarbank').show();
+    }, 1000);
+    })
+});
+</script>
+      <div class="antarbank">
+      <div class="field-group">
+        <label><u>Invoice Info</u></label>
+    </div>
+	 <div class="field-group">
+        <label>No Invoice</label>
+        :&nbsp;<?=$booking?>
+    </div>
+	<div class="field-group">
+        <label>Total USD</label>
+        :&nbsp;$<?=$_POST['totaldolar']?>
+    </div>
+    <div class="field-group">
+        <label>Total IDR</label>
+        :&nbsp;Rp<?=$_POST['totalrupiah']?>
+    </div>
+    <br/>
+    <div class="field-groupgede">
+        <label>  List of bank accounts:</label>
+    </div>
+    <?
+	  $sqlrek= _select_arr("select * from ".bank_account);
+	  foreach($sqlrek as $numrek => $datarek){
+	?>
+    <div class="field-group">
+        <label><?=$datarek['bank']?></label>
+        <label>:<?=$datarek['norek']?></label>
+        (<?=$datarek['nama']?>)
+        
+    </div>
+    <? }?>
+    </div>
+      <?
+	  }?>       
 <form method="post" id="form1">
 <div class="contactusform">
 <fieldset>
@@ -220,9 +323,6 @@ if(strlen($strError)>0) {
 else {
 if (isset($_POST['submit'])) {
 		echo $arrTeks['reservasi_pesan'];
-		if($payment=="paypal"){
-		echo '<a href="'.app_base_url.'payment/'.$booking.'/paypal.html"><img src="http://www.pedsbasin.com/images/titles/btn_paynow_SM.gif"></a>';
-		}
 		$isPesanOk = true;
 		$hideform='1';
 	} else {
@@ -231,6 +331,8 @@ if (isset($_POST['submit'])) {
 }
 ?>
 </div>
+
+
 <? if ($hideform=='0'){ ?>
   <script type="text/javascript">
 	  $(function() {
@@ -275,40 +377,40 @@ if (isset($_POST['submit'])) {
     </div>
 
      <div class="field-group">
-<label><?=$arrTeks['pembayaran']?>* </label>
-:&nbsp;<select name="payment" id="payment" class="eventasolole">
- <option value="">-<?=$arrTeks['pilihpem']?>-</option>
-<option value="bank">Bank Trasnfer</option>
-<option value="paypal">Paypal</option>
-</select>
+    <label><?=$arrTeks['pembayaran']?>* </label>
+    :&nbsp;<select name="payment" id="payment" class="eventasolole">
+    <option value="">-<?=$arrTeks['pilihpem']?>-</option>
+    <option value="bank">Bank Trasnfer</option>
+    <option value="paypal">Paypal</option>
+    </select>
     </div>
 
     <div class="field-group">
-<label><?=$arrTeks['kontak_nama']?>* </label>
-:&nbsp;<input class="inputpesan" type="text" name="vNama" value="<?=$vNama?>"/>
+    <label><?=$arrTeks['kontak_nama']?>* </label>
+    :&nbsp;<input class="inputpesan" type="text" name="vNama" value="<?=$vNama?>"/>
     </div>
     <div class="field-group">
-<label><?=$arrTeks['kontak_email']?>* </label>
-:&nbsp;<input class="inputpesan" type="text" name="vEmail" value="<?=$vEmail?>"/>
+    <label><?=$arrTeks['kontak_email']?>* </label>
+    :&nbsp;<input class="inputpesan" type="text" name="vEmail" value="<?=$vEmail?>"/>
     </div>
     <div class="field-group">
-<label><?=$arrTeks['kontak_telp']?>&nbsp;</label>
-:&nbsp;<input class="inputpesan" type="text" name="vTelp" value="<?=$vTelp?>"/>
+    <label><?=$arrTeks['kontak_telp']?>&nbsp;</label>
+    :&nbsp;<input class="inputpesan" type="text" name="vTelp" value="<?=$vTelp?>"/>
     </div>
     <div class="field-group">
-<label><?=$arrTeks['kontak_hp']?>* </label>
-:&nbsp;<input class="inputpesan" type="text" name="vMobile" value="<?=$vMobile?>"/>
-<input type="hidden" name="kodebooking" id="kodebooking" value="<?=invoice_huruf("6")?>">
+    <label><?=$arrTeks['kontak_hp']?>* </label>
+    :&nbsp;<input class="inputpesan" type="text" name="vMobile" value="<?=$vMobile?>"/>
+    <input type="hidden" name="kodebooking" id="kodebooking" value="<?=invoice_huruf("6")?>">
     </div>
     <div class="field-group">
-<label><?=$arrTeks['kontak_pesan']?>* </label>
-:&nbsp;<textarea name="vPesan" rows="4" class="inputpesan"><?=$vPesan?></textarea>
+    <label><?=$arrTeks['kontak_pesan']?> </label>
+    :&nbsp;<textarea name="vPesan" rows="4" class="inputpesan"><?=$vPesan?></textarea>
     </div>
     <div class="field-group">
     <label>&nbsp;</label>
        <div id="capcay">
        <img id="image" src="<?=app_base_url?>plugins/captcha/capcay.php?sid=<?=md5(uniqid(time()))?>" class="capcaycontact">
-       <a href="#" onClick="refreshcapcay()"><img src="<?=app_base_url?>plugins/captcha/refresh.png" border="0" alt="refresh image" title="refresh image" class="refreshcapcay"/></a>  
+       <a href="#" onClick="refreshcapcay('<?=app_base_url?>')"><img src="<?=app_base_url?>plugins/captcha/refresh.png" border="0" alt="refresh image" title="refresh image" class="refreshcapcay"/></a>  
 </div>     
     </div>
     
@@ -318,14 +420,15 @@ if (isset($_POST['submit'])) {
 	</div>
 
     <div class="field-group" align="center">
-<input type="hidden" name="hKode" value="<?=$hKode?>"/>
-<input class="tombol" type="Submit" name="submit" id="submit" value="Submit"/>
+    <input type="hidden" name="hKode" value="<?=$hKode?>"/>
+    <input class="tombol" type="Submit" name="submit" id="submit" value="Submit"/>
     </div>
   <? }?>  
 </fieldset>
 </div>
 
 </form>
+
 <?php } ?>
     	  </div><!-- End Berita Kiri-->
    

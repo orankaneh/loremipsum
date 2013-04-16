@@ -69,6 +69,7 @@ define("yahoo_mesangger", "cni_ym");
 define("bank_account", "cni_bank");
 define("tabel_inbox", "cni_pesan");
 define("tabel_pemesanan", "cni_pemesanan");
+define("tabel_pembayaran", "cni_pembayaran");
 // - config - database & aplikasi -----------------------------------------------------------
 
 // - config - email -----------------------------------------------------------
