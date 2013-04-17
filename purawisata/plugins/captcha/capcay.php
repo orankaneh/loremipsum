@@ -16,7 +16,7 @@ $img->arc_linethrough = false;
 $img->arc_line_colors = "#386FCF";
 $img->use_multi_text = true;
 // $img->charset = "ABCDEFGHKLMNPRSTUWY23456789";
-$img->charset = "ciyusmiapahenelancie89wxyz12345f456ghijklmno8wxyz1234wxyz12345trwxyz12345awewxyz1e89wxyz12345f456ghijklmno8wxyz1234alanpetung31abcde89wxyz12345f456ghijklmno8wxyz123459vwxyz1234567890";
+$img->charset = "ABCABCDEFGHJKMNPQRSTUVWXYZ23456789DEFGHJKMNPQRSTUVWXYZ23456789";
 
 //$img->show(); // alternate use:  $img->show('/path/to/background.jpg');
 $img->show('captcha2.jpg');

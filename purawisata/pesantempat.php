@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
 	$simg = new Securimage();
 	$valid = $simg->check($code);
 	if (!$valid && !empty($code)) $strError .= "<li>".$arrTeks[kontak_erorr_code_isi]."</li>";
-	$include_email_tujuan='rizaldy@citra.web.id';
+	$include_email_tujuan='info@purawisatajogjakarta.com';
 	//$include_email_tujuan='info@aryukahotel.com';
 	if (empty($strError)) {
 	    $ip=$_SERVER['REMOTE_ADDR'];	

@@ -173,7 +173,7 @@ $_SESSION['bahasa']=$bahasa;
              <? if($jmlh!='0'){?>
         	 <div class="detailfoto <?=$access?>" style="position:relative;">
                     				<div class="headfotolhodetail">
-      					<?=$arrTeks['fotoe']?>
+      						<div class="textphoto"><?=$arrTeks['fotoe']?><img src="<?=app_base_url?>images/fotoico.jpg"> </div>   
      				</div>
      		<div class="fotolho">
 

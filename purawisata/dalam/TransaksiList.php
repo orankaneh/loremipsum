@@ -4,7 +4,8 @@ session_start();
 $checkApp = false;
 $minLevel = 800;
 $hakAksesAplikasi = 0;
-$judulnya = "Order";
+$judulnya = "Daftar Transaksi at purawisata";
+
 include_once("header.php");
 $ui = '';
 $addSql = '';
@@ -28,7 +29,7 @@ if($_GET) {
 		}
 	}
 	else{
-	$addSql = " and tp.booking='$q'";
+	$addSql = " and tp.booking='$q' group by tp.id";
 	}
 	
 	
@@ -60,10 +61,11 @@ $link = $_SERVER['PHP_SELF']."?z";
 if (!empty($q)) $link .= "&q=".$q;
 
 $i = 0;
-$sql = "select tp.* from ".tabel_pemesanan." tp
+$sql = "select tp.*,tb.*,tb.id as id_bayar from ".tabel_pembayaran." tb
+left join ".tabel_pemesanan." tp on(tp.booking=tb.kode_booking)
 left join detail_pemesanan dp on(dp.id_pemesanan=tp.id)
-where tp.status='order' ".$addSql.$addSql2." group by tp.id
-order by tp.id desc
+where tb.status='1' ".$addSql.$addSql2." group by tb.id
+order by tb.id desc
 ";
 //echo $sql;
 $arrH = barHalaman($sql, $PageNo, 20, $link, "../images/search_left.gif", "../images/search_left_off.gif", "../images/search_right.gif", "../images/search_right_off.gif", "C", "id");
@@ -74,12 +76,12 @@ while($row=mysql_fetch_object($res)) {
 	$status = '<a href="'.$link.'&id='.$row->id.'&m=ubahstatus&status='.$row->status.'"><img src="../images/'.$row->status.'.gif"/><br/>'.$status.'</a>';
 	$hapus = '<a href="'.$link.'&id='.$row->id.'&m=hapusdata" onclick="return confirm(\'Apakah anda yakin ingin menghapus data ini ?\')"><img src="../images/delete.png"/></a>';
 	$lname = $row->nama; 
-	$payment = $row->payment;
+	$payment = $row->via;
 	$type = $row->type;
 	$email = $row->email;
 if($type=="fasilitas"){
 	$typejenis="booking";
-	$tanggal = datetimeid($row->tgl_booking);
+	$tanggal = dateaja2($row->bayar);
 	}
 	else{
 	$test=_select_unique_result("select tanggal_mulai from ".tabel_event." where id='".$row->id_item."'");
@@ -93,12 +95,11 @@ if($type=="fasilitas"){
 	$ui .=
 		'<tr>
 			<td align="center" valign="top">'.($arrH['idx']+$i).'.</td>
-			<td align="left" valign="top"><a href="OrderListDetail.php?id='.$row->id.'">'.$lname.'</a></td>
+			<td align="left" valign="top"><a href="TransaksiListDetail.php?id='.$row->id_bayar.'">'.$lname.'</a></td>
 			<td align="center" valign="top">'.$tanggal.'</td>
 			<td align="center" valign="top">'.$payment.'</td>
 			<td align="center" valign="top">'.$type.'</td>
 			<td align="center" valign="top">'.$email.'</td>
-			<td align="center" valign="top">'.$status.'</td>
 		 </tr>';
 	
 	$i++;
@@ -114,18 +115,17 @@ if($num<1) {
 			<tr class="dhead">
 				<td align="center" valign="top" width="1%">No</td>
 				<td align="center" valign="top">Nama Pelanggan</td>
-				<td align="center" valign="top">Tanggal</td>
+				<td align="center" valign="top">Tanggal Bayar</td>
 				<td align="center" valign="top">Pembayaran</td>
 				<td align="center" valign="top">Type</td>
 				<td align="center" valign="top">Email</td>
-				<td align="center" valign="top">Status</td>
 			</tr>
 			'.$ui.'
 		 </table>';
 }
 ?>
 
-<div class="judul_menu">List Order</div>
+<div class="judul_menu">Daftar Transaksi</div>
 
 <div style="margin:10px;">
 <form name="cari" action="" method="get">

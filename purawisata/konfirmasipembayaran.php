@@ -60,7 +60,7 @@ if (isset($_POST['submit'])) {
 	if (empty($invoice)) $invoice .= "<li>".$arrTeks['noinvoicea']."</li>";
 	if (empty($tanggal)) $strError .= "<li>".$arrTeks[tanggal_erorr_kode]."</li>";
 	if (empty($payment)) $strError .= "<li>".$arrTeks[payment_erorr_kode]."</li>";
-	if (empty($jmlbayar)) $strError .= "<li>".$arrTeks['jmlhbayar']." can't empty </li>";
+	if (empty($jmlhbayar)) $strError .= "<li>".$arrTeks['jmlhbayar']." can't empty </li>";
 	
 //	if (empty($vAlamat)) $strError .= "<li>".$StrErrAlamat."</li>";
 	
@@ -78,12 +78,24 @@ if (isset($_POST['submit'])) {
 	$simg = new Securimage();
 	$valid = $simg->check($code);
 	if (!$valid && !empty($code)) $strError .= "<li>".$arrTeks[kontak_erorr_code_isi]."</li>";
-	$include_email_tujuan='rizaldy@citra.web.id';
+	$include_email_tujuan='info@purawisatajogjakarta.com';
 	//$include_email_tujuan='info@aryukahotel.com';
 	if (empty($strError)) {
 	    $ip=$_SERVER['REMOTE_ADDR'];	
-	_insert("insert into ".tabel_pembayaran." VALUES ('',now(),'$tanggal','$payment','$jmlhbayar','$invoice','$payacount','$fbank','$tbank','$bname','$baNama','$baNo','$ip')");
+	_insert("insert into ".tabel_pembayaran." VALUES ('',now(),'$tanggal','$payment','$jmlhbayar','$invoice','$payacount','$fbank','$tbank','$bname','$baNama','$baNo','$ip','0')");
 	$id_pesan=_last_id();
+	
+$include_pesan = "
+Anda baru menerima konfirmasi pembayaran dari pelanggan anda  \n
+untuk detail konfirmasi pembayaran bisa di cek melalui menu admin \n
+
+http://purawisatajogjakarta.com/dalam
+
+terima kasih
+";
+	
+	
+	kirimEmail("", false, $include_email_tujuan, "info@purawisatajogjakarta.com", "noreply@purawisatajogjakarta.com", "noreply", "Konfirmasi Pembayaran baru", $include_pesan);	
 		
 	}
 }
@@ -150,6 +162,13 @@ if (isset($_POST['submit'])) {
 			}
 		});
 	  });
+	   
+	    $(function() {
+		$('#invoice').blur(function(){
+		var invoicevalue=$('#invoice').val();
+		cek_invoice('<?=app_base_url?>',invoicevalue,'<?=$arrTeks['cekdata']?>');
+			});
+	  });
 	   $(function() {
 		$( "#tanggal" ).datepicker({ minDate: "+0D",showAnim: "fold",dateFormat: "yy-mm-dd"});
 	  });
@@ -158,16 +177,16 @@ if (isset($_POST['submit'])) {
   
 	<div class="field-group">
         <label>No. Invoice* </label>
-        :&nbsp;<input class="inputpesan" type="text" id="invoice" name="invoice"/>
+        :&nbsp;<input class="inputpesan" type="text" id="invoice" name="invoice" value="<?=$invoice?>"/>
     </div>
 
     <div class="field-group">
         <label><?=$arrTeks['tanggalbayar']?>* </label>
-        :&nbsp;<input class="inputpesan" type="text" id="tanggal" name="tanggal"/>
+        :&nbsp;<input class="inputpesan" type="text" id="tanggal" name="tanggal" value="<?=$tanggal?>"/>
     </div>
      <div class="field-group">
         <label><?=$arrTeks['jmlhbayar']?>* </label>
-        :&nbsp;<input class="inputpesan" type="text" id="jmlhbayar" name="jmlhbayar"/>
+        :&nbsp;<input class="inputpesan" type="text" id="jmlhbayar" name="jmlhbayar" value="<?=$jmlhbayar?>"/>
     </div>
      <div class="field-group">
     <label><?=$arrTeks['pembayaran']?>* </label>

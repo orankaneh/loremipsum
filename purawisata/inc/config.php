@@ -73,9 +73,9 @@ define("tabel_pembayaran", "cni_pembayaran");
 // - config - database & aplikasi -----------------------------------------------------------
 
 // - config - email -----------------------------------------------------------
-define("email_config_host","mail.citra.web.id");
-define("email_config_username","rizaldy@citra.web.id");
-define("email_config_password","sports123");
+define("email_config_host","mail.purawisatajogjakarta.com");
+define("email_config_username","info@purawisatajogjakarta.com");
+define("email_config_password","petung//31");
 // - config - email -----------------------------------------------------------
 
 // - config - SosialMedia -----------------------------------------------------------

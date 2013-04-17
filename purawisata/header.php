@@ -97,4 +97,6 @@ $menu.=menu_clean('dropdown', $menudinamis['halaman_id'], app_base_url.$_SESSION
     </ul> 
      </div>
 </nav>
-
+<?
+//show_array($_GET);
+?>

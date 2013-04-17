@@ -95,7 +95,8 @@ $gallery=galleryfotomuatdata('4');
     <div class="isibeda">
    		<div class="videolho">
        				<div class="headvideo">
-      					VIDEO     				</div>
+      					<div class="textphoto">VIDEO <img src="<?=app_base_url?>images/pideokk.jpg"></div>
+                      </div>
                         <script>
 						$(document).ready(function() {
     $("iframe").each(function(){
@@ -117,34 +118,31 @@ $gallery=galleryfotomuatdata('4');
         </div>
 <div class="fotolho">
        				<div class="headfoto">
-      					<?=$arrTeks['fotoe']?>    				
+      					<div class="textphoto"><?=$arrTeks['fotoe']?><img src="<?=app_base_url?>images/fotoico.jpg"> </div>   				
                     </div>
                     <div class="galleryinfooter">
                     <? foreach ($gallery as $colection) {?>
                   <a href="<?=app_base_url?>images/foto/<?=$colection['id']?>.jpg" class="fancybox-buttons" rel="gallery">  <img src="<?=app_base_url?>images/foto/thumb/<?=$colection['id']?>.jpg"> </a>
                     
                      <div id="description" style="display: none;">
-					 <div>
-                     <div class="inner">
-					 <div class="fotointro">
-					 <?=$colection['isi']?>
-                     </div>
-                     <div class="commentbox">
-                     <li><b>adhy:</b>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
-                     <li>admin:There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
-                     <li><b>adhy:</b>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
-                     <li>admin:Mantab gan</li>
-                     <li><b>adhy:</b>IThere are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
-                     <li>admin:Mantab gan</li></li>
-                     </div>
-                     <div class="textareacom">
-                     <label>Name:</label>
-                     <input type="text">
-                     <label>Comment:</label>
-                     <textarea rows="5"></textarea>
-                     <input type="button" value="submit">
-                     </div>
-                     </div></div>
+						 <div>
+                    		 <div class="inner">
+					 			<div class="fotointro">
+								 <?=$colection['isi']?>
+                    			</div>
+                                <div class="commentbox">
+                                <li><b>adhy:</b>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which</li>
+                                <li>admin:Mantab gan</li></li>
+                                </div>
+                                <div class="textareacom">
+                                     <label>Name:</label>
+                                     <input type="text">
+                                     <label>Comment:</label>
+                                    <textarea rows="5"></textarea>
+                                     <input type="button" value="submit">
+                             </div>
+                     	</div>
+                    	 </div>
 					</div>
                     <? }?>
                     </div>

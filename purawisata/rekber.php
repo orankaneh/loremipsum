@@ -5,11 +5,16 @@ include_once("inc/array.php");
 session_start();
 ob_start();
 $sqlrekber= _select_arr("select * from ".bank_account);
+?>
+<img src="<?=app_base_url?>images/logo/logo_login.png" /><br/>
+<b>Bank Account Purawisata Jogjakarta</b><br/>
+<?
 foreach($sqlrekber as $numrekber => $datarekber){
 	?>
-    <div class="field-groupis">
-        <label><?=$datarekber['bank']?></label>
-        <label>:<?=$datarekber['norek']?></label>
+    <br/>
+    <div class="field-groupis" style=" font-family:'Courier New', Courier, monospace;">
+        <label><b><?=$datarekber['bank']?>:</b></label><br/>
+        <label><?=$datarekber['norek']?></label>
         (<?=$datarekber['nama']?>)
         
     </div>

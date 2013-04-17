@@ -2545,6 +2545,11 @@ function dateaja($dt) {
 	$var3 = "$var1[2]-$var1[1]-$var1[0]";
     return $var3;
 }
+function dateaja2($dt) {
+    $var1 = explode("-", $dt);
+	$var3 = "$var1[2]-$var1[1]-$var1[0]";
+    return $var3;
+}
 function banneratasmuatdata(){
 $today=date("Y-m-d");
   $sql = "select * from ".tabel_banner." where id_kategori = '1' 
@@ -2639,7 +2644,7 @@ $fruit   = array("/".$pengganti."/", "/".$pengganti);
 $output  = str_replace($letters, $fruit, $url);
 return $output;
 }
-function paging($sql, $dataPerPage) {
+function paging($sql, $dataPerPage,$test) {
 
     $showPage = NULL;
     ob_start();
@@ -2682,7 +2687,7 @@ function paging($sql, $dataPerPage) {
                         $get['tab'] = $tab;
                     }
 					if ($ajax != NULL) echo " <a class='block' onclick='contentloader(\"?" .  generate_get_parameter($get). "\",\"#content\")'>" . $page . "</a> ";
-                    else echo " <a class='block' href='" .app_base_url.$_SESSION['bahasa']."/".$kategoriurl."/gallery/".$page."/foto.html"."'>" . $page . "</a> ";
+                    else echo " <a class='block' href='" .app_base_url.$_SESSION['bahasa']."/".$kategoriurl."/gallery/".$page."/".$test.".html"."'>" . $page . "</a> ";
                 }
                 $showPage = $page;
             }
@@ -2850,7 +2855,38 @@ $where="";
 	
 	$result['list']= _select_arr($fotolist);
 	$sqli = "select * from ".tabel_foto." where kategori = '0' $where";
- 	$result['paging'] = paging($sqli , $dataPerPage);
+ 	$result['paging'] = paging($sqli , $dataPerPage,'foto');
+    $result['offset'] = $offset;
+return $result;
+}
+
+function galler_video_muat_data($kategory,$page = null){
+$where="";
+   $result = array();
+	
+	if($kategory!=''){
+	$where=" and parent_id ='$kategory'";
+	}
+   	
+	$dataPerPage='4';	
+ 	if (!empty($page)) {
+        $noPage = $page;
+    } else {
+        $noPage = 1;
+    }
+		
+
+	$offset = ($noPage - 1) * $dataPerPage;
+    $batas = "";
+    if ($dataPerPage != null) {
+        $batas = "limit $offset, $dataPerPage";
+    }
+	
+	$fotolist = "select * from ".tabel_video." where kategori = '0' $where $batas";
+	//echo $fotolist;
+	$result['list']= _select_arr($fotolist);
+	$sqli = "select * from ".tabel_video." where kategori = '0' $where";
+ 	$result['paging'] = paging($sqli , $dataPerPage,'video');
     $result['offset'] = $offset;
 return $result;
 }
@@ -2944,11 +2980,27 @@ $result = array();
 return $result;
 }
 
+function katagori_video_muat_data(){
+
+$kategorifoto = "select * from ".tabel_video." where kategori = '1'";
+$exekategorifoto = mysql_query($kategorifoto);
+$result = array();
+
+    while ($rows = mysql_fetch_array($exekategorifoto)) {
+        $result[] = $rows;
+    }
+return $result;
+}
+
 function jumlah_foto_muat_data($id){
 $result = _select_unique_result("select count(id) from ".tabel_foto." where parent_id = '$id'");
 return $result;
 }
 
+function jumlah_video_muat_data($id){
+$result = _select_unique_result("select count(id) from ".tabel_video." where parent_id = '$id'");
+return $result;
+}
 function tiket_package_muat_data($id){
 $where="";
 if($id!=''){

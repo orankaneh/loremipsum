@@ -222,3 +222,19 @@ function rekber(){
 	  }
 	});
 }
+
+function cek_invoice(app_base_url,invoicevalue,error){
+	if(invoicevalue!=''){
+		$.ajax({
+					url: app_base_url+"form.php?type=invoice&id="+invoicevalue,
+					type:'GET',
+					dataType:'json',
+					success: function(data){
+						if(data.jumlah=="0"){
+						alert(error);
+						$('#invoice').val("");
+						}				  
+					}
+		});
+	}
+}

@@ -477,7 +477,7 @@ color: #FFFFFF;
    margin-top: -22px;
    background: #715f50;
    width: 150px;
-   text-align:center;
+   text-align:left;
    border-top: 1px solid #d8cf9c;
    border-left: 1px solid #d8cf9c;
    border-right: 1px solid #d8cf9c;
@@ -491,13 +491,22 @@ color: #FFFFFF;
 	font-size:16px;
    color: #d8cf9c;
 }
+.textphoto{
+margin-left: 15px;
+}
+.textphoto img{
+float:right;
+margin-right:3px;
+margin-top:1px;
+}
+
 
 .headfoto{
    margin-left: 20px;
    margin-top: -22px;
    background: #715f50;
    width: 150px;
-   text-align:center;
+   text-align:left;
    border-top: 1px solid #d8cf9c;
    border-left: 1px solid #d8cf9c;
    border-right: 1px solid #d8cf9c;
@@ -570,6 +579,7 @@ float:left;
 height:100%;
 padding: 0;
 margin:10px auto;
+
 }
 .isigallery img{
 	border: 4px solid #ffffff;
@@ -630,10 +640,10 @@ margin: 0;
 }
 .headfotolhodetail{
  margin-left: 20px;
-   margin-top: -23px;
+   margin-top: -22px;
    background: #4E3623;
    width: 150px;
-   text-align:center;
+   text-align:left;
    border-top: 1px solid #d8cf9c;
    border-left: 1px solid #d8cf9c;
    border-right: 1px solid #d8cf9c;

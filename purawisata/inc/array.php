@@ -72,7 +72,8 @@ $arrEn = array(
 				"norek"=>"Account Number",
 				"noinvoicea"=>"No invoice can't empty",
 				"banklistaccount"=>"Bank Account",
-				"terimakasihbayar" => "Thank you for confirm payment",
+				"cekdata"=>" invoice number is not found or already paid, please contact our customer service for information",
+				"terimakasihbayar" => "Thank you for confirm payment. Please check your email,we will notify you via email regarding your payment confirmation",
 				"reservasi_pesan" => "Thank you for your order, please make payment and make payment confirmation to continue the booking process<br/>Please check your email,We also have to send your booking details to your email",
 				"berita_lainya" => "OTHER NEWS"
 			);			
@@ -81,7 +82,7 @@ $arrIndo = array(
 				"judul" => "Selamat Datang",
    	            "berita" => "Berita & Acara",
                 "alamat" => "Alamat",
-				"terimakasihbayar" => "Terima kasih telah melakukan konfirmasi pembayaran",
+				"terimakasihbayar" => "Silakan periksa email Anda, kami akan memberitahu Anda melalui email mengenai konfirmasi pembayaran Anda",
                 "galeri" => "Galeri",
                 "fasilitas" => "Fasilitas",
                 "kontak_nama" => "Nama",
@@ -149,6 +150,7 @@ $arrIndo = array(
 				"yourname"=>"Atas Nama",
 				"norek"=>"Nomer Rekening",
 				"banklistaccount"=>"Rekening Bank",
+				"cekdata"=>"nomor invoice tidak ditemukan atau sudah dibayar,silahkan menghubungi costumer service kami untuk informasi",
 				"reservasi_pesan" => "Terima kasih atas pesanan Anda, silahkan melakukan pembayaran dan melakukan konfirmasi pembayaran untuk melanjutkan proses pemesanan<br/>kami juga sudah mengirimkan detail pemesanan anda ke email anda,silahkan cek email anda",
 				"berita_lainya" => "BERITA LAINYA"      
               );			  

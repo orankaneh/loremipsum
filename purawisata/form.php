@@ -22,7 +22,7 @@ if($_SESSION['bahasa'] == 'id'){
 
 $type = isset($_GET['type']) ? $_GET['type'] : NULL;
 $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
-
+$id=anti_injection($id);
 	if($type=="event"){
 	?>
    <script type="text/javascript">
@@ -249,5 +249,12 @@ $id   = isset($_GET['id']) ? $_GET['id'] : NULL;
 		$sql=_select_unique_result("select ".$arrTeks['duit']." as harga,dollar as paypall,rupiah as rp, ".$arrTeks['duit']." as ngumpet from cni_event where id ='$id'");
 		die(json_encode($sql));	
 	}
+	else if($type=="invoice"){
+		$sql=_select_unique_result("select * from ".tabel_pemesanan." where booking ='$id' and status='order'");
+		$hitung=count($sql['id']);
+		$hasil=array("jumlah"=>$hitung);
+		die(json_encode($hasil));	
+	}
+	
 exit;
 ?>
